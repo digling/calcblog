@@ -1,5 +1,9 @@
 # No need for latex intermediates
 *.aux
+*.toc
+
+# No images
+images/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
