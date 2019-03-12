@@ -91,7 +91,17 @@ def build_output(post):
     return buf
 
 def main():
-    output = "# CALC Blog 2018\n\n"
+    output = """
+---
+title: Calc Blog 2018
+author: CALC Team
+...
+
+## Introduction
+
+Lorem ipsum, dolor sit amet...
+    """
+    output += "\n\n"
 
     for post_idx in POST_IDXS:
         post = {}
@@ -107,6 +117,9 @@ def main():
 
         # Grab the title
         post['title'] = soup.title.string
+        post['title'] = post['title'].replace(
+            '– Computer-Assisted Language Comparison in Practice', '')
+        post['title'].strip()
 
         # Greb footer material: the first is the author,
         # the date is annotated by a rel='bookmark', then we have categories
@@ -140,8 +153,23 @@ def main():
         # Append output
         output += build_output(post)
 
+    # Filter all the filenames in the blog, so we can download them
+    mapper = {}
+    for image_url in re.findall(r'http.*?png', output):
+        # build local filename
+        image_path = image_url.replace('/', '_')
+        image_path = 'images/' + image_path.split(':', 1)[1]
+        mapper[image_url] = image_path
+
+        # download
+        urllib.request.urlretrieve(image_url, image_path)
+
+    # correct the addresses
+    for image_url, image_path in mapper.items():
+        output = output.replace(image_url, image_path)
+
     # write output to stdin
-    with open('output.md', 'w') as handler:
+    with open('calcblog.md', 'w') as handler:
         handler.write(output)
 
 if __name__ == "__main__":
