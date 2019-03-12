@@ -1,4 +1,11 @@
-# No need for latex intermediates
+# Only keep the pdf output in the repository
+calcblog.docx
+calcblog.epub
+calcblog.html
+calcblog.tex
+
+# No need for intermediates
+calcblog.md
 *.aux
 *.toc
 
