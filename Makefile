@@ -61,20 +61,33 @@ latex_clean:
 
 $(BOOKNAME).tex: $(BOOKNAME).md 
 	pandoc $(BOOKNAME).md \
+	-o calcblog_1.tex \
 	-s \
-	-o $(BOOKNAME)_firstpass.tex \
-	-V documentclass=scrbook \
-	-V indent \
-	-V subparagraph \
-	-V fontfamily="libertine" \
-	-V fontfamilyoptions="oldstyle,proportional" \
-	-V papersize=a4 \
-	--top-level-division=part \
-	--pdf-engine=lualatex \
-	--table-of-contents
+	--data-dir=. \
+	--from markdown \
+	--template eisvogel \
+	--listings \
+	--table-of-contents \
+	--top-level-division=chapter
+	sed "s/lstlisting}{\\\\par/lstlisting}{\\\\vspace{20pt}\\\\par/" calcblog_1.tex > calcblog_2.tex
+	sed "s/References-*/References/" calcblog_2.tex > calcblog.tex
+	rm calcblog_1.tex
+	rm calcblog_2.tex
 
-	sed -e 's/caption{{\\textbf{\(.*\)}/caption{\1/' calcblog_firstpass.tex > calcblog.tex
-	rm calcblog_firstpass.tex
+#
+#	-o $(BOOKNAME)_firstpass.tex \
+#	-V documentclass=scrbook \
+#	-V indent \
+#	-V subparagraph \
+#	-V fontfamily="libertine" \
+#	-V fontfamilyoptions="oldstyle,proportional" \
+#	-V papersize=a4 \
+#	--top-level-division=part \
+#	--pdf-engine=lualatex \
+#	--table-of-contents
+
+#	sed -e 's/caption{{\\textbf{\(.*\)}/caption{\1/' calcblog_firstpass.tex > calcblog.tex
+#	rm calcblog_firstpass.tex
 
 ## docx  : Generate a Word file.
 

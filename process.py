@@ -8,6 +8,12 @@ import pypandoc
 headers = {}
 headers['User-Agent'] = "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:48.0) Gecko/20100101 Firefox/48.0"
 
+class MyHTTP(urllib.request.HTTPHandler):
+    def http_request(self, req):
+        req.headers = headers
+        return super().http_request(req)
+opener = urllib.request.build_opener(MyHTTP())
+
 POST_IDXS = [
     22, # Mattis, Let the Games Begin
     32, # Tiago, Wiktionary
@@ -68,6 +74,23 @@ def post2md(post_html):
             new_lines.append(line)
     lines = new_lines
 
+    # Find the Reference, if any, and after that remove the square brackets
+    # around items
+    in_ref = False
+    for idx in range(len(lines)):
+        if 'References' in lines[idx]:
+            in_ref = True
+            continue
+
+        if in_ref:
+            lines[idx] = lines[idx].strip()
+            if lines[idx]:
+                if lines[idx][0] == '[':
+                    lines[idx] = lines[idx][1:]
+                if lines[idx][-1] == ']':
+                    lines[idx] = lines[idx][:-1]
+                lines[idx] = lines[idx].strip()
+
     # join into a single string and do replacements to fix WP/BS4 problems
     # of breaking punctuation with newlines; this won't affect code
     # as, thanks to markdown, we always have the preceding spaces
@@ -81,23 +104,36 @@ def post2md(post_html):
 
 # Builds and MD output from a `post` structure
 def build_output(post):
-    buf = "## %s\n\n(%s -- %s - %s)\n\n" % \
-        (post['title'], post['author'], post['date_published'], post['date_updated'])
-    buf += 'Categories: %s\n\n' % ', '.join(post['categories'])
-    buf += 'Tags: %s\n\n' % ', '.join(post['tags'])
+    buf = "# %s\n\n**%s** (%s)\n\n" % \
+        (post['title'], post['author'], post['date_published'])#, post['date_updated'])
+    buf += '*Categories*: %s\n\n' % ', '.join(post['categories'])
+    buf += '*Tags*: %s\n\n' % ', '.join(post['tags'])
 
-    buf += '\n\n' + post['text']
+    buf += '\n\n---\n\n' + post['text'] + '\n\n'
 
     return buf
 
 def main():
     output = """
 ---
-title: Calc Blog 2018
+title: "Calc Blog 2018"
+subtitle: "Posts by the team"
 author: CALC Team
+toc-own-page: ture
+listings-no-page-break: true
+book: true
+classoption: oneside
+lang: en
+titlepage: true
+titlepage-color: "2D6CA2"
+titlepage-text-color: "FFFFFF"
+titlepage-rule-color: "FFFFFF"
+titlepage-rule-height: 2
+logo: "calclogo.pdf"
+logo-width: 120
 ...
 
-## Introduction
+# Introduction
 
 Lorem ipsum, dolor sit amet...
     """
@@ -155,18 +191,33 @@ Lorem ipsum, dolor sit amet...
 
     # Filter all the filenames in the blog, so we can download them
     mapper = {}
+    urllib.request.install_opener(opener)
     for image_url in re.findall(r'http.*?png', output):
         # build local filename
         image_path = image_url.replace('/', '_')
         image_path = 'images/' + image_path.split(':', 1)[1]
         mapper[image_url] = image_path
 
-        # download
+        # download -- need to use the headers...
+        print(image_url)
         urllib.request.urlretrieve(image_url, image_path)
 
     # correct the addresses
     for image_url, image_path in mapper.items():
         output = output.replace(image_url, image_path)
+
+    # correct the CSS styles
+    output = output.replace(
+        '{style="font-family: terminal, monaco, monospace"}',
+        "")
+
+    # add python syntax highlight
+    output = output.replace("\n\n```\n", "\n\n```python\n")
+
+    # put the "Cite on" in italics and separate
+    output = output.replace(
+        "Cite this article as:",
+        "**Cite this article as**:")
 
     # write output to stdin
     with open('calcblog.md', 'w') as handler:
