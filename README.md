@@ -6,5 +6,5 @@ Repository for code and data for generating presentable PDFs from CALC's blog
 ```
 python3 process.py
 make
-xelatex calcblog.tex (at least two times, to get the TOC correctly)
+xelatex calcblog.tex (at least twice, to get the TOC correctly)
 ```
