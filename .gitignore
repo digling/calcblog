@@ -2,15 +2,11 @@
 calcblog.docx
 calcblog.epub
 calcblog.html
-calcblog.tex
 
 # No need for intermediates
 calcblog.md
 *.aux
 *.toc
-
-# No images
-images/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

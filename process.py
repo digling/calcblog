@@ -74,23 +74,6 @@ def post2md(post_html):
             new_lines.append(line)
     lines = new_lines
 
-    # Find the Reference, if any, and after that remove the square brackets
-    # around items
-    in_ref = False
-    for idx in range(len(lines)):
-        if 'References' in lines[idx]:
-            in_ref = True
-            continue
-
-        if in_ref:
-            lines[idx] = lines[idx].strip()
-            if lines[idx]:
-                if lines[idx][0] == '[':
-                    lines[idx] = lines[idx][1:]
-                if lines[idx][-1] == ']':
-                    lines[idx] = lines[idx][:-1]
-                lines[idx] = lines[idx].strip()
-
     # join into a single string and do replacements to fix WP/BS4 problems
     # of breaking punctuation with newlines; this won't affect code
     # as, thanks to markdown, we always have the preceding spaces
