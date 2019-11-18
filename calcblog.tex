@@ -902,6 +902,7 @@ and the version-control system \lstinline!git! .
 In order to install the \lstinline!pyclics! API, simply type the
 following in your terminal:
 
+\vskip 1em
 \begin{lstlisting}
 $ git clone https://github.com/clics/clics2
 $ cd clics2
@@ -910,6 +911,7 @@ $ pip install -e .
 
 Now, you can install the old CLICS data underlying version 1.0.
 
+\vskip 1em
 \begin{lstlisting}
 $ pip install -e git+https://github.com/clics/clics1.git@v1.1#egg=lexibank_clics1
 \end{lstlisting}
@@ -921,6 +923,7 @@ recommend to install both packages by opening your terminal in your
 preferred folder (ideally the one where you installed
 \lstinline!pyclics!).
 
+\vskip 1em
 \begin{lstlisting}
 $ cd ..
 $ git clone https://github.com/clld/concepticon-data
@@ -935,12 +938,14 @@ $ cd ..
 Now you can load the data into your personal CLICS database by simply
 typing:
 
+\vskip 1em
 \begin{lstlisting}
 $ clics load ./concepticon-data ./glottolog
 \end{lstlisting}
 
 In order to calculate the colexification network, just type:
 
+\vskip 1em
 \begin{lstlisting}
 $ clics -t 2 colexification
 \end{lstlisting}
@@ -949,6 +954,7 @@ In order to create a standalone application for the data which you can
 put on a server or browse (when using Firefox as webbrowser) even
 locally, type:
 
+\vskip 1em
 \begin{lstlisting}
 $ clics -t 2 communities
 $ clics -t 3 subgraph
