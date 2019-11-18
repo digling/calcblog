@@ -100,9 +100,42 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{makecell}
+
 \newcommand{\passthrough}[1]{#1}
-\lstset{defaultdialect=[5.3]Lua}
-\lstset{defaultdialect=[x86masm]Assembler}
+
+\usepackage{sourcecodepro}
+\makeatletter
+\defaultfontfeatures[\ttfamily]
+       {
+        Numbers   = \sourcecodepro@figurestyle ,
+        Scale     = \SourceCodePro@scale ,
+        Extension = .otf }
+
+    % Monospace font
+        \setmonofont
+            [ UprightFont    = *-\sourcecodepro@regstyle ,
+              ItalicFont     = *-\sourcecodepro@regstyle It ,
+              BoldFont       = *-\sourcecodepro@boldstyle ,
+              BoldItalicFont = *-\sourcecodepro@boldstyle It ]
+            {SourceCodePro}
+\makeatother
+
+\usepackage{upquote}
+\lstset{ 
+    	upquote=true,
+    	language=Python,
+    	basicstyle=\small\ttfamily,
+    	frame=lines,
+    	tabsize=4,
+    	numbers=left,
+    	numberstyle=\tiny,
+    	tabsize=2,
+    	captionpos=b,
+    	%breaklines=true,  
+    	%breakatwhitespace=false,
+    	escapeinside={\%*}{*)}
+}
+
 \usepackage{etoolbox}
 \BeforeBeginEnvironment{lstlisting}{\vspace{20pt}\par\noindent\begin{minipage}{\linewidth}}
 \AfterEndEnvironment{lstlisting}{\end{minipage}\par\addvspace{\topskip}}
@@ -590,7 +623,7 @@ Computational Natural Language Learning}.  Jeju Island, Korea:
 Association for Computational Linguistics. pp.~1389--1398. }
 
 \nopagebreak\hangindent=0.7cm {\small Medero, Julie; Ostendorf, Mari (2009). \enquote{Analysis of vocabulary
-difficulty using wiktionary} (PDF). Proc. SLaTE Workshop. }
+difficulty using wiktionary} (PDF). In: \emph{Proc. SLaTE Workshop}.}
 
 \nopagebreak\hangindent=0.7cm {\small Meyer, Christian M.; Gurevych, Iryna (2012). \enquote{Wiktionary: A
 new rival for expert-built lexicons? Exploring the possibilities of
@@ -672,7 +705,7 @@ Equipped with this information and the dataset, open a terminal in the
 folder in which you have placed the file \lstinline!DravLex.tsv! , and
 start by loading LingPy and the \lstinline!pyconcepticon! API.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 [IN ]: from pyconcepticon.api import Concepticon
 [IN ]: from lingpy import *
 \end{lstlisting}
@@ -687,13 +720,13 @@ version of the Concepticon and makes extensive use of dictionaries (more
 precisely \lstinline!OrderedDict!). But let's start step by step, and
 first, we simply load the API:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 [IN ]: CNC = Concepticon()
 \end{lstlisting}
 
 And now we load the concept lists by Yakhontov and Kolipakam:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 [IN ]: yakhontov = CNC.conceptlists['Yakhontov-1991-35']
 [IN ]: kolipakam = CNC.conceptlists['Kolipakam-2018-100']
 \end{lstlisting}
@@ -714,7 +747,7 @@ modifying our two lists (\lstinline!yakhontov! and
 \lstinline!kolipakam!) first, and then extract a sublist with English
 glosses from them:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 [IN ]: yakhontov = [c.concepticon_id for c in yakhontov.concepts.values()]
 [IN ]: kolipakam = [(c.concepticon_id, c.english) for c in  kolipakam.concepts.values()]
 [IN ]: sublist = [english for english, concepticon_id in kolipakam if concepticon_id in yakhontov]
@@ -733,7 +766,7 @@ columns that occur in the wordlist, and these columns' content is then
 checked against the Python code that we pass as string, but it is the
 fastest way to accomplish this task in LingPy:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 [IN ]: wl = Wordlist('DravLex.tsv')
 [IN ]: wl.output('tsv', filename='DravLex-sublist', subset=True, rows={"concept": "in "+str(sublist)})
 \end{lstlisting}
@@ -742,7 +775,7 @@ That's all we have to do. In order to verify that we really exported
 only a part of the wordlist, we can reload it and count its basic
 parameters (number of languages, concepts, and words):
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 [IN ]: wl2 = Wordlist('DravLex-sublist.tsv') 
 [IN ]: print('{0}:{1} languages, {2}:{3} concepts, and {4}:{5} words'.format(wl.width, wl2.width, wl.height, wl2.height, len(wl), len(wl2))) 
 [OUT]: 20:20 languages, 100:31 concepts, and 2114:660 words
@@ -755,7 +788,7 @@ create a dictionary with integers as key where the key 0 reflects the
 header of the wordlist object and the keys link to values that are a
 list, just as we know it from the normal wordlist objects.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 [IN ]: D = {0: [c for c in wl.columns]}
 \end{lstlisting}
 
@@ -763,7 +796,7 @@ We can fill this now still empty dictionary by iterating over all
 entries in our original wordlist and checking whether the concepts occur
 in our sublist:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 [IN ]: for idx, concept in wl.iter_rows('concept'):
 ......     if concept in sublist:
 ......         D[idx] = [entry for entry in wl[idx]] 
@@ -773,13 +806,13 @@ This dictionary can then directly be passed to the \lstinline!Wordlist!
 class and loaded in the same way in which we would load a normal
 wordlist.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 [IN ]: wl2 = Wordlist(D)
 \end{lstlisting}
 
 We can again quickly verify that this yields the same expected output.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 [IN ]: print('{0}:{1} languages, {2}:{3} concepts, and {4}:{5} words'.format(wl.width, wl2.width, wl.height, wl2.height, len(wl), len(wl2))) 
 [OUT]: 20:20 languages, 100:31 concepts, and 2114:660 words
 \end{lstlisting}
@@ -800,7 +833,7 @@ arrays and tabular data.
 
 \subsection*{References}
 
-\nopagebreak\hangindent=0.7cm {\small Kolipakam, V., F. Jordan, M. Dunn, S. Greenhill, R. Bouckaert, R.
+\nopagebreak\hangindent=0.7cm {\small Kolipakam, V., F. Jordan, M. Dunn, S. J. Greenhill, R. Bouckaert, R.
 Gray, and A. Verkerk (2018): ``A Bayesian phylogenetic study of the
 Dravidian language family.'' \emph{Royal Society Open Science} 5.171504.
 1-17. }
@@ -859,7 +892,7 @@ and the version-control system \lstinline!git! .
 In order to install the \lstinline!pyclics! API, simply type the
 following in your terminal:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ git clone https://github.com/clics/clics2
 $ cd clics2
 $ pip install -e .
@@ -867,7 +900,7 @@ $ pip install -e .
 
 Now, you can install the old CLICS data underlying version 1.0.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ pip install -e git+https://github.com/clics/clics1.git@v1.1#egg=lexibank_clics1
 \end{lstlisting}
 
@@ -878,7 +911,7 @@ recommend to install both packages by opening your terminal in your
 preferred folder (ideally the one where you installed
 \lstinline!pyclics!).
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ cd ..
 $ git clone https://github.com/clld/concepticon-data
 $ cd concepticon-data
@@ -892,13 +925,13 @@ $ cd ..
 Now you can load the data into your personal CLICS database by simply
 typing:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ clics load ./concepticon-data ./glottolog
 \end{lstlisting}
 
 In order to calculate the colexification network, just type:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ clics -t 2 colexification
 \end{lstlisting}
 
@@ -906,7 +939,7 @@ In order to create a standalone application for the data which you can
 put on a server or browse (when using Firefox as webbrowser) even
 locally, type:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ clics -t 2 communities
 $ clics -t 3 subgraph
 \end{lstlisting}
@@ -935,7 +968,7 @@ version that we created ourselves in order to test this example.
 \url{http://www.webcitation.org/6ccEMrZYM}.
 }
 
-\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and R.
+\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. J. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and R.
 Forkel (eds.) (2018): {CLICS: Database of Cross-Linguistic
 Colexifications}.  Max Planck Institute for the Science of Human
 History: Jena. }
@@ -1003,7 +1036,7 @@ making a pull request.
 In order to test the code for these different conversions, you can
 simply clone (=download) the data with git:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ git clone https://github.com/cldf-datasets/szetosinitic
 \end{lstlisting}
 
@@ -1011,14 +1044,14 @@ Afterwards, you should install the dependencies, as listed in the file
 \lstinline!pip-requirements.txt! (make sure you use Python3 for this
 task, as Python2 is not supported):
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ pip install -r pip-requirements.txt
 \end{lstlisting}
 
 Once this is done, you can test the conversion of the raw data into the
 CLDF data by typing:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ python chinese.py
 \end{lstlisting}
 
@@ -1028,7 +1061,7 @@ created the CLDF data in a first instance.
 
 To receive the NEXUS file, just type:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ python nexus.py
 \end{lstlisting}
 
@@ -1059,7 +1092,7 @@ important use cases that can be encountered.
 agglomerative method for the construction of phylogenetic networks}. 
 \emph{Molecular Biology and Evolution} 21.2. 255-265. }
 
-\nopagebreak\hangindent=0.7cm {\small Forkel, R., J.-M. List, S. Greenhill, C. Rzymski, S. Bank, M. Cysouw,
+\nopagebreak\hangindent=0.7cm {\small Forkel, R., J.-M. List, S. J. Greenhill, C. Rzymski, S. Bank, M. Cysouw,
 H. Hammarström, M. Haspelmath, G. Kaiping, and R. Gray (forthcoming):
 {Cross-Linguistic Data Formats, advancing data sharing and re-use
 in comparative linguistics}.  \emph{Scientific Data}. }
@@ -1076,7 +1109,7 @@ resource for the linking of concept lists}.  In: {Proceedings of
 the Tenth International Conference on Language Resources and Evaluation}
 . 2393-2400. }
 
-\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and R.
+\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. J. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and R.
 Forkel (2018): {CLICS². An improved database of cross-linguistic
 colexifications assembling lexical data with help of cross-linguistic
 data formats}.  \emph{Linguistic Typology} 22.2. 277-306. }
@@ -1201,7 +1234,7 @@ with a linear implementation of the CCM method.
 
 To get started, we import the LingPy library.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 from lingpy import *
 \end{lstlisting}
 
@@ -1211,7 +1244,7 @@ al. 2018}). I will be lazy in this test and simply import the data from
 \href{http://bibliography.lingpy.org?key=Kessler2001}{Kessler (2001)},
 which is available from LingPy's test suite.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 from lingpy.tests.util import test_data
 wl = Wordlist(test_data('KSL.qlc'))
 \end{lstlisting}
@@ -1220,7 +1253,7 @@ We then make a function that converts a given tokenized sound sequence
 to its first two consonant classes, following the criteria mentioned
 above.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 def to_ccm(tokens):
     cv = tokens2class(tokens, 'cv')
     cl = tokens2class(tokens, 'dolgo')
@@ -1245,7 +1278,7 @@ combine the information given in two and more columns and add it to a
 new column (but this application is a bit tricky and needs some practice
 if one wants to use it correctly).
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 wl.add_entries(
     'cog', 
     'tokens,concept', 
@@ -1259,7 +1292,7 @@ this column to integers. Note that we use the \lstinline!override!
 keyword, since the original data already contains cognate sets in a
 column called \lstinline!cogid! .
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 wl.renumber('cog', override=True)
 \end{lstlisting}
 
@@ -1269,19 +1302,19 @@ unrelated languages, and we use a very crude algorithm for cognate
 detection, the result will show a tree for the languages, even if there
 is no evidence for their relatedness.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 wl.calculate('tree', ref='cogid')
 \end{lstlisting}
 
 Last not least, we print the tree in Ascii-Art on the terminal:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 print(wl.tree.asciiArt())
 \end{lstlisting}
 
 And the result will look like this:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
                     /-Navajo
           /edge.0--|
          |          \-Turkish
@@ -1313,7 +1346,7 @@ probabilistic hypothesis concering the oldest relationships among the
 language families of Northern Eurasia{]}. \emph{Voprosy Jazykoznanija}
 2. 53-63.}
 
-\nopagebreak\hangindent=0.7cm {\small Forkel, R., J.-M. List, S. Greenhill, C. Rzymski, S. Bank, M. Cysouw,
+\nopagebreak\hangindent=0.7cm {\small Forkel, R., J.-M. List, S. J. Greenhill, C. Rzymski, S. Bank, M. Cysouw,
 H. Hammarström, M. Haspelmath, G. Kaiping, and R. Gray (forthcoming):
 {Cross-Linguistic Data Formats, advancing data sharing and re-use
 in comparative linguistics}.  \emph{Scientific Data}. . }
@@ -1330,11 +1363,11 @@ languages}.  CSLI Publications: Stanford. }
 \nopagebreak\hangindent=0.7cm {\small List, J.-M. (2014): {Sequence comparison in historical
 linguistics}.  Düsseldorf University Press: Düsseldorf. }
 
-\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. Greenhill, and R. Gray (2017): {The potential
+\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. J. Greenhill, and R. Gray (2017): {The potential
 of automatic word comparison for historical linguistics}.  \emph{PLOS
 ONE} 12.1. 1-18. }
 
-\nopagebreak\hangindent=0.7cm {\small List, J.-M. , M. Walworth, S. J.~ Greenhill, T. Tresoldi, and R.
+\nopagebreak\hangindent=0.7cm {\small List, J.-M. , M. Walworth, S. J. Greenhill, T. Tresoldi, and R.
 Forkel (2018): {Sequence comparison in computational historical
 linguistics}.  \emph{Journal of Language Evolution}. 3 (2). 130-144.\\ }
 
@@ -1684,7 +1717,7 @@ k + ə n }\tabularnewline
 \bottomrule
 \end{tabular}}
 \captionsetup{justification=centering}
-\caption*{\textbf{Table 2:} Entries from the German wordlist of the
+\caption*{\small \textbf{Table 2:} Entries from the German wordlist of the
 Intercontinental Dictionary Series (Key and Comrie 2015), in IPA with
 morpheme borders.}
 \end{table}
@@ -1793,7 +1826,7 @@ n } & { CARRY\_B \_infinitive } & { 957 42 } & { CARRY\_B \_infinitive }
 \bottomrule
 \end{tabular}}
 \captionsetup{justification=centering}
-\caption*{\textbf{Table 3:} Entries from the German wordlist of the
+\caption*{\small \textbf{Table 3:} Entries from the German wordlist of the
 Intercontinental Dictionary Series (Key and Comrie 2015) with
 morphological glosses and root annotation.}
 \end{table}
@@ -1865,7 +1898,7 @@ Meeting}, no. 3: 47--76. }
 Leipzig: Max Planck Institute for Evolutionary Anthropology.
 \url{https://ids.clld.org/}.  }
 
-\nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis, Michael Cysouw, Simon Greenhill, and Robert
+\nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis, Michael Cysouw, Simon J. Greenhill, and Robert
 Forkel, eds. 2018. \emph{Concepticon}.  Jena: Max Planck Institute for
 the Science of Human History. \url{http://concepticon.clld.org/}.  }
 
@@ -1883,7 +1916,7 @@ Science: 1--18. doi:
 \href{https://doi.org/http://dx.doi.org/10.1371/journal.pone.0170046}{http://dx.doi.org/10.1371/journal.pone.0170046}.
 }
 
-\nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis, Simon Greenhill, and Robert Forkel. 2017.
+\nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis, Simon J. Greenhill, and Robert Forkel. 2017.
 \enquote{LingPy. A Python Library for Quantitative Tasks in Historical
 Linguistics.} Jena: Max Planck Institute for the Science of Human
 History. doi:
@@ -1952,7 +1985,7 @@ required datasets by downloading the data underlying this blog post from
 \href{https://gist.github.com/LinguList/1056960125ca79428b420257fa4b02eb}{GitHub
 Gist} and typing:
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ pip install -r pip-requirements.txt
 \end{lstlisting}
 
@@ -1976,7 +2009,7 @@ cross-linguistic collection of consonant clusters.
 
 But let's start by loading the releavant libraries.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 from lingpy import *
 from pyclics.api import Clics
 from pyclics.models import Form
@@ -1991,7 +2024,7 @@ entries, not the ascified CLICS value that we use for the computation of
 cross-linguistic colexifications. This is achieved with help of the
 following function.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 def iter_wordlists(db, varieties):
     languages = {
             (v.source, v.id
@@ -2028,7 +2061,7 @@ function that checks if we are currently in consonant environment,
 returning all clusters from a string. This is done with help of the
 following function.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 def get_clusters(tokens, prostring):
     clusters = ['']
     for t, c in zip(tokens, prostring):
@@ -2058,7 +2091,7 @@ CLICS data, a dictionary that will later be converted to a LingPy
 Wordlist, to allow for an easy writing to file, and the clusters that we
 obtained from analyzing the data.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 clics = Clics('.') 
 D, idx = {0: [ 
     'doculect', 
@@ -2074,7 +2107,7 @@ We can now start to load all varieties in CLICS. Usually, I write a
 \lstinline!print! statement after this, since loading the data takes
 some time, and I prefer some feedback.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 varieties = clics.db.varieties
 print('[i] loaded clics varieties')
 \end{lstlisting}
@@ -2089,7 +2122,7 @@ addition, we use the \lstinline!get_clusters! function to extract the
 different types of consonant clusters, count them, and store them in our
 \lstinline!clusters! variable.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 for v, forms in tqdm(
         iter_wordlists(
             clics.db, 
@@ -2130,7 +2163,7 @@ column that we call \enquote{CV}. The resulting file is a plain TSV file
 that can also be inspected with interfaces like
 \href{http://edictor.digling.org}{EDICTOR} (\href{http://bibliography.lingpy.org?key=List2017d}{List 2017}).
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 wl = Wordlist(D)
 wl.output(
         'tsv', 
@@ -2144,7 +2177,7 @@ Now, as a final step, we write the data in our \lstinline!clusters!
 dictionary to file. Here, we write a gain to a TSV file, but we do this
 \enquote{manually} by iterating over the dictionary.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 with open('cv-clusters.tsv', 'w') as f:
     f.write('Cluster\tLength\tFrequency\n')
     for (cluster, length), rest in sorted(
@@ -2179,16 +2212,16 @@ inspecting, editing, and publishing etymological datasets}.  In:
 the Association for Computational Linguistics. System Demonstrations}. 
 9-12. }
 
-\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. Greenhill, and R. Forkel (2017): {LingPy. A
+\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. J. Greenhill, and R. Forkel (2017): {LingPy. A
 Python library for quantitative tasks in historical linguistics}. 
 Software Package. Version 2.6. Max Planck Institute for the Science of
 Human History: Jena. \href{//lingpy.org”}{http://lingpy.org}.  }
 
-\nopagebreak\hangindent=0.7cm {\small List, J.-M., M. Walworth, S. Greenhill, T. Tresoldi, and R. Forkel
+\nopagebreak\hangindent=0.7cm {\small List, J.-M., M. Walworth, S. J. Greenhill, T. Tresoldi, and R. Forkel
 (2018): {Sequence comparison in computational historical
 linguistics}.  \emph{Journal of Language Evolution} 3.2. 130--144. }
 
-\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and R.
+\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. J. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and R.
 Forkel (2018): {CLICS². An improved database of cross-linguistic
 colexifications assembling lexical data with help of cross-linguistic
 data formats}.  \emph{Linguistic Typology} 22.2. 277-306. }
@@ -2318,7 +2351,7 @@ transcription, but that would go beyond the scope of this example.
 Python has an Excel reader module called \lstinline!xlrd! . Using it,
 the core functionality of the conversion script looks like this.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 import csv
 import xlrd
 import segments
@@ -2662,7 +2695,7 @@ Descriptive Categories in Crosslinguistic Studies.} \emph{Language: A
 Jou { rnal of the Linguistic Society of America }}, no. 86, 3:
 663--687. }
 
-\nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis, Michael Cysouw, Simon Greenhill, and Robert
+\nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis, Michael Cysouw, Simon J. Greenhill, and Robert
 Forkel, eds. 2018. \emph{Concepticon}.  Jena: Max Planck Institute for
 the Science of Human History. \url{http://concepticon.clld.org/}.  }
 
@@ -2777,7 +2810,7 @@ to align the individual words (or, more generally, morphemes) of each
 form instead of trying to align the forms globally. This tends to
 improve the resulting alignments vastly.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 import lingpy
 lex = lingpy.compare.partial.Partial(
   "wordlist.tsv")
@@ -2814,7 +2847,7 @@ tsv file. If we want to have the scorer cache in
 \lstinline!lexstats.tsv!, we can replace the \lstinline!get_scorer! line
 above by
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 try:
   scorers_etc = lingpy.compare.lexstat.LexStat(
     "lexstats.tsv")
@@ -2949,7 +2982,7 @@ et al. forthcoming}), which are both curated within our CLDF framework,
 how one can merge them with LingPy. Before we can start, we will install
 these two datasets via \lstinline!pip! .
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 $ pip install -e git+https://github.com/lexibank/chaconarawakan.git@v1.0.1#egg=lexibank_chaconarawakan
 $ pip install -e git+https://github.com/lexibank/chaconbaniwa.git@v1.0.0#egg=lexibank_chaconbaniwa
 \end{lstlisting}
@@ -2957,7 +2990,7 @@ $ pip install -e git+https://github.com/lexibank/chaconbaniwa.git@v1.0.0#egg=lex
 In our Python script, we then load the two packages along with LingPy
 and the \lstinline!pyconcepticon! package.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 from lingpy import *
 from lexibank_chaconarawakan import Dataset as ds1
 from lexibank_chaconbaniwa import Dataset as ds2
@@ -2974,7 +3007,7 @@ and then manually corrected with EDICTOR (\href{http://bibliography.lingpy.org?k
 instead of loading the data with LingPy's CLDF reader, we load it in its
 raw form, for convenience.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 wl1 = Wordlist(
     ds1().raw.joinpath(
         "arawakan_swadesh_100_edictor.tsv").as_posix()) 
@@ -2989,7 +3022,7 @@ The part of the data we want is the common Swadesh-list of 100 concepts
 We load this list with help of the \lstinline!pyconcepticon! API,
 published as part with the Concepticon project (\href{http://bibliography.lingpy.org?key=List2016a}{List et al. 2016}).
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 swad = [
     c.concepticon_id for c in Concepticon(
         ).conceptlists['Swadesh-1955-100'].concepts.values()]
@@ -3006,7 +3039,7 @@ We use the columns present in the first wordlist as our standard, and
 add two more, one for the original index (called \lstinline!old_idx!)
 and one for a combined cognate-identifier (called \lstinline!cog!).
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 D = {0: wl1.columns+['old_idx', 'cog']}
 \end{lstlisting}
 
@@ -3015,7 +3048,7 @@ dictionary, making sure to separate the cognate-identifiers from each
 other by assigning them to different sets (with help of the name of the
 datasets that we add as part of the cognate-set identifier).
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 nidx = 1
 for idx in wl1:
     D[nidx] = [wl1[idx, h] for h in wl1.columns
@@ -3034,14 +3067,14 @@ for idx in wl2:
 All that's left to do now is load the data in to a \lstinline!Wordlist!
 object provided by LingPy and write it to file (after a few operations).
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 wl = Wordlist(D)
 \end{lstlisting}
 
 First, we \lstinline!renumber! the cognates in the column
 \lstinline!cog! in order to make sure they are numeric.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 wl.renumber('cogx', 'cogid', override=True)
 \end{lstlisting}
 
@@ -3051,7 +3084,7 @@ Then, we segment the so far non-segmented entries in the data:
 Now, we write all entries to file that conform to a concept that is also
 present in Swadesh's list of 100 items.
 
-\begin{lstlisting}[basicstyle=\small]
+\begin{lstlisting}
 wl.output(
     'tsv', 
     filename='chacon-arawakan-baniwa', 
@@ -3084,12 +3117,12 @@ Proceedings of the 15th Conference of the European Chapter of the
 Association for Computational Linguistics. System Demonstrations. 9-12.
 }
 
-\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and R.
+\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. J. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and R.
 Forkel (eds.) (2018): CLICS: Database of Cross-Linguistic
 Colexifications. Max Planck Institute for the Science of Human History:
 Jena. \href{//clics.clld.org/”}{http://clics.clld.org/}.  }
 
-\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. Greenhill, T. Tresoldi, and R. Forkel (2018): LingPy.
+\nopagebreak\hangindent=0.7cm {\small List, J.-M., S. J. Greenhill, T. Tresoldi, and R. Forkel (2018): LingPy.
 A Python library for quantitative tasks in historical linguistics. Max
 Planck Institute for the Science of Human History: Jena.
 \href{//lingpy.org”}{http://lingpy.org}.  }
