@@ -68,7 +68,7 @@ $(BOOKNAME).tex: $(BOOKNAME).md
 	--template eisvogel \
 	--listings \
 	--table-of-contents \
-	--top-level-division=chapter
+	#--top-level-division=chapter
 	sed "s/lstlisting}{\\\\par/lstlisting}{\\\\vspace{20pt}\\\\par/" calcblog_1.tex > calcblog_2.tex
 	sed "s/References-*/References/" calcblog_2.tex > calcblog_3.tex
 	sed "s/subsection{Refe/subsection*{Refe/" calcblog_3.tex > calcblog.tex

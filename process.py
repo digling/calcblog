@@ -89,6 +89,7 @@ def post2md(post_html):
 def build_output(post):
     buf = "# %s\n\n**%s** (%s)\n\n" % \
         (post['title'], post['author'], post['date_published'])#, post['date_updated'])
+    print(post['tags'])
     buf += '*Categories*: %s\n\n' % ', '.join(post['categories'])
     buf += '*Tags*: %s\n\n' % ', '.join(post['tags'])
 
@@ -99,9 +100,9 @@ def build_output(post):
 def main():
     output = """
 ---
-title: "Calc Blog 2018"
-subtitle: "Posts by the team"
-author: CALC Team
+title: "Computer-Assisted Language Comparison in Practice"
+subtitle: "Tutorials on Computational Approaches to the History and Diversity of Languages"
+editor: Johann-Mattis List and Tiago Tresoldi
 toc-own-page: ture
 listings-no-page-break: true
 book: true
@@ -112,8 +113,8 @@ titlepage-color: "2D6CA2"
 titlepage-text-color: "FFFFFF"
 titlepage-rule-color: "FFFFFF"
 titlepage-rule-height: 2
-logo: "calclogo.pdf"
-logo-width: 120
+logo: "team-logo.pdf"
+logo-width: 250
 ...
 
 # Introduction
@@ -162,8 +163,9 @@ Lorem ipsum, dolor sit amet...
                             post['date_published'] = time.string
                 elif 'category' in rels:
                     post['categories'].append(entry.string)
-                else:
-                    post['tags'].append(entry.string)
+                elif 'tag' in rels:
+                    if entry.string:
+                        post['tags'].append(entry.string)
 
         # Grab the contents in pandoc
         post_html = soup.find(id='post-%i' % post_idx)
