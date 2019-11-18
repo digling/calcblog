@@ -99,6 +99,7 @@
 \usepackage[export]{adjustbox}
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{makecell}
 \newcommand{\passthrough}[1]{#1}
 \lstset{defaultdialect=[5.3]Lua}
 \lstset{defaultdialect=[x86masm]Assembler}
@@ -466,7 +467,7 @@ becomes urgent.
 %needed to arrive at convincing results, but do assist humans to digest
 %large data sets.
 
-The weblog Computer-Assisted Language Comparison in Practice, published on the Hypotheses platform
+The weblog ``Computer-Assisted Language Comparison in Practice'', published on the Hypotheses platform
 for scientific blogging, offers tutorials and discussion notes on computer-assisted approaches to the
 history and diversity of languages. A substantial part of its content is contributed as part of the
 ERC Starting Grant ``Computer-Assisted Language Comparison'' (CALC, 715618), funded by the European
@@ -641,7 +642,6 @@ code instead of the step-by-step explanation below, you can find a
 GitHub Gist
 \href{https://gist.github.com/LinguList/7804cb127e74a9263b4eab9c5af4bc6f}{here}.
 
-\hyperdef{}{more-58}{}{ }
 
 In order to get started, I work with a dataset that was originally
 published along with a paper by
@@ -665,8 +665,7 @@ To get started, you need to make sure that you have the
 \lstinline!pyconcepticon! API installed in its most recent version. You
 should find all important instructions for this on the GitHub repository
 of the Concepticon project (see
-\href{https://github.com/clld/concepticon-data}{clld/concepticon-data}
-). You also need to have LingPy installed in its current 2.6 version
+\href{https://github.com/clld/concepticon-data}{clld/concepticon-data}). You also need to have LingPy installed in its current 2.6 version
 (ideally also make sure to take the most recent version from our GitHub
 repository: \href{https://github.com/lingpy/lingpy}{lingpy/lingpy}).
 Equipped with this information and the dataset, open a terminal in the
@@ -807,7 +806,7 @@ Dravidian language family.'' \emph{Royal Society Open Science} 5.171504.
 1-17. }
 
 \nopagebreak\hangindent=0.7cm {\small Starostin, S. (1991): ``Altajskaja problema i
-proischo\textbackslash{}vzdenije japonskogo jazyka {[}The Altaic problem
+proischoždenije japonskogo jazyka {[}The Altaic problem
 and the origin of the Japanese language{]}.'' Nauka: Moscow.}
 
 \vskip 2em
@@ -850,7 +849,6 @@ the version 1.0 by
 \href{https://github.com/clics/clics1}{here}, in the new application,
 specifically the standalone that we provide.
 
-\hyperdef{}{more-384}{}{ }
 
 In order to get started, we begin by installing the
 \href{https://github.com/clics/clics2}{pyclics} API. For this, I assume
@@ -920,6 +918,7 @@ interface that reminds of the old \enquote{look-and-feel} of CLICS.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{images/clics-local.png}
+\captionsetup{justification=centering}
 \caption*{\small \textbf{Figure 1}: Local CLICS application.}
 \end{figure}
 
@@ -962,14 +961,11 @@ dataset
 
 The Cross-Linguistic Data Formats initiative (CLDF,
 \url{https://cldf.clld.org},
-\href{http://bibliography.lingpy.org?key=Forkel2018}{Forkel et al. 2018}
-) has helped a lot in preparing the CLICS² database of cross-linguistic
+\href{http://bibliography.lingpy.org?key=Forkel2018}{Forkel et al. 2018}) has helped a lot in preparing the CLICS² database of cross-linguistic
 colexifications (\url{https://clics.lingpy.org},
 \href{http://bibliography.lingpy.org?key=List2018e}{List et al. 2018}),
-since linking our data to Concepticon (
-\url{https://concepticon.clld.or} g,
-\href{http://bibliography.lingpy.org?key=List2016xxx}{List et al. 2016}
-) and Glottolog (\url{https://glottolog.org},
+since linking our data to Concepticon (\url{https://concepticon.clld.or},
+\href{http://bibliography.lingpy.org?key=List2016xxx}{List et al. 2016}) and Glottolog (\url{https://glottolog.org},
 \href{http://bibliography.lingpy.org?key=Hammarstroem2018}{Hammarström
 et al. 2018}) has provided incredible help in merging the different
 datasets into a big comparative dataset.
@@ -986,10 +982,8 @@ varieties typologically. The data itself is provided in the paper, but
 unfortunately, the authors do not share it in form of text files, but
 list it in tables in the original publication. They also do not share
 the NEXUS file they created in order to analyze the data with the
-Neighbor-net algorithm (
-\href{http://bibliography.lingpy.org?key=Bryant2004}{Bryant and Moulton
-2004}) implemented by the SplitsTree software package (
-\href{http://bibliography.lingpy.org?key=Huson1998}{Huson 1998}).
+Neighbor-net algorithm (\href{http://bibliography.lingpy.org?key=Bryant2004}{Bryant and Moulton
+2004}) implemented by the SplitsTree software package (\href{http://bibliography.lingpy.org?key=Huson1998}{Huson 1998}).
 
 Thanks to the help of David Morrison, who extracted the presence-absence
 matrix from the table in the original paper, I was now able to convert
@@ -1122,34 +1116,28 @@ who want to apply it, since the name of the Python class is the same as
 the name of one of the methods the class provides, but the class can be
 used for other types of cognate detection as well. I recommend all users
 of LingPy that they give a read to our most recent tutorial on LingPy's
-cognate detection method (
-\href{http://bibliography.lingpy.org?key=List2018d}{List et al. 2018}),
+cognate detection method (\href{http://bibliography.lingpy.org?key=List2018d}{List et al. 2018}),
 since the three most important methods are discussed there in detail,
 namely the edit distance method for cognate detection, which makes use
 of the simple, normalized edit distance, the SCA method, based on the
-Sound-Class-Based Alignment algorithm (
-\href{http://bibliography.lingpy.org?key=List2014d}{List 2014}), and
+Sound-Class-Based Alignment algorithm (\href{http://bibliography.lingpy.org?key=List2014d}{List 2014}), and
 the LexStat method (ibid.). Applying these methods in LingPy is fairly
 simple and described in detail in our aforementioned tutorial. But
 LingPy offers an additional method for cognate detection that has the
 advantage of being extremely fast and thus especially suitable for
 exploratory data analysis of very large datasets. This method is called
 \lstinline!turchin! in LingPy, named after the first author of a paper
-presenting the method (
-\href{http://bibliography.lingpy.org?key=Turchin2010}{Turchin et al.
+presenting the method (\href{http://bibliography.lingpy.org?key=Turchin2010}{Turchin et al.
 2010}), but the method itself, which Turchin et al. name
 \enquote{Consonant Class Matching} method, goes originally back to
 \href{http://bibliography.lingpy.org?key=Dolgopolsky1964}{Dolgopolsky
 (1964)}), and has long since been implemented as a part of the STARLING
-software package (
-\href{http://starling.rinet.ru/program.php?lan=en}{http://starling.rinet.ru/program.php}
-). \hyperdef{}{more-477}{}{ }
+software package (\href{http://starling.rinet.ru/program.php?lan=en}{http://starling.rinet.ru/program.php}).
 
 The method is fairly simple. For a given wordlist with a certain number
 of concepts translated into a certain number of languages, all words are
 converted to consonant classes, following either Dolgopolsky's original
-proposal (Dolgopolsky 1964) or later modifications (
-\href{http://bibliography.lingpy.org?key=Kassian2015b}{Kassian et al.
+proposal (Dolgopolsky 1964) or later modifications (\href{http://bibliography.lingpy.org?key=Kassian2015b}{Kassian et al.
 2015}). After conversion, only the first two consonants of each word
 are compared, and the basic rule is that if two words match in their
 first two consonant classes, they should be considered as cognate.
@@ -1164,8 +1152,7 @@ consonant will also be rendered as a \enquote{H}.
 
 Whether this is a good idea or not, is in fact not important. Previous
 tests have shown that the method in general does not yield too many
-false positives, but instead may miss many good cognates (
-\href{http://bibliography.lingpy.org?key=List2017c}{List et al. 2017}).
+false positives, but instead may miss many good cognates (\href{http://bibliography.lingpy.org?key=List2017c}{List et al. 2017}).
 That means that the method is rather \emph{conservative}, at least as
 long as it is applied to words within the same concept slot. Even more
 important than its conservative behaviour (as linguists we always prefer
@@ -1192,8 +1179,7 @@ The problem with the \lstinline!turchin! method in the
 distance matrix for all word pairs in a slot in which words that are
 cognate according to the CCM criterion are given the distance 0 and the
 other words are given the distance 1. This distance matrix is then
-analysed with the UPGMA algorithm (
-\href{http://bibliography.lingpy.org?key=Sokal1958}{Sokal and Michener
+analysed with the UPGMA algorithm (\href{http://bibliography.lingpy.org?key=Sokal1958}{Sokal and Michener
 1958}) or one of the other luster approaches offered by LingPy. While
 this will still be fast, since the clusters are always well-balanced,
 the method may easily break if you try to identify cognates across, say,
@@ -1402,6 +1388,7 @@ investigate, automatic cognate detection can be seriously hampered
 \centering
 \includegraphics[width=0.45\textwidth]{images/graphic-1.png}
 \includegraphics[width=0.45\textwidth]{images/graphic-2.png}
+\captionsetup{justification=centering}
 \caption*{\small \textbf{Figure 1}: Screenshots from EDICTOR (List 2017) contrasting
 automatic sound alignment without and with morphological annotation.}
 \end{figure}
@@ -1471,7 +1458,9 @@ DOCULECT (following the terminology of Good and Cysouw 2013). Wordlists
 are typically created with the use of elicitation glosses and those are
 included in a column given the header CONCEPT.
 
-\resizebox{\textwidth}{!}{%
+\begin{table}[h]
+\resizebox{\textwidth}{!}{ % use resizebox with \textwidth
+\centering
 \begin{tabular}[c]{@{}llllll@{}}
 \toprule
 \textbf{{ ID }}
@@ -1598,10 +1587,13 @@ included in a column given the header CONCEPT.
  &
 \tabularnewline
 \bottomrule
-\end{tabular}}
+\end{tabular}
+} % resize box
+\captionsetup{justification=centering}
+\caption*{\small \textbf{Table 1:} Entries from the Old High German wordlist of the World
+Loanword Database (Haspelmath 2009) prepared for further annotation.}
+\end{table}
 
-\textbf{Table 1:} Entries from the Old High German wordlist of the World
-Loanword Database (Haspelmath 2009) prepared for further annotation.
 
 Especially when using one's own data it is highly recommended to also
 add a column with the Concepticon-ID (List et al. 2018, see also
@@ -1609,8 +1601,7 @@ add a column with the Concepticon-ID (List et al. 2018, see also
 gloss in order to make sure that later comparison across different
 datasets will be facilitated.
 
-\subsection*{Segmented
-IPA-transcriptions}
+\subsection*{Segmented IPA-transcriptions}
 
 After these preliminary preparations, the words are turned into
 sequences of IPA-characters. This facilitates comparing languages since
@@ -1664,6 +1655,7 @@ resulting annotated data is left in the column TOKENS, but for the
 un-annotated IPA a backup-column could be created and it is useful to
 add a column for notes.
 
+\begin{table}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}[c]{@{}lllll@{}}
 \toprule
@@ -1691,10 +1683,11 @@ oː t }\tabularnewline
 k + ə n }\tabularnewline
 \bottomrule
 \end{tabular}}
-
-\textbf{Table 2:} Entries from the German wordlist of the
+\captionsetup{justification=centering}
+\caption*{\textbf{Table 2:} Entries from the German wordlist of the
 Intercontinental Dictionary Series (Key and Comrie 2015), in IPA with
-morpheme borders.
+morpheme borders.}
+\end{table}
 
 Once the data has been annotated in this way, we follow an idea proposed
 in Hill and List (2017) by adding glosses to the morphemes. This helps
@@ -1761,47 +1754,49 @@ same language, namely those where morphemes recur in the same, and those
 where they recur in different forms (be it due to allophony or internal
 sound change).
 
+\begin{table}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}[c]{@{}lllllllll@{}}
 \toprule
-\textbf{{ ID }} & \textbf{{ DOCULECT }} & \textbf{{ CONCEPT }} &
+\textbf{{ ID }} & \textbf{{ CONCEPT }} &
 \textbf{{ FORM }} & \textbf{{ TOKENS }} & \textbf{{ MORPHEMES }} &
 \textbf{{ COGIDS }} & \textbf{{ ROOTS }} & \textbf{{ ROOTIDS
 }}\tabularnewline
-{ 1239 } & { German } & { approach } & { nahen } & { n aː + ə n } & {
+{ 1239 } & { approach } & { nahen } & { n aː + ə n } & {
 NEAR \_infinitive } & { 953 42 } & { NEAR \_infinitive } & { 890 42
 }\tabularnewline
-{ 1240 } & { German } & { approach } & { hingehen } & { h ɪ n + g eː + ə
+{ 1240 } & { approach } & { hingehen } & { h ɪ n + g eː + ə
 n } & { TO GO \_infinitive } & { 926 441 42 } & { TO GO \_infinitive } &
 { 865 414 42 }\tabularnewline
-{ 1241 } & { German } & { approach } & { näherkommen } & { n ɛː + ə r +
+{ 1241 } & { approach } & { näherkommen } & { n ɛː + ə r +
 k ɔ m + ə n } & { NEAR2 \_comp COME \_infinitive } & { 954 130 955 42 }
 & { NEAR \_comp COME \_infinitive } & { 890 128 891 42 }\tabularnewline
-{ 1242 } & { German } & { approach } & { sich nähern } & { z ɪ x \_ n ɛː
+{ 1242 } & { approach } & { sich nähern } & { z ɪ x \_ n ɛː
 + ə r + n } & { ONESELF NEAR2 \_comp \_infinitive2 } & { 414 954 130 329
 } & { \_reflexive NEAR \_comp \_infinitive } & { 394 890 128 42
 }\tabularnewline
-{ 1243 } & { German } & { enter } & { hineingehen } & { h iː n + ai n +
+{ 1243 } & { enter } & { hineingehen } & { h iː n + ai n +
 g eː + ə n } & { TO IN GO \_infinitive } & { 926 389 441 42 } & { TO IN
 GO \_infinitive } & { 865 371 414 42 }\tabularnewline
-{ 1244 } & { German } & { enter } & { eintreten } & { ai n + t r eː t +
+{ 1244 } & { enter } & { eintreten } & { ai n + t r eː t +
 ə n } & { IN TREAD \_infinitive } & { 389 933 42 } & { IN TREAD
 \_infinitive } & { 371 872 42 }\tabularnewline
-{ 1245 } & { German } & { enter } & { hereinkommen } & { h ɛ r + ai n +
+{ 1245 } & { enter } & { hereinkommen } & { h ɛ r + ai n +
 k ɔ m + ə n } & { FROM IN COME \_infinitive } & { 939 389 940 42 } & {
 FROM IN COME \_infinitive } & { 878 371 152 42 }\tabularnewline
-{ 1246 } & { German } & { carry (bear) } & { tragen } & { t r aː g + ə n
+{ 1246 } & { carry (bear) } & { tragen } & { t r aː g + ə n
 } & { CARRY \_infinitive } & { 956 42 } & { CARRY \_infinitive } & { 436
 42 }\tabularnewline
-{ 1247 } & { German } & { carry (bear) } & { schleppen } & { ʃ l ɛ p + ə
+{ 1247 } & { carry (bear) } & { schleppen } & { ʃ l ɛ p + ə
 n } & { CARRY\_B \_infinitive } & { 957 42 } & { CARRY\_B \_infinitive }
 & { 892 42 }\tabularnewline
 \bottomrule
 \end{tabular}}
-
-\textbf{Table 3:} Entries from the German wordlist of the
+\captionsetup{justification=centering}
+\caption*{\textbf{Table 3:} Entries from the German wordlist of the
 Intercontinental Dictionary Series (Key and Comrie 2015) with
-morphological glosses and root annotation.
+morphological glosses and root annotation.}
+\end{table}
 
 \subsection*{What we cannot do yet}
 
@@ -1919,8 +1914,8 @@ Monographs. Berlin; New York: Mouton de Gruyter. }
 \vskip 2em
 \framebox{\tabular{p{0.95\textwidth}}\textbf{Cite this article as}: Nathanael E. Schweikhard,
 \enquote{Enhancing morphological annotation for internal language
-comparison,} in \emph{Computer-Assisted Language Comparison in Practice}
-, 10/10/2018, \url{https://calc.hypotheses.org/570}.\endtabular}
+comparison,} in \emph{Computer-Assisted Language Comparison in Practice},
+10/10/2018, \url{https://calc.hypotheses.org/570}.\endtabular}
 \newpage
 \section*{Inferring consonant clusters from CLICS data with LingPy}
 \phantomsection\addcontentsline{toc}{section}{Inferring consonant clusters from CLICS data with LingPy
@@ -1939,23 +1934,20 @@ LingPy (\href{http://bibliography.lingpy.org?key=List2017i}{List et al.
 2017}) offers a great deal of functions for string manipulation.
 Although most of those functions are readily documented (see
 \href{http://lingpy.org}{lingpy.org} for details), and the basic ideas
-have also been described in my dissertation (
-\href{http://bibliography.lingpy.org?key=List2014d}{List 2014}), it
+have also been described in my dissertation (\href{http://bibliography.lingpy.org?key=List2014d}{List 2014}), it
 seems that not many users are aware of these additional possibilities,
 which the library offers.
 
 In the following, I want to illustrate how we can use LingPy to learn
 something about consonant clusters occurring in the data underlying the
-CLICS database (
-\href{http://bibliography.lingpy.org?key=List2018e}{List et al. 2018},
+CLICS database (\href{http://bibliography.lingpy.org?key=List2018e}{List et al. 2018},
 \href{https://clics.clld.org}{clics.clld.org}). I have illustrated in
 an \href{https://calc.hypotheses.org/date/2018/08}{earlier post} how one
 can use the CLICS software API to cook one's own CLICS application. I
 will thus assume that you know how to install CLICS (following the
-instructions on our \href{https://github.com/clics/clics2}{GitHub page}
-) and the data underlying it.
+instructions on our \href{https://github.com/clics/clics2}{GitHub page}) and the data underlying it.
 
-\hyperdef{}{more-998}{}{ } As a simple shortcut, you can install all
+As a simple shortcut, you can install all
 required datasets by downloading the data underlying this blog post from
 \href{https://gist.github.com/LinguList/1056960125ca79428b420257fa4b02eb}{GitHub
 Gist} and typing:
@@ -2136,8 +2128,7 @@ Now, that we have obtained all the data, we can write the data to file.
 First, we write a typical LingPy wordlist, which contains an additional
 column that we call \enquote{CV}. The resulting file is a plain TSV file
 that can also be inspected with interfaces like
-\href{http://edictor.digling.org}{EDICTOR} (
-\href{http://bibliography.lingpy.org?key=List2017d}{List 2017}).
+\href{http://edictor.digling.org}{EDICTOR} (\href{http://bibliography.lingpy.org?key=List2017d}{List 2017}).
 
 \begin{lstlisting}[basicstyle=\small]
 wl = Wordlist(D)
@@ -2239,286 +2230,40 @@ for 3 steps can be found in my repository
 github}.  In this first part, I will describe how to get an Excel file
 into a format LingPy can deal with.
 
-\hyperdef{}{more-803}{}{ } I was given
+I was given
 \href{https://github.com/Anaphory/matrix_to_beastling/blob/master/Wordlists.xlsx}{a
 MS Excel file} by my colleague. The file contains a single sheet with 13
 Alorese word lists in matrix format, the top left of it looking like the
 following.
 
-{\small
-\begin{longtable}[htc]{@{}lllll@{}}
+
+\begin{table}[]
+\centering
+\begin{tabular}{@{}lllll@{}}
 \toprule
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\textbf{English}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\textbf{Indonesian}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\textbf{dul}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\textbf{alk}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\textbf{alb}
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-1sg
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-saya
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-gɔ
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-go
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-go
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-2sg (informal)
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-kamu
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-mi
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-mo
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-mo
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-2sg (polite)
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-Anda
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-3sg
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-dia
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-no
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-no
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-no
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-1pl excl
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-kami
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-tite
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-kame
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-kame
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-1pl incl
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-kita
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-tite
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-kame
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-ite
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-2pl
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-kalian
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-punauŋ
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-mi
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-mi
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-3pl
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-mereka
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-feː
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-fe
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-fe
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-this
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-ini
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-h̃adʒa
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-ha, kia
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-hã
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-that
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-itu
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-tedʒa
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-kalːi
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-kəte
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-here
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-di sini
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-hadʒa
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-hã
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-ha ɔnɔŋ
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-there
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-di sana
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-fei kalei
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-felio
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-fali kali
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-who?
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-siapa
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-hafa
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-feiru
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-fiaru
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-what?
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-apa
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-paru
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-pai
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-pai, paru
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-where?
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-di mana
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-naŋ ga ɔrɔ
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-oro pai noŋ
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-naŋga, ɔrɔ naŋga, naŋga dʒafa
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-when?
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-kapan
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-ɛrɛ pira
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-erepira
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-ɛrə pira
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-how?
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-bagaimana
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-namo naŋga
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-namonaŋga
-\strut\end{minipage} &
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-nəmga, nəmən;ga
-\strut\end{minipage}\tabularnewline
-\bottomrule
+English        & Indonesian & dul        & alk         & alb                           \\ \midrule
+1sg            & saya       & gɔ         & go          & go                            \\
+2sg (informal) & kamu       & mi         & mo          & mo                            \\
+2sg (polite)   & Anda       &            &             &                               \\
+3sg            & dia        & no         & no          & no                            \\
+1pl excl       & kami       & tite       & kame        & kame                          \\
+1pl incl       & kita       & tite       & kame        & ite                           \\
+2pl            & kalian     & punauŋ     & mi          & mi                            \\
+3pl            & mereka     & feː        & fe          & fe                            \\
+this           & ini        & h̃adʒa     & ha, kia     & hã                            \\
+that           & itu        & tedʒa      & kalːi       & kəte                          \\
+here           & di sini    & hadʒa      & hã          & ha ɔnɔŋ                       \\
+there          & di sana    & fei kalei  & felio       & fali kali                     \\
+who?           & siapa      & hafa       & feiru       & fiaru                         \\
+what?          & apa        & paru       & pai         & pai, paru                     \\
+where?         & di mana    & naŋ ga ɔrɔ & oro pai noŋ & \makecell[l]{naŋga,\\ɔrɔ naŋga,\\naŋga dʒafa} \\
+when?          & kapan      & ɛrɛ pira   & erepira     & ɛrə pira                      \\
+how?           & bagaimana  & namo naŋga & namonaŋga   & nəmga, nəmən;ga               \\ \bottomrule
+\end{tabular}
+\captionsetup{justification=centering}
 \caption*{\small \textbf{Table 1}: Modified sample of data from the Excel file.}
-\end{longtable}
-} % /small
+\end{table}
+
 
 This is a very frequent shape of comparative word lists, so I hope the
 procedure described in the following -- and the script I will provide --
@@ -2543,8 +2288,7 @@ a handful of instances of brackets, and commas seem to consistently
 separate different forms.In order to work with this data in
 \href{http://lingpy.org/}{LingPy} (\href{http://lingpy.org}{List et al.
 2018}) or in any program that supports the
-\href{https://zenodo.org/record/1252097}{CLDF standard} (
-\href{https://cldf.clld.org}{Forkel et al. 2018}), the data needs to be
+\href{https://zenodo.org/record/1252097}{CLDF standard} (\href{https://cldf.clld.org}{Forkel et al. 2018}), the data needs to be
 converted into a \emph{long table} format, where each row lists one
 form, indexed by language and concept.
 
@@ -2609,7 +2353,6 @@ with open("wordlist.tsv", "w") as out:
 
 The output is the following TSV file which can be used eg. in edictor.
 
-
 \begin{table}[h]
 \centering
 \begin{tabular}{@{}lllll@{}}
@@ -2622,11 +2365,11 @@ ID & CONCEPT        & DOCULECT & IPA & TOKENS \\ \midrule
 5  & 2sg (informal) & alk      & mo  & m o    \\
 6  & 2sg (informal) & alb      & mo  & m o    \\ \bottomrule
 \end{tabular}
+\captionsetup{justification=centering}
 \caption*{\small \textbf{Table 2}: Sample of data from wordlist.tsv in tabular form.}
-\label{tab:my-table}
 \end{table}
 
-\begin{figure}[htb]
+\begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{images/alorese.png}
 \caption*{\small \textbf{Figure 1}: Forms 4--6 from wordlist.tsv in Edictor.}
@@ -2850,6 +2593,7 @@ between affixes and roots.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.8\textwidth]{images/fallen.png}
+\captionsetup{justification=centering}
 \caption*{\small \textbf{Figure 1:} The concept \enquote{to fall}, denoted by German
 \emph{fallen}, showing its high promiscuity in a selection of the wide
 range of meanings derived from it. This includes the expansion of
@@ -2989,7 +2733,7 @@ good way to compare the lexicon of his Alorese {[}
 \href{https://glottolog.org/resource/languoid/id/alor1247}{alor1247} {]}
 dialects, and to understand the relationship between them. In this post,
 the data is automatically cognate coded and converted into CLDF.
-\hyperdef{}{more-849}{}{ }
+
 
 If we have a file like the following, we can easily use LingPy's
 functionality to get cognate classes.
@@ -3006,6 +2750,7 @@ ID & CONCEPT        & DOCULECT & IPA & TOKENS \\ \midrule
 5  & 2sg (informal) & alk      & mo  & m o    \\
 6  & 2sg (informal) & alb      & mo  & m o    \\ \bottomrule
 \end{tabular}
+\captionsetup{justification=centering}
 \caption*{\small \textbf{Table 1}: Sample of data from wordlist.tsv in tabular form.}
 \label{tab:my-table}
 \end{table}
@@ -3096,6 +2841,7 @@ Edictor.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=10cm]{images/pcogs.png}
+\captionsetup{justification=centering}
 \caption*{\small \textbf{Figure 1}: Editing partial cognates in Edictor: The concept \enquote{God} in 13
 varieties of Alorese}
 \end{figure}
@@ -3148,8 +2894,8 @@ USA: Association for Computational Linguistics.
 \nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis \& Lopez, Philippe \& Bapteste, Eric. 2016. Using
 sequence similarity networks to identify partial cognates in
 multilingual wordlists. \emph{Proceedings of the 54th Annual Meeting of
-the Association for Computational Linguistics (Volume 2: Short Papers)}
-, vol.~2, 599--605. }
+the Association for Computational Linguistics (Volume 2: Short Papers)},
+vol.~2, 599--605. }
 
 \nopagebreak\hangindent=0.7cm {\small Maurits, Luke \& Forkel, Robert \& Kaiping, Gereon A. \& Atkinson,
 Quentin D. 2017. BEASTling: A software tool for linguistic phylogenetics
@@ -3190,15 +2936,14 @@ Excel or some other kind of spreadsheet software, and then trying to
 manually adjust all problems that might occur during this process.
 
 A better idea is to just use LingPy and our CLDF curation framework
-\hyperdef{}{more-1668}{}{ } (which was, for example, used when
+(which was, for example, used when
 establishing the CLICS² database, see
 \href{http://bibliography.lingpy.org?key=List2018f}{List et al. 2018}),
 which is basically not much work, requiring just a few lines of code to
 be written, but giving you also the possibility to re-use these code
 pieces on similar tasks.
 
-I want to illustrate how this can be done by showing for two datasets (
-\href{http://bibliography.lingpy.org?key=Chacon2017}{Chacon 2017} and
+I want to illustrate how this can be done by showing for two datasets (\href{http://bibliography.lingpy.org?key=Chacon2017}{Chacon 2017} and
 \href{///home/mattis/projects/blogposts/calc-7-merging/Chacon2018}{Chacon
 et al. forthcoming}), which are both curated within our CLDF framework,
 how one can merge them with LingPy. Before we can start, we will install
@@ -3224,10 +2969,8 @@ Along with these packages, the LingPy packages will also have been
 installed, if it was not already present on your computer. Both datasets
 contain a \lstinline!raw! folder in which we find the original data as
 it was curated within the EDICTOR/LingPy approach, that is: the data was
-originally analyzed with LingPy (
-\href{http://bibliography.lingpy.org?key=List2018i}{List et al. 2018})
-and then manually corrected with EDICTOR (
-\href{http://bibliography.lingpy.org?key=List2017d}{List 2017}). So
+originally analyzed with LingPy (\href{http://bibliography.lingpy.org?key=List2018i}{List et al. 2018})
+and then manually corrected with EDICTOR (\href{http://bibliography.lingpy.org?key=List2017d}{List 2017}). So
 instead of loading the data with LingPy's CLDF reader, we load it in its
 raw form, for convenience.
 
@@ -3244,8 +2987,7 @@ wl2 = Wordlist(
 The part of the data we want is the common Swadesh-list of 100 concepts
 (\href{http://bibliography.lingpy.org?key=Swadesh1955}{Swadesh 1955}).
 We load this list with help of the \lstinline!pyconcepticon! API,
-published as part with the Concepticon project (
-\href{http://bibliography.lingpy.org?key=List2016a}{List et al. 2016}).
+published as part with the Concepticon project (\href{http://bibliography.lingpy.org?key=List2016a}{List et al. 2016}).
 
 \begin{lstlisting}[basicstyle=\small]
 swad = [
