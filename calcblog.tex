@@ -681,7 +681,7 @@ published along with a paper by
 \href{http://bibliography.lingpy.org?key=Kolipakam2018}{Kolipakam et al.
 (2018)}. This dataset can be downloaded from the supplemental material
 accompanying the paper, and the important file is a zip-folder called
-\href{http://rsos.royalsocietypublishing.org/highwire/filestream/18890/field_highwire_adjunct_files/3/rsos171504supp4.zip}{SI\_robustness\_cognate\_coding.zip},
+\href{http://rsos.royalsocietypublishing.org/highwire/filestream/18890/field_highwire_adjunct_files/3/rsos171504supp4.zip}{\lstinline!SI\_robustness\_cognate\_coding.zip!},
 from which you have to extract the file
 \passthrough{\lstinline!DravLex.tsv!}. I take this dataset, since it is
 published, it is easy to get a copy of the data, and the data has been
@@ -689,7 +689,7 @@ already linked to Concepticon, although not officially in Version 1.1,
 but you can already receive the data from our
 \href{https://github.com/clld/concepticon-data}{GitHub} repository,
 where the concept list is labelled
-\href{https://github.com/clld/concepticon-data/blob/master/concepticondata/conceptlists/Kolipakam-2018-100.tsv}{Kolipakam-2018-100},
+\href{https://github.com/clld/concepticon-data/blob/master/concepticondata/conceptlists/Kolipakam-2018-100.tsv}{\texttt{Kolipakam-2018-100}},
 following our Concepticon naming convention, which takes the first
 author, the year of the publication, and the number of items in order to
 create a stable identifier for a concept list.
@@ -705,6 +705,7 @@ Equipped with this information and the dataset, open a terminal in the
 folder in which you have placed the file \lstinline!DravLex.tsv! , and
 start by loading LingPy and the \lstinline!pyconcepticon! API.
 
+\vskip 1em
 \begin{lstlisting}
 [IN ]: from pyconcepticon.api import Concepticon
 [IN ]: from lingpy import *
@@ -720,12 +721,14 @@ version of the Concepticon and makes extensive use of dictionaries (more
 precisely \lstinline!OrderedDict!). But let's start step by step, and
 first, we simply load the API:
 
+\vskip 1em
 \begin{lstlisting}
 [IN ]: CNC = Concepticon()
 \end{lstlisting}
 
 And now we load the concept lists by Yakhontov and Kolipakam:
 
+\vskip 1em
 \begin{lstlisting}
 [IN ]: yakhontov = CNC.conceptlists['Yakhontov-1991-35']
 [IN ]: kolipakam = CNC.conceptlists['Kolipakam-2018-100']
@@ -747,6 +750,7 @@ modifying our two lists (\lstinline!yakhontov! and
 \lstinline!kolipakam!) first, and then extract a sublist with English
 glosses from them:
 
+\vskip 1em
 \begin{lstlisting}
 [IN ]: yakhontov = [c.concepticon_id for c in yakhontov.concepts.values()]
 [IN ]: kolipakam = [(c.concepticon_id, c.english) for c in  kolipakam.concepts.values()]
@@ -766,6 +770,7 @@ columns that occur in the wordlist, and these columns' content is then
 checked against the Python code that we pass as string, but it is the
 fastest way to accomplish this task in LingPy:
 
+\vskip 1em
 \begin{lstlisting}
 [IN ]: wl = Wordlist('DravLex.tsv')
 [IN ]: wl.output('tsv', filename='DravLex-sublist', subset=True, rows={"concept": "in "+str(sublist)})
@@ -775,6 +780,7 @@ That's all we have to do. In order to verify that we really exported
 only a part of the wordlist, we can reload it and count its basic
 parameters (number of languages, concepts, and words):
 
+\vskip 1em
 \begin{lstlisting}
 [IN ]: wl2 = Wordlist('DravLex-sublist.tsv') 
 [IN ]: print('{0}:{1} languages, {2}:{3} concepts, and {4}:{5} words'.format(wl.width, wl2.width, wl.height, wl2.height, len(wl), len(wl2))) 
@@ -788,6 +794,7 @@ create a dictionary with integers as key where the key 0 reflects the
 header of the wordlist object and the keys link to values that are a
 list, just as we know it from the normal wordlist objects.
 
+\vskip 1em
 \begin{lstlisting}
 [IN ]: D = {0: [c for c in wl.columns]}
 \end{lstlisting}
@@ -796,6 +803,7 @@ We can fill this now still empty dictionary by iterating over all
 entries in our original wordlist and checking whether the concepts occur
 in our sublist:
 
+\vskip 1em
 \begin{lstlisting}
 [IN ]: for idx, concept in wl.iter_rows('concept'):
 ......     if concept in sublist:
@@ -806,12 +814,14 @@ This dictionary can then directly be passed to the \lstinline!Wordlist!
 class and loaded in the same way in which we would load a normal
 wordlist.
 
+\vskip 1em
 \begin{lstlisting}
 [IN ]: wl2 = Wordlist(D)
 \end{lstlisting}
 
 We can again quickly verify that this yields the same expected output.
 
+\vskip 1em
 \begin{lstlisting}
 [IN ]: print('{0}:{1} languages, {2}:{3} concepts, and {4}:{5} words'.format(wl.width, wl2.width, wl.height, wl2.height, len(wl), len(wl2))) 
 [OUT]: 20:20 languages, 100:31 concepts, and 2114:660 words
