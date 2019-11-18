@@ -2835,13 +2835,21 @@ to align the individual words (or, more generally, morphemes) of each
 form instead of trying to align the forms globally. This tends to
 improve the resulting alignments vastly.
 
+If all goes well, this generates a file \lstinline!aligned.tsv! in the
+current directory with the automatic partial cognate codes and
+alignments.~ (One way this can go wrong is if we have not filtered out
+empty forms in the generation of \lstinline!wordlist.tsv! .) ~This is
+good for a one-shot run to get an overview over the data (eg. with
+Edictor), but if we want to try out different thresholds and cluster
+algorithms, it would be wise to cache the LexStat scorers (in particular
+the \lstinline!bscorer! , which is expensive to calculate) somewhere.
+
+\vskip 1em
 \begin{lstlisting}
 import lingpy
-lex = lingpy.compare.partial.Partial(
-  "wordlist.tsv")
+lex = lingpy.compare.partial.Partial("wordlist.tsv")
 
 lex.get_scorer(runs=10000)
-
 lex.partial_cluster(
   method='lexstat',
   threshold=0.55,
@@ -2852,18 +2860,10 @@ lex.partial_cluster(
 lex.get_scorer(runs=10000)
 alm = lingpy.Alignments(lex, ref="partialids", fuzzy=True)
 alm.align(method='progressive')
-alm.output('tsv', filename='aligned',
-  ignore='all', prettify=False)
+alm.output('tsv', filename='aligned', ignore='all', prettify=False)
 \end{lstlisting}
 
-If all goes well, this generates a file \lstinline!aligned.tsv! in the
-current directory with the automatic partial cognate codes and
-alignments.~ (One way this can go wrong is if we have not filtered out
-empty forms in the generation of \lstinline!wordlist.tsv! .) ~This is
-good for a one-shot run to get an overview over the data (eg. with
-Edictor), but if we want to try out different thresholds and cluster
-algorithms, it would be wise to cache the LexStat scorers (in particular
-the \lstinline!bscorer! , which is expensive to calculate) somewhere.
+
 
 The easiest way to cache the scorer -- although at the cost of a huge
 overhead, because it also saves the whole word list (and in this case
@@ -2872,6 +2872,7 @@ tsv file. If we want to have the scorer cache in
 \lstinline!lexstats.tsv!, we can replace the \lstinline!get_scorer! line
 above by
 
+\vskip 1em
 \begin{lstlisting}
 try:
   scorers_etc = lingpy.compare.lexstat.LexStat(
@@ -2898,7 +2899,7 @@ Edictor.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=10cm]{images/pcogs.png}
+\includegraphics[width=16cm]{images/pcogs.png}
 \captionsetup{justification=centering}
 \caption*{\small \textbf{Figure 1}: Editing partial cognates in Edictor: The concept \enquote{God} in 13
 varieties of Alorese}
@@ -2927,6 +2928,7 @@ dataset like the above and, for reference, the specific metadata of
 Yunus' dataset, are available
 \href{https://github.com/Anaphory/matrix_to_beastling}{from Github}. 
 
+\pagebreak
 \subsection*{References}
 
 \nopagebreak\hangindent=0.7cm {\small Forkel, Robert \& List, Johann-Mattis \& Greenhill, Simon J. \&
