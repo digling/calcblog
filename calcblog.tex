@@ -1184,7 +1184,7 @@ presenting the method (\href{http://bibliography.lingpy.org?key=Turchin2010}{Tur
 2010}), but the method itself, which Turchin et al. name
 \enquote{Consonant Class Matching} method, goes originally back to
 \href{http://bibliography.lingpy.org?key=Dolgopolsky1964}{Dolgopolsky
-(1964)}), and has long since been implemented as a part of the STARLING
+1964}), and has long since been implemented as a part of the STARLING
 software package (\href{http://starling.rinet.ru/program.php?lan=en}{http://starling.rinet.ru/program.php}).
 
 The method is fairly simple. For a given wordlist with a certain number
@@ -1254,6 +1254,7 @@ with a linear implementation of the CCM method.
 
 To get started, we import the LingPy library.
 
+\vskip 1em
 \begin{lstlisting}
 from lingpy import *
 \end{lstlisting}
@@ -1264,6 +1265,7 @@ al. 2018}). I will be lazy in this test and simply import the data from
 \href{http://bibliography.lingpy.org?key=Kessler2001}{Kessler (2001)},
 which is available from LingPy's test suite.
 
+\vskip 1em
 \begin{lstlisting}
 from lingpy.tests.util import test_data
 wl = Wordlist(test_data('KSL.qlc'))
@@ -1273,6 +1275,7 @@ We then make a function that converts a given tokenized sound sequence
 to its first two consonant classes, following the criteria mentioned
 above.
 
+\vskip 1em
 \begin{lstlisting}
 def to_ccm(tokens):
     cv = tokens2class(tokens, 'cv')
@@ -1298,6 +1301,7 @@ combine the information given in two and more columns and add it to a
 new column (but this application is a bit tricky and needs some practice
 if one wants to use it correctly).
 
+\vskip 1em
 \begin{lstlisting}
 wl.add_entries(
     'cog', 
@@ -1312,6 +1316,7 @@ this column to integers. Note that we use the \lstinline!override!
 keyword, since the original data already contains cognate sets in a
 column called \lstinline!cogid! .
 
+\vskip 1em
 \begin{lstlisting}
 wl.renumber('cog', override=True)
 \end{lstlisting}
@@ -1322,18 +1327,21 @@ unrelated languages, and we use a very crude algorithm for cognate
 detection, the result will show a tree for the languages, even if there
 is no evidence for their relatedness.
 
+\vskip 1em
 \begin{lstlisting}
 wl.calculate('tree', ref='cogid')
 \end{lstlisting}
 
 Last not least, we print the tree in Ascii-Art on the terminal:
 
+\vskip 1em
 \begin{lstlisting}
 print(wl.tree.asciiArt())
 \end{lstlisting}
 
 And the result will look like this:
 
+\vskip 1em
 \begin{lstlisting}
                     /-Navajo
           /edge.0--|
