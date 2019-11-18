@@ -475,13 +475,13 @@ large data sets.
 After one month of preparation, during which our team was busy teaching
 each other, members of our seminar at
 \href{http://calc.digling.org/seminar/}{Friedrich Schiller University
-Jena} , and colleagues in our department, how to code, we are ready to
+Jena}, and colleagues in our department, how to code, we are ready to
 launch the first posts during the next weeks.
 
 I will refrain from promising too much at this stage, but I recommend
 those interested in learning more about different topics as diverse as
-\emph{coding} (in Python and R), \emph{data curation and analysis} ,
-\emph{theory of diversity linguistics} , and \emph{methodology of
+\emph{coding} (in Python and R), \emph{data curation and analysis},
+\emph{theory of diversity linguistics}, and \emph{methodology of
 historical language comparison} to keep an eye on this blog. Our core
 team of four to five authors will try to publish at least one new
 blogpost per month, and we will try to constantly increase our range of
@@ -498,8 +498,8 @@ interested in computer-assisted language comparison and empirical
 approaches to diversity linguistics, I recommend you to keep an eye on
 our weblog.
 
-\textbf{Cite this article as}: Johann-Mattis List, "Let the Games
-Begin!," in \emph{Computer-Assisted Language Comparison in Practice} ,
+\textbf{Cite this article as}: Johann-Mattis List, ``Let the Games
+Begin!,'' in \emph{Computer-Assisted Language Comparison in Practice} ,
 06/06/2018, \url{https://calc.hypotheses.org/22} .
 
 \hypertarget{extracting-translation-data-from-the-wiktionary-project}{%
@@ -530,8 +530,8 @@ language processing and, occasionally, in linguistic research (see Otte
 the largest free multilingual lexical source.
 
 The Wikimedia Foundation, the organization managing the project,
-releases automatically generated "
-\href{https://dumps.wikimedia.org/}{dumps} " of the data for free and
+releases automatically generated
+``\href{https://dumps.wikimedia.org/}{dumps}'' of the data for free and
 anonymous download. However, such files cannot be used in linguistic
 research without a pre-processing (\enquote{parsing}) stage, as they
 constitute more a backup than a data release: in essence, they are XML
@@ -570,9 +570,9 @@ entries from the translation of 149,530 English words and expressions in
 English, has 97,091 entries). Data is offered in a tabular textual
 format, and all entries include (a) a unique ID, (b) a concept ID
 referring to the source English word, (c) a description string with the
-English source and a short definition (such as " {dictionary/publication
-that explains the meanings of an ordered list of words} \enquote{), (d)
-a language ID from the \href{http://glottolog.org}{Glottolog catalog} ,
+English source and a short definition (such as ``dictionary/publication
+that explains the meanings of an ordered list of words''), (d)
+a language ID from the \href{http://glottolog.org}{Glottolog catalog},
 (e) the text of the translation as given in the Wiktionary, and (f) an
 extra field holding complementary information, when available (such as
 phonetic transcription of the text, noun gender, etc.). Data is also
@@ -581,13 +581,13 @@ metadata) following the \href{http://cldf.clld.org}{Cross-Linguistic
 Data Formats (CLDF)} , a specification designed to allow the exchange of
 cross-linguistic data. The code for data extraction is
 \href{https://github.com/tresoldi/wiktionary_parser}{available on
-GitHub} and the data is available on Zenodo as}
-\href{https://zenodo.org/record/1286991}{Parallel Translations from the
-English Wiktionary} " (DOI: 10.5281/zenodo.1286991). Many thanks to
+GitHub} and the data is available on Zenodo as
+\href{https://zenodo.org/record/1286991}``Parallel Translations from the
+English Wiktionary'' (DOI: 10.5281/zenodo.1286991). Many thanks to
 Johann-Mattis List and to Christoph Rzymski for their help with this
 work.
 
-\textbf{References}
+\hypertarget{references}{\subsection*{References}\label{references}}
 
 Fuertes-Olivera, Pedro A. (2009). \enquote{The function theory of
 lexicography and electronic dictionaries: Wiktionary as a prototype of
@@ -600,7 +600,7 @@ Tomorrow} . Linguistic Insights: Studies in Language and Communication
 Lepore, Jill (2006). \enquote{Noah's Mark}. In: \emph{New Yorker} ,
 November 6 2006 Issue.
 
-LI, Shen; Graça, Joao V.; Taskar, Ben (2012). \enquote{Wiki-ly
+Li, Shen; Graça, João V.; Taskar, Ben (2012). \enquote{Wiki-ly
 supervised part-of-speech tagging} (PDF). \emph{Proceedings of the 2012
 Joint Conference on Empirical Methods in Natural Language Processing and
 Computational Natural Language Learning} . Jeju Island, Korea:
@@ -625,8 +625,8 @@ Schlippe, Tim; Ochs, Sebastian; Schultz, Tanja (2012).
 languages} (PDF). \emph{Acoustics, Speech and Signal Processing
 (ICASSP)} . Kyoto, Japan. pp.~4801--4804.
 
-\textbf{Cite this article as}: Tiago Tresoldi, "Extracting translation
-data from the Wiktionary project," in \emph{Computer-Assisted Language
+\textbf{Cite this article as}: Tiago Tresoldi, ``Extracting translation
+data from the Wiktionary project,'' in \emph{Computer-Assisted Language
 Comparison in Practice} , 11/06/2018,
 \url{https://calc.hypotheses.org/32} .
 
@@ -650,7 +650,7 @@ range, such as the
 list of 200 items} or the
 \href{http://concepticon.clld.org/contributions/Yakhontov-1991-35}{list
 of 35 items by Yakhontov} (originally published in
-\href{http://bibliography.lingpy.org?key=Starostin1991}{Starostin 1991}
+\href{http://bibliography.lingpy.org?key=Starostin1991}{Starostin 1991})
 . Thanks to the \passthrough{\lstinline!pyconcepticon!} API and LingPy's
 built-in export functions for wordlists, this task can be done just in a
 few lines of code, as we will see below. If you prefer to see the raw
@@ -782,7 +782,9 @@ entries in our original wordlist and checking whether the concepts occur
 in our sublist:
 
 \begin{lstlisting}
-[IN ]: for idx, concept in wl.iter_rows('concept'): ......     if concept in sublist:......         D[idx] = [entry for entry in wl[idx]] 
+[IN ]: for idx, concept in wl.iter_rows('concept'):
+......     if concept in sublist:
+......         D[idx] = [entry for entry in wl[idx]] 
 \end{lstlisting}
 
 This dictionary can then directly be passed to the
@@ -814,20 +816,19 @@ major concepts behind this practice in LingPy, as they have been
 developed long before tools like Pandas were common ways of manipulating
 arrays and tabular data.
 
-\hypertarget{references}{%
-\subsection*{References}\label{references}}
+\hypertarget{references}{\subsection*{References}\label{references}}
 
-{[} Kolipakam, V., F. Jordan, M. Dunn, S. Greenhill, R. Bouckaert, R.
-Gray, and A. Verkerk (2018): \textbf{A Bayesian phylogenetic study of
-the Dravidian language family} . \emph{Royal Society Open Science}
-5.171504. 1-17. {]}
+Kolipakam, V., F. Jordan, M. Dunn, S. Greenhill, R. Bouckaert, R.
+Gray, and A. Verkerk (2018): ``A Bayesian phylogenetic study of
+the Dravidian language family''. \emph{Royal Society Open Science}
+5.171504. 1-17.
 
-{[} Starostin, S. (1991): \textbf{Altajskaja problema i
+Starostin, S. (1991): ``Altajskaja problema i
 proischo\textbackslash{}vzdenije japonskogo jazyka {[}The Altaic problem
-and the origin of the Japanese language{]}} . Nauka: Moscow. {]}
+and the origin of the Japanese language{]}''. Nauka: Moscow.
 
-\textbf{Cite this article as}: Johann-Mattis List, "Exporting Sublists
-from a Wordlist with LingPy and Concepticon," in \emph{Computer-Assisted
+\textbf{Cite this article as}: Johann-Mattis List, ``Exporting Sublists
+from a Wordlist with LingPy and Concepticon,'' in \emph{Computer-Assisted
 Language Comparison in Practice} , 16/07/2018,
 \url{https://calc.hypotheses.org/58} .
 
@@ -846,7 +847,7 @@ Language Comparison in Practice} , 16/07/2018,
 nice
 \href{https://github.com/clics/clics2/tree/master/cookbook}{cookbook
 example} for our CLICS database (
-\href{http://bibliography.lingpy.org?key=List2018f}{List et al. 2018f} ,
+\href{http://bibliography.lingpy.org?key=List2018f}{List et al. 2018f},
 \url{http://clics.clld.org} ), where you can find out how to manipulate
 the data further, apart from just installing it and running it to
 replicate our analyses.
@@ -933,26 +934,26 @@ You will find the application in the path
 interface that reminds of the old \enquote{look-and-feel} of CLICS.
 
 \href{http://calc.digling.org/clics1/graph.html?infomap_42_HAND}{\includegraphics[width=5.20833in,height=3.34375in]{images/__calc.hypotheses.org_files_2018_08_local-clics-500x321.png}}
+
 If you want to have a closer look at the network without following all
 the code examples above, you can also directly access it at
-\url{http://calc.digling.org/clics1} , where we have uploaded the
+\url{http://calc.digling.org/clics1}, where we have uploaded the
 version that we created ourselves in order to test this example.
 
-\leavevmode\hypertarget{markdown}{}%
-References
+\hypertarget{references}{\subsection*{References}\label{references}}
 
-{[} List, J.-M., T. Mayer, A. Terhalle, and M. Urban (eds.) (2014):
-\textbf{CLICS: Database of Cross-Linguistic Colexifications} . Version
-1.0. Forschungszentrum Deutscher Sprachatlas: Marburg.{]}
+List, J.-M., T. Mayer, A. Terhalle, and M. Urban (eds.) (2014):
+``CLICS: Database of Cross-Linguistic Colexifications''. Version
+1.0. Forschungszentrum Deutscher Sprachatlas: Marburg.
 \href{//www.webcitation.org/6ccEMrZYM”}{{[}
 http://www.webcitation.org/6ccEMrZYM {]}}
 
-{[} List, J.-M., S. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and
-R. Forkel (eds.) (2018): \textbf{CLICS: Database of Cross-Linguistic
-Colexifications} . Max Planck Institute for the Science of Human
-History: Jena. {]}
+List, J.-M., S. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and
+R. Forkel (eds.) (2018): ``CLICS: Database of Cross-Linguistic
+Colexifications''. Max Planck Institute for the Science of Human
+History: Jena.
 
-\textbf{Cite this article as}: Johann-Mattis List, "Cooking with CLICS,"
+\textbf{Cite this article as}: Johann-Mattis List, ``Cooking with CLICS,''
 in \emph{Computer-Assisted Language Comparison in Practice} ,
 08/08/2018, \url{https://calc.hypotheses.org/384} .
 
@@ -975,11 +976,7 @@ The Cross-Linguistic Data Formats initiative (CLDF,
 ) has helped a lot in preparing the CLICS² database of cross-linguistic
 colexifications ( \url{https://clics.lingpy.org} ,
 \href{http://bibliography.lingpy.org?key=List2018e}{List et al. 2018} ),
-since linking our data to Concepticon (
-\url{https://concepticon.clld.or} g,
-\href{http://bibliography.lingpy.org?key=List2016xxx}{List et al. 2016}
-) and Glottolog ( \url{https://glottolog.org} ,
-\href{http://bibliography.lingpy.org?key=Hammarstroem2018}{Hammarström
+since linking our data to Concepticon (\url{https://concepticon.clld.or}, \href{http://bibliography.lingpy.org?key=List2016xxx}{List et al. 2016}) and Glottolog (\url{https://glottolog.org}, \href{http://bibliography.lingpy.org?key=Hammarstroem2018}{Hammarström
 et al. 2018} ) has provided incredible help in merging the different
 datasets into a big comparative dataset.
 
@@ -996,10 +993,8 @@ varieties typologically. The data itself is provided in the paper, but
 unfortunately, the authors do not share it in form of text files, but
 list it in tables in the original publication. They also do not share
 the NEXUS file they created in order to analyze the data with the
-Neighbor-net algorithm (
-\href{http://bibliography.lingpy.org?key=Bryant2004}{Bryant and Moulton
-2004} ) implemented by the SplitsTree software package (
-\href{http://bibliography.lingpy.org?key=Huson1998}{Huson 1998} ).
+Neighbor-net algorithm (\href{http://bibliography.lingpy.org?key=Bryant2004}{Bryant and Moulton
+2004}) implemented by the SplitsTree software package (\href{http://bibliography.lingpy.org?key=Huson1998}{Huson 1998}).
 
 Thanks to the help of David Morrison, who extracted the presence-absence
 matrix from the table in the original paper, I was now able to convert
@@ -1049,7 +1044,7 @@ $ python nexus.py
 \end{lstlisting}
 
 This will read the CLDF data that you just created and write it in NEXUS
-format ot the file \passthrough{\lstinline!chinese.nex!} .
+format ot the file \passthrough{\lstinline!chinese.nex!}.
 
 To illustrate that one can use this basic procedure for more than just
 one dataset, I added an older and smaller dataset published by
@@ -1070,47 +1065,45 @@ being required by different software packages, we should better wait a
 bit until we have extracted the most important use cases that can be
 encountered.
 
-References
+\hypertarget{references}{\subsection*{References}\label{references}}
 
-{[} Bryant, D. and V. Moulton (2004): \textbf{Neighbor-Net} \textbf{. An
+Bryant, D. and V. Moulton (2004): \textbf{Neighbor-Net} \textbf{. An
 agglomerative method for the construction of phylogenetic networks} .
-\emph{Molecular Biology and Evolution} 21.2. 255-265.{]}
+\emph{Molecular Biology and Evolution} 21.2. 255-265.
 
-{[} Forkel, R., J.-M. List, S. Greenhill, C. Rzymski, S. Bank, M.
+Forkel, R., J.-M. List, S. Greenhill, C. Rzymski, S. Bank, M.
 Cysouw, H. Hammarström, M. Haspelmath, G. Kaiping, and R. Gray
 (forthcoming): \textbf{Cross-Linguistic Data Formats, advancing data
-sharing and re-use in comparative linguistics} . \emph{Scientific Data}
-.{]}
+sharing and re-use in comparative linguistics}. \emph{Scientific Data}.
 
-{[} Hammarström, H., R. Forkel, and M. Haspelmath (2018):
+Hammarström, H., R. Forkel, and M. Haspelmath (2018):
 \textbf{Glottolog} . Version 3.3. Max Planck Institute for Evolutionary
-Anthropology: Leipzig. {]}
+Anthropology: Leipzig.
 
-{[} Huson, D. (1998): \textbf{SplitsTree: analyzing and visualizing
-evolutionary data} . \emph{Bioinformatics} 14.1. 68-73. {]}
+Huson, D. (1998): \textbf{SplitsTree: analyzing and visualizing
+evolutionary data} . \emph{Bioinformatics} 14.1. 68-73.
 
-{[} List, J.-M., M. Cysouw, and R. Forkel (2016): \textbf{Concepticon. A
+List, J.-M., M. Cysouw, and R. Forkel (2016): \textbf{Concepticon. A
 resource for the linking of concept lists} . In: \textbf{Proceedings of
-the Tenth International Conference on Language Resources and Evaluation}
-. 2393-2400. {]}
+the Tenth International Conference on Language Resources and Evaluation}. 2393-2400.
 
-{[} List, J.-M., S. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and
+List, J.-M., S. Greenhill, C. Anderson, T. Mayer, T. Tresoldi, and
 R. Forkel (2018): \textbf{CLICS². An improved database of
 cross-linguistic colexifications assembling lexical data with help of
 cross-linguistic data formats} . \emph{Linguistic Typology} 22.2.
-277-306.{]}
+277-306.
 
-{[} Norman, J. (2003): \textbf{The Chinese dialects} \textbf{.
+Norman, J. (2003): \textbf{The Chinese dialects} \textbf{.
 Phonology} . In: Thurgood, G. and R. LaPolla (eds.): \textbf{The
-Sino-Tibetan languages} . Routledge: London and New York. 72-83. {]}
+Sino-Tibetan languages} . Routledge: London and New York. 72-83.
 
-{[} Szeto, P., U. Ansaldo, and S. Matthews (2018): \textbf{Typological
+Szeto, P., U. Ansaldo, and S. Matthews (2018): \textbf{Typological
 variation across Mandarin dialects: An areal perspective with a
-quantitative approach} . \emph{Linguistic Typology} 22.2. 233-275.{]}
+quantitative approach} . \emph{Linguistic Typology} 22.2. 233-275.
 
-\textbf{Cite this article as}: Johann-Mattis List, "Representing
-Structural Data in CLDF," in \emph{Computer-Assisted Language Comparison
-in Practice} , 03/09/2018, \url{https://calc.hypotheses.org/445} .
+\textbf{Cite this article as}: Johann-Mattis List, ``Representing
+Structural Data in CLDF,'' in \emph{Computer-Assisted Language Comparison
+in Practice}, 03/09/2018, \url{https://calc.hypotheses.org/445}.
 
 \hypertarget{a-fast-implementation-of-the-consonant-class-matching-method-for-automatic-cognate-detection-in-lingpy}{%
 \chapter{A fast implementation of the Consonant Class Matching method
@@ -1131,22 +1124,19 @@ confuses those who want to apply it, since the name of the Python class
 is the same as the name of one of the methods the class provides, but
 the class can be used for other types of cognate detection as well. I
 recommend all users of LingPy that they give a read to our most recent
-tutorial on LingPy's cognate detection method (
-\href{http://bibliography.lingpy.org?key=List2018d}{List et al. 2018} ),
+tutorial on LingPy's cognate detection method (\href{http://bibliography.lingpy.org?key=List2018d}{List et al. 2018}),
 since the three most important methods are discussed there in detail,
 namely the edit distance method for cognate detection, which makes use
 of the simple, normalized edit distance, the SCA method, based on the
-Sound-Class-Based Alignment algorithm (
-\href{http://bibliography.lingpy.org?key=List2014d}{List 2014} ), and
+Sound-Class-Based Alignment algorithm (\href{http://bibliography.lingpy.org?key=List2014d}{List 2014}), and
 the LexStat method (ibid.). Applying these methods in LingPy is fairly
 simple and described in detail in our aforementioned tutorial. But
 LingPy offers an additional method for cognate detection that has the
 advantage of being extremely fast and thus especially suitable for
 exploratory data analysis of very large datasets. This method is called
 \passthrough{\lstinline!turchin!} in LingPy, named after the first
-author of a paper presenting the method (
-\href{http://bibliography.lingpy.org?key=Turchin2010}{Turchin et al.
-2010} ), but the method itself, which Turchin et al.~name
+author of a paper presenting the method (\href{http://bibliography.lingpy.org?key=Turchin2010}{Turchin et al.
+2010}), but the method itself, which Turchin et al.~name
 \enquote{Consonant Class Matching} method, goes originally back to
 \href{http://bibliography.lingpy.org?key=Dolgopolsky1964}{Dolgopolsky
 (1964)} ), and has long since been implemented as a part of the STARLING
@@ -1157,9 +1147,8 @@ software package (
 The method is fairly simple. For a given wordlist with a certain number
 of concepts translated into a certain number of languages, all words are
 converted to consonant classes, following either Dolgopolsky's original
-proposal (Dolgopolsky 1964) or later modifications (
-\href{http://bibliography.lingpy.org?key=Kassian2015b}{Kassian et al.
-2015} ). After conversion, only the first two consonants of each word
+proposal (Dolgopolsky 1964) or later modifications (\href{http://bibliography.lingpy.org?key=Kassian2015b}{Kassian et al.
+2015}). After conversion, only the first two consonants of each word
 are compared, and the basic rule is that if two words match in their
 first two consonant classes, they should be considered as cognate.
 Attentive readers may now immediately ask: What do you do if words don't
