@@ -2288,8 +2288,9 @@ Alorese word lists in matrix format, the top left of it looking like the
 following.
 
 
-\begin{table}[]
+\begin{table}[ht]
 \centering
+\resizebox{0.7\textwidth}{!}{ % use resizebox with \textwidth
 \begin{tabular}{@{}lllll@{}}
 \toprule
 English        & Indonesian & dul        & alk         & alb                           \\ \midrule
@@ -2301,16 +2302,17 @@ English        & Indonesian & dul        & alk         & alb                    
 1pl incl       & kita       & tite       & kame        & ite                           \\
 2pl            & kalian     & punauŋ     & mi          & mi                            \\
 3pl            & mereka     & feː        & fe          & fe                            \\
-this           & ini        & h̃adʒa     & ha, kia     & hã                            \\
+this           & ini        & h̃adʒa     & \makecell[l]{ha,\\kia}     & hã                            \\
 that           & itu        & tedʒa      & kalːi       & kəte                          \\
 here           & di sini    & hadʒa      & hã          & ha ɔnɔŋ                       \\
 there          & di sana    & fei kalei  & felio       & fali kali                     \\
 who?           & siapa      & hafa       & feiru       & fiaru                         \\
-what?          & apa        & paru       & pai         & pai, paru                     \\
+what?          & apa        & paru       & pai         & \makecell[l]{pai,\\paru}                     \\
 where?         & di mana    & naŋ ga ɔrɔ & oro pai noŋ & \makecell[l]{naŋga,\\ɔrɔ naŋga,\\naŋga dʒafa} \\
 when?          & kapan      & ɛrɛ pira   & erepira     & ɛrə pira                      \\
-how?           & bagaimana  & namo naŋga & namonaŋga   & nəmga, nəmən;ga               \\ \bottomrule
+how?           & bagaimana  & namo naŋga & namonaŋga   & \makecell[l]{nəmga,\\nəmən;ga}               \\ \bottomrule
 \end{tabular}
+} % resize box
 \captionsetup{justification=centering}
 \caption*{\small \textbf{Table 1}: Modified sample of data from the Excel file.}
 \end{table}
@@ -2369,6 +2371,7 @@ transcription, but that would go beyond the scope of this example.
 Python has an Excel reader module called \lstinline!xlrd! . Using it,
 the core functionality of the conversion script looks like this.
 
+\vskip 1em
 \begin{lstlisting}
 import csv
 import xlrd
@@ -2384,8 +2387,7 @@ tokenizer = segments.Tokenizer()
 def segment(word):
   return tokenizer(word, ipa=True, separator=" _ ")
 
-column_names = [cell(0, col)
-                for col in range(sheet.ncols)]
+column_names = [cell(0, c) for c in range(sheet.ncols)]
 
 with open("wordlist.tsv", "w") as out:
   write = csv.writer(out, dialect="excel-tab").writerow
@@ -2404,25 +2406,10 @@ with open("wordlist.tsv", "w") as out:
 
 The output is the following TSV file which can be used eg. in edictor.
 
-\begin{table}[h]
-\centering
-\begin{tabular}{@{}lllll@{}}
-\toprule
-ID & CONCEPT        & DOCULECT & IPA & TOKENS \\ \midrule
-1  & 1sg            & dul      & gɔ  & g ɔ    \\
-2  & 1sg            & alk      & go  & g o    \\
-3  & 1sg            & alb      & go  & g o    \\
-4  & 2sg (informal) & dul      & mi  & m i    \\
-5  & 2sg (informal) & alk      & mo  & m o    \\
-6  & 2sg (informal) & alb      & mo  & m o    \\ \bottomrule
-\end{tabular}
-\captionsetup{justification=centering}
-\caption*{\small \textbf{Table 2}: Sample of data from wordlist.tsv in tabular form.}
-\end{table}
-
-\begin{figure}[h]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=10cm]{images/alorese.png}
+\captionsetup{justification=centering}
 \caption*{\small \textbf{Figure 1}: Forms 4--6 from wordlist.tsv in Edictor.}
 \end{figure}
 
@@ -2435,7 +2422,26 @@ the conversion are just the last 10-or-so lines of this script, and then
 I have my colleague's language in a format ready for further use, and
 how I use it will be content of a later post.
 
+\begin{table}[!htb]
+\centering
+\resizebox{0.7\textwidth}{!}{ % use resizebox with \textwidth
+\begin{tabular}{@{}lllll@{}}
+\toprule
+ID & CONCEPT        & DOCULECT & IPA & TOKENS \\ \midrule
+1  & 1sg            & dul      & gɔ  & \texttt{g ɔ}    \\
+2  & 1sg            & alk      & go  & \texttt{g o}    \\
+3  & 1sg            & alb      & go  & \texttt{g o}    \\
+4  & 2sg (informal) & dul      & mi  & \texttt{m i}    \\
+5  & 2sg (informal) & alk      & mo  & \texttt{m o}    \\
+6  & 2sg (informal) & alb      & mo  & \texttt{m o}    \\ \bottomrule
+\end{tabular}
+} % resize
+\captionsetup{justification=centering}
+\caption*{\small \textbf{Table 2}: Sample of data from wordlist.tsv in tabular form.}
+\end{table}
 
+
+\pagebreak
 \subsection*{References}
 
 \nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis \& Greenhill, Simon J. \& Forkel, Robert (2018).
