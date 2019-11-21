@@ -15,18 +15,34 @@ class MyHTTP(urllib.request.HTTPHandler):
 opener = urllib.request.build_opener(MyHTTP())
 
 POST_IDXS = [
-    22, # Mattis, Let the Games Begin
-    32, # Tiago, Wiktionary
-    58, # Mattis, Exporting sublists
-    384, # Mattis, CLICS
-    445, # Mattis, CLDF
-    477, # Mattis, consonant class matching
-    570, # Nathanael, annotation
-    998, # Mattis, consonant clusters
-    803, # Gereon, fieldwork 1
-    1169, # Nathanael, promiscuity
-    849, # Gereon, Fieldwork 2
-    1668, # Mattis, merging datasets
+#    22, # Mattis, Let the Games Begin
+ #   32, # Tiago, Wiktionary
+#    58, # Mattis, Exporting sublists
+#    384, # Mattis, CLICS
+#    445, # Mattis, CLDF
+#    477, # Mattis, consonant class matching
+#    570, # Nathanael, annotation
+#    998, # Mattis, consonant clusters
+#    803, # Gereon, fieldwork 1
+#    1169, # Nathanael, promiscuity
+#    849, # Gereon, Fieldwork 2
+#    1668, # Mattis, merging datasets
+    867, # Gereon, Fieldwork 3
+    1802, # Mattis, Automatic Inference Sound Correspondence
+    1807, # Mattis, Inference Sound Correspondence #2
+    1823, # Mattis, Inference Sound Correspondence #3
+    1820, # Tiago, using pyconcepticon
+    1844, # Tiago, using pyconcepticon #2
+    1882, # Mattis, behind sino-tibetan
+    1866, # Nathanael, biological metaphors #1
+    1899, # jaeger, MADness
+    1933, # mattis, behind sino-tibetan #3
+    1941, # mattis, waterman-eggert
+    1962, # mattis, feature alignment #1
+    1971, # mattis, feature alignment #2
+    1951, # nathanael, biologicla metaphors #2
+    1980, # tiago, data reuse
+    2000, # nathanael, biological metaphors #3
 
 ]
 
