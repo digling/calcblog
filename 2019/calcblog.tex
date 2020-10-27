@@ -501,8 +501,8 @@ becomes urgent.
 \end{flushright}
 
 \newpage
-\section*{From Fieldwork to Trees 3: CLDF recipes}
-\phantomsection\addcontentsline{toc}{section}{From Fieldwork to Trees 3: CLDF recipes (Gereon A. Kaiping)}
+\section*{From Fieldwork to Trees III: CLDF recipes}
+\phantomsection\addcontentsline{toc}{section}{From Fieldwork to Trees III: CLDF recipes (Gereon A. Kaiping)}
 
 Gereon A. Kaiping (21/01/2019)
 
@@ -513,8 +513,7 @@ formats, example, lexical data
 
 \begin{center}\rule{0.5\linewidth}{1pt}\end{center}
 
-In the previous two posts ( \href{https://calc.hypotheses.org/803}{Part
-1} , \href{https://calc.hypotheses.org/849}{Part 2} ), I took you from a
+In the previous two posts, I took you from a
 matrix of word lists from fieldwork to a LingPy-compatible CLDF Wordlist
 with cognate codes and alignments. We can now feed this dataset into
 existing tools and recipes for visualizing and analyzing CLDF Wordlists.
@@ -524,8 +523,8 @@ If we add geolocations to the languages in our dataset, we can use
 existing CLDF recipe} from \href{https://github.com/cldf/cookbook}{the
 CLDF cookbook} (Forkel et al.~2018) to plot the density of the data on a
 map. Some more metadata on the lects would be a good thing to have
-anyway, so let us add a table to the dataset: Dialects are described in
-another CSV or TSV table, like this
+anyway, so let us add a table to the dataset. Dialects are described in
+another CSV or TSV table, like this:
 
 \begin{longtable}[]{@{}lllll@{}}
 \toprule
@@ -542,13 +541,13 @@ description of this new table, as well as a \enquote{Foreign Key}
 relationship linking the form table to this table) to make sure that
 this data is found and properly associated with the forms in the table,
 which I have added to
-\passthrough{\lstinline!Alorese-Lects-metadata.json!} . If we had
+\passthrough{\lstinline!Alorese-Lects-metadata.json!}. If we had
 descriptions of the concepts, eg. with links to
 \href{https://concepticon.clld.org}{Concepticon} (List, Cysouw \& Forkel
 2016), they would also be associated using the metadata file.
 
 Before we start using this enriched wordlist for other purposes, it may
-be useful to see whether the file is indeed valid CLDF. The python
+be useful to see whether the file is indeed valid CLDF. The Python
 \passthrough{\lstinline!pycldf!} package comes with a tool to validate
 and list statistics of datasets.
 
@@ -557,7 +556,7 @@ $ pip install pycldf...
 $ cldf validate Alorese-Lects-metadata.json
 $ cldf stats Alorese-Lects-metadata.json
 <cldf:v1.0:Wordlist at .>
-key                      value-----------------------  ---------------------------------------------------------------------------------------
+key                      value
 special:publisher_url    http://www.universiteitleiden.nl/en/humanities/leiden-university-centre-for-linguistics
 dc:license               Ⓒ 2018 Yunus Sulistyono
 special:contact          g.a.kaiping@hum.leidenuniv.nl
@@ -570,7 +569,7 @@ dc:creator               ['Sulistyono, Yunus', '', 'Kaiping, Gereon Alexander']
 dc:description           Lexical data of 13 Alorese [alor1247] dialects, abridged
 dc:coverage              http://vocab.getty.edu/page/tgn/1009828
 special:publisher_place  Leiden, The Netherlands
-Path           Type             Rows-------------  -------------  ------
+Path           Type             Rows
 aligned.tsv    FormTable          53
 languages.tsv  LanguageTable       3
 \end{lstlisting}
@@ -579,7 +578,7 @@ The lack of output after the second command is a good thing: It means
 that no problems were found in our dataset. If there were errors in the
 word list, \passthrough{\lstinline!cldf validate!} would complain.
 
-This dataset is now easy to visualize: Get the
+This dataset is now easy to visualize. Get the
 \href{https://github.com/cldf/cookbook/tree/master/recipes/plot_representation}{cookbook
 recipe} and its dependencies (admittedly, getting
 \passthrough{\lstinline!basemap!} to work can be a bit of a hassle), and
@@ -594,14 +593,15 @@ even more similar to the land background color.)
 \begin{figure}
 \centering
 \includegraphics[width=5.20833in,height=3.90625in]{images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2018_11_alorese-500x375.png}
-\caption{Number of forms given in the abridged Alorese dataset, for each
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 1}: Number of forms given in the abridged Alorese dataset, for each
 of the three different dialects. The black line is the coastline of the
 birdshead peninsula of the island of Alor.}
 \end{figure}
 
 Another interesting tool to analyze CLDF wordlists comes in the Python
 library accompanying the LexiRumah dataset (Kaiping, Edwards \& Klamer
-2019): For creating orthographies for the languages in that dataset, we
+2019). For creating orthographies for the languages in that dataset, we
 needed to know what sounds they use. The
 \passthrough{\lstinline!pylexirumah.get\_phonetic\_inventories!} module
 goes through the CLDF wordlist and counts the frequency of all segments
@@ -715,25 +715,33 @@ the python package for working with the Wordlists in the
 \href{https://glottobank.org/\#lexibank}{LexiBank} project. The list of
 useful tools also includes the BEASTling tool for generating
 phylogenetic inference driver files, which we will work with in the next
-step. - Forkel, Robert. 2018. \emph{pylexibank} . Python. lexibank.
-\url{https://github.com/lexibank/pylexibank} (19 January, 2019).-
-Forkel, Robert, Sebastian Bank, Gereon A. Kaiping, Christoph Rzymski \&
+step. 
+
+\subsection*{References}
+
+\nopagebreak\hangindent=0.7cm {\small Forkel, Robert. 2018. \emph{pylexibank} . Python. lexibank.
+\url{https://github.com/lexibank/pylexibank} (19 January, 2019). }
+
+\nopagebreak\hangindent=0.7cm {\small Forkel, Robert, Sebastian Bank, Gereon A. Kaiping, Christoph Rzymski \&
 Simon J. Greenhill. 2018. \emph{pycldf} . Python. Cross-Linguistic Data
-Formats. \url{https://github.com/cldf/pycldf} (19 January, 2019).-
-Forkel, Robert, Christoph Rzymski, Gereon A. Kaiping \& Mattis List.
-2019. \emph{The CLDF Cookbook} . Jupyter Notebook. Cross-Linguistic Data
-Formats. \url{https://github.com/cldf/cookbook} (19 January, 2019).-
-Kaiping, Gereon A., Owen Edwards \& Marian Klamer. 2019. \emph{LexiRumah
+Formats. \url{https://github.com/cldf/pycldf} (19 January, 2019). }
+
+\nopagebreak\hangindent=0.7cm {\small Forkel, Robert, Christoph Rzymski, Gereon A. Kaiping \& Mattis List.
+2019. \emph{The CLDF Cookbook}. Jupyter Notebook. Cross-Linguistic Data
+Formats. \url{https://github.com/cldf/cookbook} (19 January, 2019). }
+
+\nopagebreak\hangindent=0.7cm {\small Kaiping, Gereon A., Owen Edwards \& Marian Klamer. 2019. \emph{LexiRumah
 2.0.0} . Zenodo. doi:
 \href{https://doi.org/10.5281/zenodo.2540954.}{10.5281/zenodo.2540954.}
 \url{https://zenodo.org/record/2540954\#.XENYWaHrC00} (19 January,
-2019).- List, Johann-Mattis, Michael Cysouw \& Robert Forkel (eds.).
+2019). }
+
+\nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis, Michael Cysouw \& Robert Forkel (eds.).
 2016. \emph{Concepticon} . Jena: Max Planck Institute for the Science of
 Human History. doi:
 \href{https://doi.org/10.5281/zenodo.51259.}{10.5281/zenodo.51259.}
-\url{http://concepticon.clld.org/} .
+\url{http://concepticon.clld.org/}. }
 
-\vskip 2em
 \framebox{\tabular{p{0.95\textwidth}}\textbf{Cite this article as}: Gereon A. Kaiping, \enquote{From Fieldwork to
 Trees 3: CLDF recipes}, in
 \emph{Computer-Assisted Language Comparison in Practice},  21/01/2019,
@@ -743,9 +751,9 @@ Trees 3: CLDF recipes}, in
 
 \newpage
 \section*{A Primer on Automatic Inference of Sound Correspondence
-Patterns (1): Introduction}
+Patterns I: Introduction}
 \phantomsection\addcontentsline{toc}{section}{A Primer on Automatic Inference of Sound Correspondence
-Patterns (1): Introduction (Johann-Mattis List)}
+Patterns I: Introduction (Johann-Mattis List)}
 
 Johann-Mattis List (30/01/2019)
 
@@ -760,7 +768,7 @@ After about three years of work on the matter, I have managed (with help
 of many colleagues who helped in testing) to develop a first approach
 for the \emph{automatic inference of sound correspondence patterns} ,
 which will soon be published with Computational Linguistics
-\href{http://bibliography.lingpy.org?key=List2019a}{(List 2019)} . The
+\href{http://bibliography.lingpy.org?key=List2019a}{(List 2019)}. The
 key task which this algorithm solves is to take aligned data as input
 and to compute explicit \emph{sound correspondence patterns} from the
 alignments.
@@ -769,14 +777,14 @@ Correspondence patterns are hereby understood as recurring alignment
 sites (i.e., columns per alignment) in a given dataset. In contrast to
 \emph{regular sound correspondences} (or \emph{systematic sound
 correspondences} , as
-\href{http://bibliography.lingpy.org?key=Trask2000}{Trask 2000} calls
+\href{http://bibliography.lingpy.org?key=Trask2000}{Trask (2000)} calls
 them), a correspondence pattern is a statement of sound correspondences
 across multiple languages, while regular sound correspondences are
 usually discussed for two languages only, at least in automatic (see
-\href{http://bibliography.lingpy.org?key=Kondrak2002a}{Kondrak 2002} )
+\href{http://bibliography.lingpy.org?key=Kondrak2002a}{Kondrak 2002})
 and formal approaches (see e.g.,
 \href{http://bibliography.lingpy.org?key=Hoenigswald1960}{Hoenigswald
-1960} ).
+1960}).
 
 The result of an automatic correspondence pattern analysis can be
 thought of as some kind of a table, in which languages are placed in the
@@ -785,11 +793,10 @@ indicating for each individual correspondence pattern, which reflex
 sound a given language shows for this pattern.
 
 As an example, consider the following table, which shows four varieties
-of the Tableaux Phonétiques des Patois Suisses Romands (
-\href{http://bibliography.lingpy.org?key=Gauchat1925}{Gauchat et al.
-1925} ), which were included as test set for the alignment algorithm
+of the Tableaux Phonétiques des Patois Suisses Romands (\href{http://bibliography.lingpy.org?key=Gauchat1925}{Gauchat et al.
+1925}), which were included as test set for the alignment algorithm
 presented in my thesis (
-\href{http://bibliography.lingpy.org?key=List2014d}{List 2014} ).
+\href{http://bibliography.lingpy.org?key=List2014d}{List 2014}).
 
 \begin{longtable}[]{@{}llllll@{}}
 \toprule
@@ -797,15 +804,15 @@ Pattern & Frequency & Champéry & Lourtier & Plagne &
 Courtedoux\tabularnewline
 \midrule
 \endhead
-` r 21 r & r & r & r & &\tabularnewline
-`-(1) 8 -- & -- & ə & -- & &\tabularnewline
-` t 8 t & t & t & t & &\tabularnewline
-` m 8 m & m & m & m & &\tabularnewline
-` f 8 f & f & f & f & &\tabularnewline
-` p 7 p & p & p & p & &\tabularnewline
-`-(2) 4 -- & -- & -- & ə & &\tabularnewline
-` s 4 s & ʃ & s & s & &\tabularnewline
-` k 3 k & k & k & tʲ & &\tabularnewline
+r    & 21 & r & r & r & r  \tabularnewline
+-(1) & 8 & -- & -- & ə & --  \tabularnewline
+t    & 8 & t & t & t & t  \tabularnewline
+m    & 8 & m & m & m & m  \tabularnewline
+f    & 8 & f & f & f & f  \tabularnewline
+p    & 7 & p & p & p & p  \tabularnewline
+-(2) & 4 & -- & -- & -- & ə  \tabularnewline
+s    & 4 & s & ʃ & s & s  \tabularnewline
+k    & 3 & k & k & k & tʲ  \tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -839,7 +846,7 @@ What is interesting and important about these data is how useful they
 are for additional tasks in historical linguistics. Correspondence
 patterns can, for example, be used to \emph{predict} the pronunciation
 of missing reflexes in a given dataset (as I show in my forthcoming
-paper, \href{http://bibliography.lingpy.org?key=List2019a}{List 2019} ),
+paper, \href{http://bibliography.lingpy.org?key=List2019a}{List 2019}),
 they can also be used to reconstruct a given ancestor form
 semi-automatically, given that all alignment sites which are assigned to
 the same correspondence pattern directly reflect the same common
@@ -866,30 +873,30 @@ analyze them. The posts will be accompanied by supplementary data and
 code, so that interested users can directly apply and test the examples
 discussed.
 
-References
+\subsection*{References}
 
-{[} Gauchat, Louis and Jeanjaquet, Jules and Tappolet, Ernest (1925):
-Tableaux phonétiques des patois suisses romands. Relevés comparatifs
-d'environ 500 mots dans 62 patois-types. Publiés avec introduction,
-notes, carte et répertoires . Neuchâtel:Attinger.{]}
+\nopagebreak\hangindent=0.7cm {\small Gauchat, Louis and Jeanjaquet, Jules and Tappolet, Ernest (1925):
+\emph{Tableaux phonétiques des patois suisses romands. Relevés comparatifs
+d'environ 500 mots dans 62 patois-types}. Publiés avec introduction,
+notes, carte et répertoires . Neuchâtel:Attinger.}
 
-{[} Hoenigswald, Henry M. (1960): Phonetic similarity in internal
-reconstruction. \emph{Language} 36.2. 191-192. {]}
+\nopagebreak\hangindent=0.7cm {\small Hoenigswald, Henry M. (1960): Phonetic similarity in internal
+reconstruction. \emph{Language} 36.2. 191-192. }
 
-{[} Kondrak, Grzegorz (2002): Determining Recurrent Sound
-Correspondences by Inducing Translation Models. In: Nineteenth
-International Conference on Computational Linguistics (COLING 2002).
-488-494.{]}
+\nopagebreak\hangindent=0.7cm {\small Kondrak, Grzegorz (2002): Determining Recurrent Sound
+Correspondences by Inducing Translation Models. In: \emph{Nineteenth
+International Conference on Computational Linguistics (COLING 2002)}.
+488-494.}
 
-{[} List, Johann-Mattis (2014): Sequence comparison in historical
-linguistics. Düsseldorf:Düsseldorf University Press.{]}
+\nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis (2014): \emph{Sequence comparison in historical
+linguistics}. Düsseldorf:Düsseldorf University Press.}
 
-{[} List, Johann-Mattis (forthcoming): Automatic inference of sound
+\nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis (forthcoming): Automatic inference of sound
 correspondence patterns across multiple languages. \emph{Computational
-Linguistics} ?? 1-24. {]}
+Linguistics} ?? 1-24. }
 
-{[} Trask, Robert L. (2000): The dictionary of historical and
-comparative linguistics . Edinburgh:Edinburgh University Press.{]}
+\nopagebreak\hangindent=0.7cm {\small Trask, Robert L. (2000): \emph{The dictionary of historical and
+comparative linguistics}. Edinburgh:Edinburgh University Press.}
 
 
 \vskip 2em
@@ -901,10 +908,10 @@ Automatic Inference of Sound Correspondence Patterns (1): Introduction}, in
 
 \newpage
 \section*{A Primer on Automatic Inference of Sound Correspondence
-Patterns (2): Initial Experiments with Alignments from the Tableaux
+Patterns II: Initial Experiments with Alignments from the Tableaux
 Phonétiques des Patois Suisses Romands}
 \phantomsection\addcontentsline{toc}{section}{A Primer on Automatic Inference of Sound Correspondence
-Patterns (2): Initial Experiments with Alignments from the Tableaux
+Patterns II: Initial Experiments with Alignments from the Tableaux
 Phonétiques des Patois Suisses Romands (Johann-Mattis List)}
 
 Johann-Mattis List (27/02/2019)
@@ -929,7 +936,7 @@ al.~(1925)}, which were originally aligned for the study in
 later published as part of the
 \href{http://alignments.lingpy.org}{Benchmark Database of Phonetic
 Alignments} \href{http://bibliography.lingpy.org?key=List2014e}{(List
-and Prokić 2014)} . In this post, I will introduce how we can harvest
+and Prokić 2014)}. In this post, I will introduce how we can harvest
 the alignments from this dataset with help of
 \href{http://lingpy.org}{LingPy} , and later analyze them with help of
 the sound correspondence pattern algorithms.
@@ -960,8 +967,8 @@ very simple structure, containing a bunch of zip-folders for each of the
 different datasets from which we harvested the alignments, along with
 two redundant master-folders, containing all 750 multiple sequence
 alignments. Each of the folders contains two sub-folders, one called
-\passthrough{\lstinline!msa!} , containing the multiple alignments in
-the so-called \passthrough{\lstinline!msa-format!} , which can be
+\passthrough{\lstinline!msa!}, containing the multiple alignments in
+the so-called \passthrough{\lstinline!msa-format!}, which can be
 readily imported and processed by LingPy, as well as a
 \passthrough{\lstinline!psa!}-folder, containing all corresponding
 pairwise phonetic alignments (i.e., pairwise alignments automatically
@@ -984,7 +991,7 @@ for a closer description) and also required in order to compute
 correspondence patterns with help of
 \href{https://github.com/lingpy/lingrex}{LingRex} and the correspondence
 pattern recognition algorithm (
-\href{http://bibliography.lingpy.org?key=List2019a}{List 2019} ).
+\href{http://bibliography.lingpy.org?key=List2019a}{List 2019}).
 
 Assuming that you have downloaded the data from Zenodo and unpacked the
 \passthrough{\lstinline!multiple.zip!} folder, placing the
@@ -1104,8 +1111,7 @@ French word form, we can extract the aligned data from the
 variety also occurs in our dictionary of pre-selected varieties. If this
 is the case, we retrieve the unaligned but segmented form (called
 \passthrough{\lstinline!tokens!} ) by stripping off all dashes from the
-alignment, and we also retrieve the raw, unsegmented
-\passthrough{\lstinline!form!} by even deleting the spaces that would
+alignment, and we also retrieve the raw, unsegmented \passthrough{\lstinline!form!} by even deleting the spaces that would
 otherwise indicate the boundaries between the sound segments.
 
 We can now add all data to our wordlist (or our dictionary, 3), but we
@@ -1211,10 +1217,13 @@ the menu, and select CORRESPONDENCE PATTERNS from there. Select
 \enquote{full cognates}, as we are not dealing with partial cognates
 here, and press OK.
 
-\leavevmode\hypertarget{attachment_1809}{}%
+\begin{figure}[h!]
+\centering
 \includegraphics[width=5.20833in,height=2.14583in]{images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2019_02_edictor1-500x206.png}
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 1}: Correspondence pattern display in EDICTOR}
+\end{figure}
 
-Correspondence pattern display in EDICTOR
 
 What you will see is a collection of all your correspondence patterns
 which EDICTOR's simple method extracts from the alignments.The
@@ -1222,18 +1231,23 @@ arrangement is by language variety in the columns, and by cognate set
 (or alignemnt) in each row. By clicking on a given value, EDICTOR will
 show you the full word for that entry.
 
-\leavevmode\hypertarget{attachment_1810}{}%
+\begin{figure}[h!]
+\centering
 \includegraphics[width=5.20833in,height=1.13542in]{images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2019_02_edictor2-500x109.png}
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 2}: Viewing original words for a given correspondence pattern}
+\end{figure}
 
-Viewing original words for a given correspondence pattern
 
 Clicking on the cognate ID on the very left, it will show you the
 alignment.
 
-\leavevmode\hypertarget{attachment_1811}{}%
+\begin{figure}[h!]
+\centering
 \includegraphics[width=5.20833in,height=4.29167in]{images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2019_02_edictor3-500x412.png}
-
-Alignment popups in EDICTOR's correspondence pattern viewer
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 3}: Alignment popups in EDICTOR's correspondence pattern viewer}
+\end{figure}
 
 It would take too long to describe all possibilities for searching here,
 so I recommend those interested in exploring this further, to simply
@@ -1245,38 +1259,37 @@ happy about any kind of feedback or questions or suggestions, which you
 shoudl ideally share via our project page with
 \href{https://github.com/digling/edictor}{GitHub/digling/edictor} .
 
-References
+\subsection*{References}
 
-{[} Gauchat, Louis and Jeanjaquet, Jules and Tappolet, Ernest (1925):
-Tableaux phonétiques des patois suisses romands. Relevés comparatifs
-d'environ 500 mots dans 62 patois-types. Publiés avec introduction,
-notes, carte et répertoires . Neuchâtel:Attinger.{]}
+\nopagebreak\hangindent=0.7cm {\small  Gauchat, Louis and Jeanjaquet, Jules and Tappolet, Ernest (1925):
+\emph{Tableaux phonétiques des patois suisses romands. Relevés comparatifs
+d'environ 500 mots dans 62 patois-types}. Publiés avec introduction,
+notes, carte et répertoires . Neuchâtel:Attinger.}
 
-{[} List, Johann-Mattis (2014): Sequence comparison in historical
-linguistics. Düsseldorf:Düsseldorf University Press.{]}
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2014): \emph{Sequence comparison in historical
+linguistics}. Düsseldorf:Düsseldorf University Press.}
 
-{[} List, J.-M. and Prokić, J. (2014): A benchmark database of phonetic
-alignments in historical linguistics and dialectology. In: Proceedings
+\nopagebreak\hangindent=0.7cm {\small  List, J.-M. and Prokić, J. (2014): A benchmark database of phonetic
+alignments in historical linguistics and dialectology. In: \emph{Proceedings
 of the Ninth International Conference on Language Resources and
-Evaluation. 288-294. {]}
+Evaluation}. 288-294. }
 
-{[} List, Johann-Mattis (2017): A web-based interactive tool for
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2017): A web-based interactive tool for
 creating, inspecting, editing, and publishing etymological datasets. In:
-Proceedings of the 15th Conference of the European Chapter of the
-Association for Computational Linguistics. System Demonstrations.
-9-12.{]}
+\emph{Proceedings of the 15th Conference of the European Chapter of the
+Association for Computational Linguistics. System Demonstrations}.
+9-12.}
 
-{[} List, Johann-Mattis and Walworth, Mary and Greenhill, Simon J. and
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis and Walworth, Mary and Greenhill, Simon J. and
 Tresoldi, Tiago and Forkel, Robert (2018): Sequence comparison in
 computational historical linguistics. \emph{Journal of Language
-Evolution} 3.2. 130--144. {]}
+Evolution} 3.2. 130--144. }
 
-{[} List, Johann-Mattis (2019): Automatic inference of sound
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2019): Automatic inference of sound
 correspondence patterns across multiple languages. \emph{Computational
-Linguistics} 1.45. 1-24. {]}
+Linguistics} 1.45. 1-24. }
 
 
-\vskip 2em
 \framebox{\tabular{p{0.95\textwidth}}\textbf{Cite this article as}: Johann-Mattis List, \enquote{A Primer on
 Automatic Inference of Sound Correspondence Patterns (2): Initial
 Experiments with Alignments from the Tableaux Phonétiques des Patois
@@ -1287,10 +1300,10 @@ Suisses Romands}, in
 
 \newpage
 \section*{A Primer on Automatic Inference of Sound Correspondence
-Patterns (3): Extended Experiments with Alignments from the Tableaux
+Patterns III: Extended Experiments with Alignments from the Tableaux
 Phonétiques des Patois Suisses Romands}
 \phantomsection\addcontentsline{toc}{section}{A Primer on Automatic Inference of Sound Correspondence
-Patterns (3): Extended Experiments with Alignments from the Tableaux
+Patterns III: Extended Experiments with Alignments from the Tableaux
 Phonétiques des Patois Suisses Romands (Johann-Mattis List)}
 
 Johann-Mattis List (27/03/2019)
@@ -1314,7 +1327,7 @@ described in detail in
 \href{http://bibliography.lingpy.org?key=List2019a}{List (2019)} , uses
 a greedy approach inspired by the Welsh-Powell algorithm for graph
 coloring ( \href{http://bibliography.lingpy.org?key=Welsh1967}{Welsh and
-Powell 1967} ), in order to cluster all alignment sites in the data into
+Powell 1967}), in order to cluster all alignment sites in the data into
 clusters which are compatible with each other.
 
 In the following, I will demonstrate how the LingRex package, which I
@@ -1505,15 +1518,13 @@ assigned provided in a list as value, with each pattern represented by
 its size, its structure, and the pattern itself. In our analysis, only
 three sites occur, which could be assigned to more than one pattern. One
 of these is the second column of the alignment of cognate set 24
-\emph{m'appeler} , reflected in only three varieties. Given the large
+\emph{m'appeler}, reflected in only three varieties. Given the large
 number of missing data in this alignment, it is compatible with seven
 different patterns in the data, shown below in the table.
 
 \begin{longtable}[]{@{}llllllllllll@{}}
 \toprule
 Ø & Ø & Ø & Ø & Ø & Ø & Ø & r & r & Ø & r & Ø\tabularnewline
-\midrule
-\endhead
 r & r & r & r & r & r & r & r & r & r & r & r\tabularnewline
 \textbf{l} & r & r & r & r & r & r & r & r & r & r & r\tabularnewline
 r & r & r & \textbf{--} & r & r & r & r & r & r & r &
@@ -1569,26 +1580,25 @@ script to run the analysis along with the data is available in form of a
 GitHub Gist, which you can find
 \href{https://gist.github.com/LinguList/6bd37f375c9715e3ecda395e23a17fcb}{here}.
 
-\hypertarget{references}{%
-\subsubsection*{References}\label{references}}
+\subsubsection*{References}
 
-{[} Gauchat, Louis and Jeanjaquet, Jules and Tappolet, Ernest (1925):
-Tableaux phonétiques des patois suisses romands. Relevés comparatifs
-dénviron 500 mots dans 62 patois-types. Publiés avec introduction,
-notes, carte et répertoires . Neuchâtel:Attinger.{]}
+\nopagebreak\hangindent=0.7cm {\small  Gauchat, Louis and Jeanjaquet, Jules and Tappolet, Ernest (1925):
+\emph{Tableaux phonétiques des patois suisses romands. Relevés comparatifs
+dénviron 500 mots dans 62 patois-types}. Publiés avec introduction,
+notes, carte et répertoires . Neuchâtel:Attinger.}
 
-{[} List, J.-M. and Prokić, J. (2014): A benchmark database of phonetic
-alignments in historical linguistics and dialectology. In: Proceedings
+\nopagebreak\hangindent=0.7cm {\small  List, J.-M. and Prokić, J. (2014): A benchmark database of phonetic
+alignments in historical linguistics and dialectology. In: \emph{Proceedings
 of the Ninth International Conference on Language Resources and
-Evaluation. 288-294. {]}
+Evaluation}. 288-294. }
 
-{[} List, Johann-Mattis (2019): Automatic inference of sound
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2019): Automatic inference of sound
 correspondence patterns across multiple languages. \emph{Computational
-Linguistics} 1.45. 137-161. {]}
+Linguistics} 1.45. 137-161. }
 
-{[} Welsh, D. J. A. and Powell, M. B. (1967): An upper bound for the
+\nopagebreak\hangindent=0.7cm {\small  Welsh, D. J. A. and Powell, M. B. (1967): An upper bound for the
 chromatic number of a graph and its application to timetabling problems.
-\emph{The Computer Journal} 10.1. 85-86. {]}
+\emph{The Computer Journal} 10.1. 85-86. }
 
 
 \vskip 2em
@@ -1601,8 +1611,8 @@ Suisses Romands}, in
 
 
 \newpage
-\section*{Using pyconcepticon to map concept lists}
-\phantomsection\addcontentsline{toc}{section}{Using pyconcepticon to map concept lists (Tiago Tresoldi)}
+\section*{Using pyconcepticon to map concept lists I}
+\phantomsection\addcontentsline{toc}{section}{Using pyconcepticon to map concept lists I (Tiago Tresoldi)}
 
 Tiago Tresoldi (01/04/2019)
 
@@ -1742,15 +1752,24 @@ to pass as an argument the path to your Concepticon data repository,
 such as in
 \passthrough{\lstinline!concepticon --repos /home/tresoldi/concepticon-data/ map\_concepts conceptlist.tsv!}.
 
-\includegraphics[width=5.20833in,height=4.15625in]{images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2019_03_Screenshot_2019-03-26-Concepticon-Lookup-eggplant-500x399.png}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=5.20833in,height=4.15625in]{images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2019_03_Screenshot_2019-03-26-Concepticon-Lookup-eggplant-500x399.png}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
 \includegraphics[width=5.20833in,height=5.02083in]{images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2019_03_Screenshot_2019-03-26-Concepticon-Lookup-fly-500x482.png}
+\end{figure}
+
+
 
 You can see that with this application not only
 \passthrough{\lstinline!eggplant!} is matched to AUBERGINE as desired,
 but also that basic fuzzy matching is allowed, like in the query for
 \passthrough{\lstinline!fly!} returning a list of potential mappings FLY
-(INSECT), FLY (MOVE THROUGH AIR), and FRY. The output includes\\
+(INSECT), FLY (MOVE THROUGH AIR), and FRY. The output includes
 a similarity score which we might investigate in more detail in future
 posts, but in its essence the lower the score, the higher the match
 probability.
@@ -1801,7 +1820,7 @@ bambu               ???
 \end{lstlisting}
 
 We can see that the method had no problem to map the five first
-entries,\\
+entries,
 \passthrough{\lstinline!dog!} (a straightforward case),
 \passthrough{\lstinline!eggplant!} (using data already mapped),
 \passthrough{\lstinline!fly (N)!} (using an annotation for nouns),
@@ -1924,10 +1943,6 @@ the repository tests} ):
 1441    FLY (MOVE THROUGH AIR)///fly, to    2
 1441    FLY (MOVE THROUGH AIR)///fly_V  1
 1441    FLY (MOVE THROUGH AIR)///flying 2
-1441    FLY (MOVE THROUGH AIR)///to fly 26
-1441    FLY (MOVE THROUGH AIR)///to fly (move through air)  126
-1441    FLY (MOVE THROUGH AIR)///to fly / the bird flies / flew 1
-1441    FLY (MOVE THROUGH AIR)///to fly away    1
 \end{lstlisting}
 
 This mapping does more than inform us that, say, the gloss
@@ -1950,15 +1965,12 @@ Concepticon id of potential mergers), but
 \passthrough{\lstinline!app!} are the most important ones which cannot
 be lacking from your computer-assisted language comparison toolbox.
 
-\hypertarget{references-1}{%
-\subsubsection*{References}\label{references-1}}
+\subsubsection*{References}
 
-{[} {]}
-
-{[} List, Johann Mattis \& Cysouw, Michael \& Greenhill, Simon \&
+\nopagebreak\hangindent=0.7cm {\small  List, Johann Mattis \& Cysouw, Michael \& Greenhill, Simon \&
 Forkel, Robert (eds.) 2018. \emph{Concepticon} . Jena: Max Planck
 Institute for the Science of Human History. (Available online at
-\url{http://concepticon.clld.org} , Accessed on 2019-03-26.){]}
+\url{http://concepticon.clld.org} , Accessed on 2019-03-26.)}
 
 
 \vskip 2em
@@ -1970,8 +1982,8 @@ map concept lists}, in
 
 
 \newpage
-\section*{Using pyconcepticon to map concept lists (II)}
-\phantomsection\addcontentsline{toc}{section}{Using pyconcepticon to map concept lists (II) (Tiago Tresoldi)}
+\section*{Using pyconcepticon to map concept lists II}
+\phantomsection\addcontentsline{toc}{section}{Using pyconcepticon to map concept lists II (Tiago Tresoldi)}
 
 Tiago Tresoldi (08/04/2019)
 
@@ -2044,9 +2056,6 @@ $ head barasana.tsv
  abi     ɑˈbí    interj.     ¡ay!            ntg BARS,91 //Abi!// ‘Oh, how small!/Oh, what a small quantity!’, p39, 2.29. Exclamatory. //Abo!// ‘oh, how big!; oh, what a huge quantity!’ is an example of an exclamatory interjection. /o/ is used iconically for ‘bigness’ and /i/ is used for ‘smallness’. Thus, //Abi//! ‘oh, how small!; oh, what a small quantity!’ We have recorded over thirty exclamatory interjections, many of which are synonymous, and most of which begin with /a/. Some of these are listed in (118);
  aboo     ɑˈbóo   interj.     ¡ah!        va abuu , ph ɑˈbúúú ,   ntg BARS,91 //Abo!// ‘Oh, how big!/Oh, what a huge quantity!’, p.39, 2.29. Exclamatory. is an example of an exclamatory interjection. o is used iconically for ‘bigness’ and i is used for ‘smallness’. Thus, //Abi!// ‘oh, how small!; oh, what a small quantity!’ We have recorded over thirty exclamatory interjections, many of which are synonymous, and most of which begin with a. Some of these are listed in (118);
  abore         v.caus.dep.     ser.blando-CAUS-nS          ntg BARS,91 //abo// (soft.CAUS) p70, no311;
- abu     ˈɑ́bu   inan.s.de masa  alga        va aburi , uv E , vn J
- aburi     ɑ́ˈbúɾí     inan.s.de masa  alga        va abu , uv J , vn E
- áburi     ˈɑ́buɾi     inan.s.de masa  zumo; jugo de yuca brava (no venenoso)
 \end{lstlisting}
 
 No acceptable automatic mapping seems possible, which makes this one
@@ -2366,16 +2375,15 @@ $ head barasana-swadesh.tsv
 The entire source code here developed is available at \href{URL}{this
 GitHub Gist} .
 
-\hypertarget{references-2}{%
-\subsubsection*{References}\label{references-2}}
+\subsubsection*{References}
 
-{[} Barasana Literacy Committee, Paula S. Jones and Wendell H. Jones
+\nopagebreak\hangindent=0.7cm {\small  Barasana Literacy Committee, Paula S. Jones and Wendell H. Jones
 (compilers). 2009. \emph{Diccionario bilingüe: Eduria \&
 Barasana-Español, Español-Eduria \& Barasana} . Bogotá, D.C.: Editorial
-Fundación para el Desarrollo de los Pueblos Marginados. 613pp. {]}
+Fundación para el Desarrollo de los Pueblos Marginados. 613pp. }
 
-{[} Swadesh, M. (1955): Towards greater accuracy in lexicostatistic
-dating. International Journal of American Linguistics. 21.2. 121-137.{]}
+\nopagebreak\hangindent=0.7cm {\small  Swadesh, M. (1955): \emph{Towards greater accuracy in lexicostatistic
+dating. International Journal of American Linguistics}. 21.2. 121-137.}
 
 
 \vskip 2em
@@ -2405,8 +2413,7 @@ lexicostatistics
 One of the major efforts behind our recently published paper on the
 \href{https://www.pnas.org/content/early/2019/04/30/1817972116}{origin
 and spread of the Sino-Tibetan languages} (
-\href{http://bibliography.lingpy.org?key=Sagart2019}{Sagart et al.~2019}
-) was the creation of a database of lexical cognates which was used to
+\href{http://bibliography.lingpy.org?key=Sagart2019}{Sagart et al.~2019}) was the creation of a database of lexical cognates which was used to
 run the phylogenetic analyses. The creation of this database started
 about four years ago, when I joined the Centre des Recherches
 Linguistiques sur l'Asie Oriental in Paris as a research fellow in
@@ -2447,20 +2454,17 @@ in the end.
 In order to be prepared for what can happen, it would be ideal, if we
 had some kind of a guideline on how to create datesets of lexical
 cognates. Given large projects of datasets that were prominently used in
-the past, such as \href{https://abvd.shh.mpg.de}{ABVD} (
-\href{http://bibliography.lingpy.org?key=Greenhill2008}{Greenhill et al.
-2008} ), IELex ( \href{http://bibliography.lingpy.org?key=Dunn2012}{Dunn
-et al.~2012} ), or the datasets published as part of the
+the past, such as \href{https://abvd.shh.mpg.de}{ABVD} (\href{http://bibliography.lingpy.org?key=Greenhill2008}{Greenhill et al.
+2008}), IELex (\href{http://bibliography.lingpy.org?key=Dunn2012}{Dunn
+et al.~2012}), or the datasets published as part of the
 \href{http://starling.rinet.ru/new100/}{Global Lexicostatistical
-Database} project (
-\href{http://bibliography.lingpy.org?key=Starostin2011}{Starostin and
-Krylov 2011} ), one might even think that this problem has been
+Database} project (\href{http://bibliography.lingpy.org?key=Starostin2011}{Starostin and
+Krylov 2011}), one might even think that this problem has been
 discussed long enough, so that scholars who want to build a new database
 on their own should not have a hard time to find enough guidance on how
 to get started. Unfortunately, when going from theory to practice, our
 own experience in working with lexical data from different scholars as
-part of large data aggregation projects like CLICS² (
-\href{http://bibliography.lingpy.org?key=List2018f}{List et al. 2018} )
+part of large data aggregation projects like CLICS² (\href{http://bibliography.lingpy.org?key=List2018f}{List et al. 2018})
 has shown that this is usually not the case. While fieldworkers have
 their \href{https://software.sil.org/toolbox/}{toolbox} to create
 dictionaries, there is no equivalent for historical linguists working on
@@ -2474,14 +2478,13 @@ Lexical Cognates} underlying the study by
 \href{http://bibliography.lingpy.org?key=Sagart2019}{Sagart et
 al.~(2019)} does not solve these problems. We were making use of tools
 like \href{http://tsv.lingpy.org}{EDICTOR} (
-\href{http://bibliography.lingpy.org?key=List2017d}{List 2017} ), which
+\href{http://bibliography.lingpy.org?key=List2017d}{List 2017}), which
 facilitate the process of cognate coding and making alignments of the
 data, but in order to get the data in a first instance, we mostly relied
 on the fact that we had people (mostly also myself) in our team who
 could quickly prepare custom scripts to parse available data and extract
 the data we needed. We also profited much from the fact that some
-projects, especially \href{http://stedt.berkeley.edu/}{STEDT} (
-\href{http://bibliography.lingpy.org?key=Matisoff2015}{Matisoff 2015} ),
+projects, especially \href{http://stedt.berkeley.edu/}{STEDT} (\href{http://bibliography.lingpy.org?key=Matisoff2015}{Matisoff 2015}),
 but also \href{http://starling.rinet.ru/}{Tower of Babel} , had been
 digitizing large amounts of data in a rather regular form in the past.
 We were also lucky to have people in our team who have done original
@@ -2515,43 +2518,41 @@ make it easier to understand what was going on \emph{behind} the
 couple of blog posts in which we will explain how the data was
 assembled, curated, and analyzed.
 
-References
+\subsection*{References}
 
-{[} Dunn, Michael (2012): Indo-European lexical cognacy database
-(IELex). \href{//ielex.mpi.nl/”}{http://ielex.mpi.nl/} . {]}
+\nopagebreak\hangindent=0.7cm {\small  Dunn, Michael (2012): Indo-European lexical cognacy database
+(IELex). \href{//ielex.mpi.nl/”}{http://ielex.mpi.nl/} . }
 
-{[} Greenhill, Simon J. and Blust, Robert and Gray, Russell D. (2008):
+\nopagebreak\hangindent=0.7cm {\small  Greenhill, Simon J. and Blust, Robert and Gray, Russell D. (2008):
 The Austronesian Basic Vocabulary Database: From bioinformatics to
-lexomics. \emph{Evolutionary Bioinformatics} 4. 271-283. {]}
+lexomics. \emph{Evolutionary Bioinformatics} 4. 271-283. }
 
-{[} List, Johann-Mattis (2017): A web-based interactive tool for
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2017): A web-based interactive tool for
 creating, inspecting, editing, and publishing etymological datasets. In:
-Proceedings of the 15th Conference of the European Chapter of the
-Association for Computational Linguistics. System Demonstrations.
-9-12.{]}
+\emph{Proceedings of the 15th Conference of the European Chapter of the
+Association for Computational Linguistics}. System Demonstrations.
+9-12.}
 
-{[} List, Johann-Mattis and Simon Greenhill and Cormac Anderson and
-Thomas Mayer and Tiago Tresoldi and Robert Forkel (eds.) (2018): CLICS:
-Database of Cross-Linguistic Colexifications. Max Planck Institute for
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis and Simon Greenhill and Cormac Anderson and
+Thomas Mayer and Tiago Tresoldi and Robert Forkel (eds.) (2018): \emph{CLICS:
+Database of Cross-Linguistic Colexifications}. Max Planck Institute for
 the Science of Human History. Jena:
-\href{//clics.clld.org/”}{http://clics.clld.org/} .{]}
+\href{//clics.clld.org/”}{http://clics.clld.org/}.}
 
-{[} Matisoff, James A. (2015): The Sino-Tibetan Etymological Dictionary
-and Thesaurus project. Berkeley:University of California.{]}
+\nopagebreak\hangindent=0.7cm {\small  Matisoff, James A. (2015): \emph{The Sino-Tibetan Etymological Dictionary
+and Thesaurus project}. Berkeley: University of California.}
 
-{[} Sagart, Laurent and Jacques, Guillaume and Lai, Yunfan and Ryder,
+\nopagebreak\hangindent=0.7cm {\small  Sagart, Laurent and Jacques, Guillaume and Lai, Yunfan and Ryder,
 Robin and Thouzeau, Valentin and Greenhill, Simon J. and List,
 Johann-Mattis (2019): Dated language phylogenies shed light on the
 ancestry of Sino-Tibetan. \emph{Proceedings of the National Academy of
 Science of the United States of America} . 1-6. DOI:
-\href{https://doi.org/10.1073/pnas.1817972116}{10.1073/pnas.1817972116}\\
-{]}
+\href{https://doi.org/10.1073/pnas.1817972116}{10.1073/pnas.1817972116} }
 
-{[} Starostin, George S. and Krylov, Phil (eds.) (2011): The Global
+\nopagebreak\hangindent=0.7cm {\small  Starostin, George S. and Krylov, Phil (eds.) (2011): \emph{The Global
 Lexicostatistical Database. Compiling, clarifying, connecting basic
-vocabulary around the world: From free-form to tree-form.
-\href{//starling.rinet.ru/new100/main.htm”}{http://starling.rinet.ru/new100/main.htm}.
-{]}
+vocabulary around the world: From free-form to tree-form}.
+\href{//starling.rinet.ru/new100/main.htm”}{http://starling.rinet.ru/new100/main.htm}. }
 
 
 
@@ -2563,9 +2564,9 @@ Sino-Tibetan Database of Lexical Cognates: Introductory remarks}, in
 
 
 \newpage
-\section*{Biological metaphors and methods in historical linguistics (1):
+\section*{Biological metaphors and methods in historical linguistics I:
 Introduction}
-\phantomsection\addcontentsline{toc}{section}{Biological metaphors and methods in historical linguistics (1):
+\phantomsection\addcontentsline{toc}{section}{Biological metaphors and methods in historical linguistics I:
 Introduction (Nathanael E. Schweikhard)}
 
 Nathanael E. Schweikhard  (15/05/2019)
@@ -2643,52 +2644,51 @@ objects of biology and linguistics and what needs to be taken into
 account when using methods from evolutionary biology to tackle problems
 in historical linguistics.
 
-\hypertarget{references-3}{%
-\subsubsection*{References}\label{references-3}}
+\subsubsection*{References}
 
-{[} Atkinson, Quentin D., and Russell D. Gray. 2005. \enquote{Curious
+\nopagebreak\hangindent=0.7cm {\small  Atkinson, Quentin D., and Russell D. Gray. 2005. \enquote{Curious
 Parallels and Curious Connections: Phylogenetic Thinking in Biology and
 Historical Linguistics.} \emph{Systematic Biology} 54 (4): 513--26.
-\url{http://www.jstor.org/stable/20061257} . {]}
+\url{http://www.jstor.org/stable/20061257}. }
 
-{[} Geisler, H., and J.-M. List. 2013. \enquote{Do Languages Grow on
+\nopagebreak\hangindent=0.7cm {\small  Geisler, H., and J.-M. List. 2013. \enquote{Do Languages Grow on
 Trees? The Tree Metaphor in the History of Linguistics.} In
 \emph{Classification and Evolution in Biology, Linguistics and the
 History of Science. Concepts-- Methods -- Visualization} , edited by
 Heiner Fangerau, Hans Geisler, Thorsten Halling, and William Martin,
-111--24. Stuttgart: Franz Steiner Verlag. {]}
+111--24. Stuttgart: Franz Steiner Verlag.}
 
-{[} Gray, Russell D., Simon J. Greenhill, and Malcolm D. Ross. 2007.
+\nopagebreak\hangindent=0.7cm {\small  Gray, Russell D., Simon J. Greenhill, and Malcolm D. Ross. 2007.
 \enquote{The Pleasures and Perils of Darwinzing Culture (with
-Phylogenies).} \emph{Biological Theory} 2 (4): 360--75. {]}
+Phylogenies).} \emph{Biological Theory} 2 (4): 360--75. }
 
-{[} List, Johann-Mattis, Jananan Sylvestre Pathmanathan, Philippe Lopez,
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis, Jananan Sylvestre Pathmanathan, Philippe Lopez,
 and Eric Bapteste. 2016. \enquote{Unity and Disunity in Evolutionary
 Sciences: Process-Based Analogies Open Common Research Avenues for
-Biology and Linguistics.} \emph{Biology Direct} , nos. 39, 11: 1--17.{]}
+Biology and Linguistics.} \emph{Biology Direct} , nos. 39, 11: 1--17.}
 
-{[} Meyer-Lübke, Wilhelm. 1890. \emph{Italienische Grammatik} . Leipzig:
-Verlag von O. R. Reisland. {]}
+\nopagebreak\hangindent=0.7cm {\small  Meyer-Lübke, Wilhelm. 1890. \emph{Italienische Grammatik} . Leipzig:
+Verlag von O. R. Reisland. }
 
-{[} Pagel, Mark. 2016. \enquote{Darwinian Perspectives on the Evolution
+\nopagebreak\hangindent=0.7cm {\small  Pagel, Mark. 2016. \enquote{Darwinian Perspectives on the Evolution
 of Human Languages.} \emph{Psychonomic Bulletin \& Review} , 1--7.
-\url{https://doi.org/10.3758/s13423-016-1072-z} . {]}
+\url{https://doi.org/10.3758/s13423-016-1072-z} . }
 
-{[} Schleicher, August. 1863. {]} {[} \emph{Die darwinsche Theorie und
-die Sprachwissenschaft} . Weimar: Hermann Böhlau.{]}
+\nopagebreak\hangindent=0.7cm {\small  Schleicher, August. 1863. {]} {[} \emph{Die darwinsche Theorie und
+die Sprachwissenschaft} . Weimar: Hermann Böhlau.}
 
-{[} Stevick, Robert D. 1963. \enquote{The Biological Model and
+\nopagebreak\hangindent=0.7cm {\small  Stevick, Robert D. 1963. \enquote{The Biological Model and
 Historical Linguistics.} \emph{Language} , nos. 2, 39: 159--69.
-\url{https://www.jstor.org/stable/411199} . {]}
+\url{https://www.jstor.org/stable/411199}.}
 
-{[} Wells, Rulon S. 1987. \enquote{The Life and Growth of Language:
+\nopagebreak\hangindent=0.7cm {\small  Wells, Rulon S. 1987. \enquote{The Life and Growth of Language:
 Metaphors in Biology and Linguistics.} In \emph{Biological Metaphor and
 Cladistic Classification: An Interdisciplinary Perspective; {[}Papers
 from Symposium on Biological Metaphor Outside Biology (1982.03.04-05,
 Philadelphia) Interdisciplinary Round-Table on Cladistics and Other
 Graph Theoretical Representations (1983.04.28-29, Philadelphia){]}} ,
 edited by Henry Max Hoenigswald, 39--80. Philadelphia: Univ. of
-Pennsylvania Pr. {]}
+Pennsylvania Pr.}
 
 
 
@@ -2912,30 +2912,29 @@ phylogenetic linguistics.}
 are available at
 \url{https://github.com/gerhardJaeger/competititiveRooting.git} .}
 
-\hypertarget{references-4}{%
-\subsubsection*{References}\label{references-4}}
+\subsubsection*{References}
 
-{[} Jäger, G. (2018): Global-scale phylogenetic linguistic inference
-from lexical resources, Scientific Data 5, 180189. URL:
-https://doi.org/10.1038/sdata.2018.189 {]}
+\nopagebreak\hangindent=0.7cm {\small  Jäger, G. (2018): Global-scale phylogenetic linguistic inference
+from lexical resources, \emph{Scientific Data} 5, 180189. URL:
+https://doi.org/10.1038/sdata.2018.189 }
 
-{[} Kümmel Tria, F. D., Landan, G., and T. Dagan (2017): Phylogenetic
-rooting using minimal ancestor deviation. Nature Ecology and Evolution.
-URL: http://dx.doi.org/10.1038/s41559-017-0193{]}
+\nopagebreak\hangindent=0.7cm {\small  Kümmel Tria, F. D., Landan, G., and T. Dagan (2017): Phylogenetic
+rooting using minimal ancestor deviation. \emph{Nature Ecology and Evolution}.
+URL: http://dx.doi.org/10.1038/s41559-017-0193}
 
-{[} Pompei, S., Loreto, V., \& Kümmel Tria, F. D. (2011): On the
-accuracy of language trees. \emph{PloS one} , \emph{6} (6), e20109.{]}
+\nopagebreak\hangindent=0.7cm {\small  Pompei, S., Loreto, V., \& Kümmel Tria, F. D. (2011): On the
+accuracy of language trees. \emph{PloS one} , \emph{6} (6), e20109.}
 
-{[} Steel, M., \& McKenzie, A. (2001): Properties of phylogenetic trees
+\nopagebreak\hangindent=0.7cm {\small  Steel, M., \& McKenzie, A. (2001): Properties of phylogenetic trees
 generated by Yule-type speciation models. \emph{Mathematical
-biosciences} , \emph{170} (1), 91-112. {]}
+biosciences} , \emph{170} (1), 91-112. }
 
-{[} Sand et al.~(2014): tqDist: a library for computing the quartet and
-triplet distances between binary or general trees, Bioinformatics,
-30.14, 2079--2080. {]}
+\nopagebreak\hangindent=0.7cm {\small  Sand et al.~(2014): tqDist: a library for computing the quartet and
+triplet distances between binary or general trees, \emph{Bioinformatics},
+30.14, 2079--2080.}
 
-{[} Wichmann, Søren, Eric W. Holman, and Cecil H. Brown, eds., 2016. The
-ASJP Database, version 17. URL: https://asjp.clld.org{]}
+\nopagebreak\hangindent=0.7cm {\small  Wichmann, Søren, Eric W. Holman, and Cecil H. Brown, eds., 2016. \emph{The
+ASJP Database}, version 17. URL: https://asjp.clld.org}
 
 
 \vskip 2em
@@ -2964,17 +2963,16 @@ One of the crucial steps in creating a database of lexical cognates is
 the selection of concepts one wants to use for a given study. While many
 scholars use the classical
 \href{https://concepticon.clld.org/contributions/Swadesh-1952-200}{Swadesh
-list of 200 items} ) (
-\href{http://bibliography.lingpy.org?key=Swadesh1952}{Swadesh 1952} )
+list of 200 items}) (\href{http://bibliography.lingpy.org?key=Swadesh1952}{Swadesh 1952})
 for this purpose, or the combined
 \href{https://concepticon.clld.org/contributions/Comrie-1977-207}{list
-of 207 items} , in which the former has been merged with Swadesh's
+of 207 items}, in which the former has been merged with Swadesh's
 updated list of
 \href{https://concepticon.clld.org/paramters/Swadesh-1955-100}{100
-items} ( \href{http://bibliography.lingpy.org?key=Swadesh1955}{Swadesh
-1955} ), and which is often mistakenly attributed to Swadesh himself,
+items} (\href{http://bibliography.lingpy.org?key=Swadesh1955}{Swadesh
+1955}), and which is often mistakenly attributed to Swadesh himself,
 although the first official reference seems to be
-\href{http://bibliography.lingpy.org?key=Comrie1977}{Comrie (1977)} , it
+\href{http://bibliography.lingpy.org?key=Comrie1977}{Comrie (1977)}, it
 is useful to give the selection of concepts some more thought initially.
 
 What scholars underestimate usually in this context is that there are
@@ -3102,66 +3100,64 @@ data, and the two concept lists, which I have all uploaded to
 \href{https://gist.github.com/LinguList/fa93b0829fede0d6cbb01f4ca5f5b864}{this
 GitHub Gist}.
 
-\hypertarget{references-5}{%
-\subsubsection*{References}\label{references-5}}
+\subsubsection*{References}
 
-{[} Bodt, Timotheus A. and List, Johann-Mattis (2019): Testing the
+\nopagebreak\hangindent=0.7cm {\small  Bodt, Timotheus A. and List, Johann-Mattis (2019): Testing the
 predictive strength of the comparative method: An ongoing experiment on
-unattested words in Western Kho-Bwa langauges. Papers in Historical
-Phonology 4.1. 22-44. {]}
+unattested words in Western Kho-Bwa langauges. \emph{Papers in Historical
+Phonology} 4.1. 22-44. }
 
-{[} Comrie, Bernard and Smith, Norval (1977): Lingua Descriptive Series:
-Questionnaire. Lingua 42. 1-72. {]}
+\nopagebreak\hangindent=0.7cm {\small  Comrie, Bernard and Smith, Norval (1977): Lingua Descriptive Series:
+Questionnaire. \emph{Lingua} 42. 1-72. }
 
-{[} Dolgopolsky, Aron B. (1964): Gipoteza drevnejšego rodstva jazykovych
+\nopagebreak\hangindent=0.7cm {\small  Dolgopolsky, Aron B. (1964): Gipoteza drevnejšego rodstva jazykovych
 semej Severnoj Evrazii s verojatnostej točky zrenija {[}A probabilistic
 hypothesis concering the oldest relationships among the language
-families of Northern Eurasia{]}. Voprosy Jazykoznanija 2. 53-63.{]}
+families of Northern Eurasia{]}. Voprosy Jazykoznanija 2. 53-63.}
 
-{[} Forkel, Robert and List, Johann-Mattis and Greenhill, Simon J. and
+\nopagebreak\hangindent=0.7cm {\small  Forkel, Robert and List, Johann-Mattis and Greenhill, Simon J. and
 Rzymski, Christoph and Bank, Sebastian and Cysouw, Michael and
 Hammarström, Harald and Haspelmath, Martin and Kaiping, Gereon A. and
 Gray, Russell D. (2018): Cross-Linguistic Data Formats, advancing data
-sharing and re-use in comparative linguistics. Scientific Data 5.180205.
-1-10. {]}
+sharing and re-use in comparative linguistics. \emph{Scientific Data} 5.180205.
+1-10.}
 
-{[} List, Johann-Mattis and Cysouw, Michael and Forkel, Robert (2016):
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis and Cysouw, Michael and Forkel, Robert (2016):
 Concepticon. A resource for the linking of concept lists. In:
-Proceedings of the Tenth International Conference on Language Resources
-and Evaluation. 2393-2400. {]}
+\emph{Proceedings of the Tenth International Conference on Language Resources
+and Evaluation}. 2393-2400.}
 
-{[} List, Johann-Mattis (2017): Historical Language Comparison with
-LingPy and EDICTOR {[}Historischer Sprachvergleich mit LingPy und
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2017): \emph{Historical Language Comparison with
+LingPy and EDICTOR} {[}Historischer Sprachvergleich mit LingPy und
 EDICTOR{]}. Department of Linguistic and Cultural Evolution: Max-Planck
-Institute for the Science of Human History. {]}
+Institute for the Science of Human History.}
 
-{[} List, Johann-Mattis and Walworth, Mary and Greenhill, Simon J. and
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis and Walworth, Mary and Greenhill, Simon J. and
 Tresoldi, Tiago and Forkel, Robert (2018): Sequence comparison in
-computational historical linguistics. Journal of Language Evolution 3.2.
-130--144. {]}
+computational historical linguistics. \emph{Journal of Language Evolution} 3.2.
+130--144. }
 
-{[} List, Johann-Mattis (2018): Towards a history of concept list
-compilation in historical linguistics. History and Philosophy of the
-Language Sciences 5.10. 1-14. {]}
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2018): Towards a history of concept list
+compilation in historical linguistics. \emph{History and Philosophy of the
+Language Sciences} 5.10. 1-14. }
 
-{[} Matisoff, James A. (2015): The Sino-Tibetan Etymological Dictionary
-and Thesaurus project. Berkeley:University of California.{]}
+\nopagebreak\hangindent=0.7cm {\small  Matisoff, James A. (2015): \emph{The Sino-Tibetan Etymological Dictionary
+and Thesaurus project}. Berkeley:University of California.}
 
-{[} Sagart, Laurent and Jacques, Guillaume and Lai, Yunfan and Ryder,
+\nopagebreak\hangindent=0.7cm {\small  Sagart, Laurent and Jacques, Guillaume and Lai, Yunfan and Ryder,
 Robin and Thouzeau, Valentin and Greenhill, Simon J. and List,
 Johann-Mattis (2019): Dated language phylogenies shed light on the
-ancestry of Sino-Tibetan. Proceedings of the National Academy of Science
-of the United States of America 116. 10317--10322. DOI:
-\href{https://doi.org/10.1073/pnas.1817972116}{10.1073/pnas.1817972116}\\
-{]}
+ancestry of Sino-Tibetan. \emph{Proceedings of the National Academy of Science
+of the United States of America} 116. 10317--10322. DOI:
+\href{https://doi.org/10.1073/pnas.1817972116}{10.1073/pnas.1817972116} }
 
-{[} Swadesh, Morris (1952): Lexico-statistic dating of prehistoric
+\nopagebreak\hangindent=0.7cm {\small  Swadesh, Morris (1952): Lexico-statistic dating of prehistoric
 ethnic contacts. With special reference to North American Indians and
-Eskimos. Proceedings of the American Philosophical Society 96.4.
-452-463.{]}
+Eskimos. \emph{Proceedings of the American Philosophical Society} 96.4.
+452-463.}
 
-{[} Swadesh, Morris (1955): Towards greater accuracy in lexicostatistic
-dating. International Journal of American Linguistics 21.2. 121-137.{]}
+\nopagebreak\hangindent=0.7cm {\small  Swadesh, Morris (1955): \emph{Towards greater accuracy in lexicostatistic
+dating}. International Journal of American Linguistics 21.2. 121-137.}
 
 
 \vskip 2em
@@ -3424,30 +3420,29 @@ of comparative linguistics. Code and patch are available in form of a
 GitHub Gist, which you can download from
 \href{https://gist.github.com/LinguList/8189f06f231909fbf1d1eed30998bd83}{here}.
 
-\hypertarget{references-6}{%
-\subsubsection*{References}\label{references-6}}
+\subsubsection*{References}
 
-{[} Downey, Sean S. and Hallmark, Brian and Cox, Murray P. and Norquest,
+\nopagebreak\hangindent=0.7cm {\small  Downey, Sean S. and Hallmark, Brian and Cox, Murray P. and Norquest,
 Peter and Lansing, Stephen (2008): Computational feature-sensitive
 reconstruction of language relationships: developing the ALINE distance
 for comparative historical linguistic reconstruction. \emph{Journal of
-Quantitative Linguistics} 15.4. 340-369. {]}
+Quantitative Linguistics} 15.4. 340-369. }
 
-{[} List, Johann-Mattis (2014): Sequence comparison in historical
-linguistics. Düsseldorf:Düsseldorf University Press.{]}
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2014): \emph{Sequence comparison in historical
+linguistics}. Düsseldorf:Düsseldorf University Press.}
 
-{[} List, Johann-Mattis and Greenhill, Simon and Tresoldi, Tiago and
-Forkel, Robert (2018): LingPy. A Python library for quantitative tasks
-in historical linguistics. Max Planck Institute for the Science of Human
-History. Jena: \href{//lingpy.org”}{http://lingpy.org} .{]}
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis and Greenhill, Simon and Tresoldi, Tiago and
+Forkel, Robert (2018): \emph{LingPy. A Python library for quantitative tasks
+in historical linguistics}. Max Planck Institute for the Science of Human
+History. Jena: \href{//lingpy.org”}{http://lingpy.org} .}
 
-{[} Smith, T. F. and Waterman, M. S. (1981): Identification of common
+\nopagebreak\hangindent=0.7cm {\small  Smith, T. F. and Waterman, M. S. (1981): Identification of common
 molecular subsequences. \emph{Journal of Molecular Biology} 1.
-195-197.{]}
+195-197.}
 
-{[} Waterman, M. S. and Eggert, M. (1987): A new algorithm for best
+\nopagebreak\hangindent=0.7cm {\small  Waterman, M. S. and Eggert, M. (1987): A new algorithm for best
 subsequence alignments with application to tRNA-rRNA comparisons.
-\emph{Journal of Molecular Biology} 197. 723-728. {]}
+\emph{Journal of Molecular Biology} 197. 723-728. }
 
 
 \vskip 2em
@@ -3903,43 +3898,41 @@ not allow for a differential weighting of features and feature values,
 it yields the same similarity of 0.96, since both sounds differ in one
 out of 24 features.
 
-References
+\subsection*{References}
 
-{[} Anderson, Cormac and Tresoldi, Tiago and Chacon, Thiago Costa and
+\nopagebreak\hangindent=0.7cm {\small  Anderson, Cormac and Tresoldi, Tiago and Chacon, Thiago Costa and
 Fehn, Anne-Maria and Walworth, Mary and Forkel, Robert and List,
 Johann-Mattis (2018): A Cross-Linguistic Database of Phonetic
 Transcription Systems. \emph{Yearbook of the Poznań Linguistic Meeting}
-4.1. 21-53. {]}
+4.1. 21-53. }
 
-{[} Chomsky, Noam and Halle, Morris (1968): The sound pattern of
-English. New York and Evanston and London:Harper and Row.{]}
+\nopagebreak\hangindent=0.7cm {\small  Chomsky, Noam and Halle, Morris (1968): \emph{The sound pattern of
+English}. New York and Evanston and London: Harper and Row.}
 
-{[} Hamming, Richard W. (1950): Error detection and error detection
-codes. \emph{Bell System Technical Journal} 29.2. 147--160.{]}
+\nopagebreak\hangindent=0.7cm {\small  Hamming, Richard W. (1950): Error detection and error detection
+codes. \emph{Bell System Technical Journal} 29.2. 147--160.}
 
-{[} (1999): . Cambridge:Cambridge University Press.{]}
-
-{[} Jäger, Gerhard (2015): Support for linguistic macrofamilies from
+\nopagebreak\hangindent=0.7cm {\small  Jäger, Gerhard (2015): Support for linguistic macrofamilies from
 weighted alignment. \emph{Proceedings of the National Academy of
-Sciences} 112.41. 12752--12757. {]}
+Sciences} 112.41. 12752--12757. }
 
-{[} List, Johann-Mattis (2014): Sequence comparison in historical
-linguistics. Düsseldorf:Düsseldorf University Press.{]}
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2014): \emph{Sequence comparison in historical
+linguistics}. Düsseldorf: Düsseldorf University Press.}
 
-{[} List, Johann-Mattis (2017): Historical Language Comparison with
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2017): Historical Language Comparison with
 LingPy and EDICTOR {[}Historischer Sprachvergleich mit LingPy und
 EDICTOR{]}. Department of Linguistic and Cultural Evolution: Max-Planck
-Institute for the Science of Human History. {]}
+Institute for the Science of Human History. }
 
-{[} Steven Moran and Daniel McCloy and Richard Wright (eds.) (2014):
-PHOIBLE Online. Max Planck Institute for Evolutionary Anthropology.
-Leipzig: \href{//phoible.org/”}{http://phoible.org/} .{]}
+\nopagebreak\hangindent=0.7cm {\small  Steven Moran and Daniel McCloy and Richard Wright (eds.) (2014):
+\emph{PHOIBLE Online}. Max Planck Institute for Evolutionary Anthropology.
+Leipzig: \href{//phoible.org/”}{http://phoible.org/} .}
 
-{[} Moran, Steven and Cysouw, Michael (2018): The Unicode Cookbook for
-Linguists: Managing writing systems using orthography profiles.
-Berlin:Language Science Press. {]}
+\nopagebreak\hangindent=0.7cm {\small  Moran, Steven and Cysouw, Michael (2018): \emph{The Unicode Cookbook for
+Linguists: Managing writing systems using orthography profiles}.
+Berlin:Language Science Press. }
 
-Supplementary Information-------------------------
+\subsection*{Supplementary Information}
 
 The code demonstrated here can be found on this
 \href{https://gist.github.com/LinguList/7fac44813572f65259c872ef89fa64ad}{GitHub
@@ -4132,59 +4125,58 @@ accompanying this post is again available in form of a
 \href{https://gist.github.com/LinguList/ce6da48112018365bccb94bcbec891b1}{GitHub
 Gist} repository.
 
-References
+\subsection*{References}
 
-{[} List, Johann-Mattis and Anderson, Cormac and Tresoldi, Tiago and
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis and Anderson, Cormac and Tresoldi, Tiago and
 Rzymski, Christoph and Greenhill, Simon and Forkel, Robert (2019):
-Cross-Linguistic Transcription Systems. Jena:Max Planck Institute for
-the Science of Human History. {]}
+\emph{Cross-Linguistic Transcription Systems}. Jena:Max Planck Institute for
+the Science of Human History. }
 
-{[} Covington, Michael A. (1996): An algorithm to align words for
+\nopagebreak\hangindent=0.7cm {\small  Covington, Michael A. (1996): An algorithm to align words for
 historical comparison. \emph{Computational Linguistics} 22.4.
-481-496.{]}
+481-496.}
 
-{[} Forkel, Robert and List, Johann-Mattis and Greenhill, Simon J. and
+\nopagebreak\hangindent=0.7cm {\small  Forkel, Robert and List, Johann-Mattis and Greenhill, Simon J. and
 Rzymski, Christoph and Bank, Sebastian and Cysouw, Michael and
 Hammarström, Harald and Haspelmath, Martin and Kaiping, Gereon A. and
 Gray, Russell D. (2018): Cross-Linguistic Data Formats, advancing data
 sharing and re-use in comparative linguistics. \emph{Scientific Data}
-5.180205. 1-10. {]}
+5.180205. 1-10. }
 
-{[} Kondrak, Grzegorz (2000): A new algorithm for the alignment of
-phonetic sequences. In: Proceedings of the 1st North American chapter of
-the Association for Computational Linguistics conference. 288-295.{]}
+\nopagebreak\hangindent=0.7cm {\small  Kondrak, Grzegorz (2000): A new algorithm for the alignment of
+phonetic sequences. In: \emph{Proceedings of the 1st North American chapter of
+the Association for Computational Linguistics conference}. 288-295.}
 
-{[} List, Johann-Mattis and Greenhill, Simon and Tresoldi, Tiago and
-Forkel, Robert (2018): LingPy. A Python library for quantitative tasks
-in historical linguistics. Version 2.6.4. Max Planck Institute for the
-Science of Human History. Jena: \href{//lingpy.org”}{http://lingpy.org}
-.{]}
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis and Greenhill, Simon and Tresoldi, Tiago and
+Forkel, Robert (2018): \emph{LingPy. A Python library for quantitative tasks
+in historical linguistics}. Version 2.6.4. Max Planck Institute for the
+Science of Human History. Jena: \href{//lingpy.org”}{http://lingpy.org}.}
 
-{[} List, Johann-Mattis (2014): Sequence comparison in historical
-linguistics. Düsseldorf:Düsseldorf University Press.{]}
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2014): \emph{Sequence comparison in historical
+linguistics}. Düsseldorf:Düsseldorf University Press.}
 
-{[} List, J.-M. and Prokić, Jel (2014): A benchmark database of phonetic
-alignments in historical linguistics and dialectology. In: Proceedings
+\nopagebreak\hangindent=0.7cm {\small  List, J.-M. and Prokić, Jel (2014): A benchmark database of phonetic
+alignments in historical linguistics and dialectology. In: \emph{Proceedings
 of the Ninth International Conference on Language Resources and
-Evaluation. 288-294. {]}
+Evaluation}. 288-294. }
 
-{[} List, Johann-Mattis (2017): A web-based interactive tool for
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis (2017): A web-based interactive tool for
 creating, inspecting, editing, and publishing etymological datasets. In:
 Proceedings of the 15th Conference of the European Chapter of the
-Association for Computational Linguistics. System Demonstrations.
-9-12.{]}
+Association for Computational Linguistics. \emph{System Demonstrations}.
+9-12.}
 
-{[} Moran, Steven and Cysouw, Michael (2018): The Unicode Cookbook for
-Linguists: Managing writing systems using orthography profiles.
-Berlin:Language Science Press. {]}
+\nopagebreak\hangindent=0.7cm {\small  Moran, Steven and Cysouw, Michael (2018): \emph{The Unicode Cookbook for
+Linguists: Managing writing systems using orthography profiles}.
+Berlin:Language Science Press. }
 
-{[} Needleman, Saul B. and Wunsch, Christan D. (1970): A gene method
+\nopagebreak\hangindent=0.7cm {\small  Needleman, Saul B. and Wunsch, Christan D. (1970): A gene method
 applicable to the search for similarities in the amino acid sequence of
-two proteins. \emph{Journal of Molecular Biology} 48. 443-453.{]}
+two proteins. \emph{Journal of Molecular Biology} 48. 443-453.}
 
-{[} Smith, T. F. and Waterman, M. S. (1981): Identification of common
+\nopagebreak\hangindent=0.7cm {\small  Smith, T. F. and Waterman, M. S. (1981): Identification of common
 molecular subsequences. \emph{Journal of Molecular Biology} 1.
-195-197.{]}
+195-197.}
 
 
 
@@ -4300,57 +4292,55 @@ thinking about these metaphors can support finding potential methods to
 adopt, also by pointing out which approaches one takes for granted in
 one's own field but which might be handled differently in another.
 
-\hypertarget{references-7}{%
-\subsubsection*{References}\label{references-7}}
+\subsubsection*{References}
 
-{[} Gévaudan, Paul. 2007. \emph{Typologie} \emph{d} \emph{es} \emph{l}
-\emph{exikalischen Wandels: Bedeutungswandel, Wortbildung} \emph{u}
-\emph{nd Entlehnung} \emph{a} \emph{m Beispiel} \emph{d} \emph{er}
-\emph{r} \emph{omanischen Sprachen} . Stauffenburg-Linguistik ; 45.
-Tübingen: Stauffenburg. {]}
+\nopagebreak\hangindent=0.7cm {\small  Gévaudan, Paul. 2007. \emph{Typologie des
+lexikalischen Wandels: Bedeutungswandel, Wortbildung und Entlehnung
+am Beispiel der romanischen Sprachen}. Stauffenburg-Linguistik ; 45.
+Tübingen: Stauffenburg. }
 
-{[} Gray, Russell D., Simon J. Greenhill, and Malcolm D. Ross. 2007.
+\nopagebreak\hangindent=0.7cm {\small  Gray, Russell D., Simon J. Greenhill, and Malcolm D. Ross. 2007.
 \enquote{The Pleasures and Perils of Darwinzing Culture (with
-Phylogenies).} \emph{Biological Theory} 2 (4): 360--75. {]}
+Phylogenies).} \emph{Biological Theory} 2 (4): 360--75. }
 
-{[} Hruschka, D. J., S. Branford, E. D. Smith, J. Wilkins, A. Meade, M.
+\nopagebreak\hangindent=0.7cm {\small  Hruschka, D. J., S. Branford, E. D. Smith, J. Wilkins, A. Meade, M.
 Pagel, and T. Bhattacharya. 2015. \enquote{Detecting Regular Sound
 Changes in Linguistics as Events of Concerted Evolution.} \emph{Current
-Biology} 25 (1): 1--9. {]}
+Biology} 25 (1): 1--9.}
 
-{[} Keller, Daniela Barbara, and Jörg Schultz. 2014. \enquote{Word
-Formation Is Aware of Morpheme Family Size.} \emph{PLoS ONE} . {]}
+\nopagebreak\hangindent=0.7cm {\small  Keller, Daniela Barbara, and Jörg Schultz. 2014. \enquote{Word
+Formation Is Aware of Morpheme Family Size.} \emph{PLoS ONE} . }
 
-{[} Koonin, Eugene V. 2005. \enquote{Orthologs, Paralogs, and
+\nopagebreak\hangindent=0.7cm {\small  Koonin, Eugene V. 2005. \enquote{Orthologs, Paralogs, and
 Evolutionary Genomics.} \emph{Annual Review of Genetics} 39: 309--38.
 \href{https://doi.org/10.1146/annurev.genet.39.073003.114725}{https://doi.org/
-{[} 10.1146/annurev.genet.39.073003.114725 {]}}. {]}
+{[} 10.1146/annurev.genet.39.073003.114725 {]}} }
 
-{[} Labov, William. 1981. \enquote{Resolving the Neogrammarian
-Controversy.} Language 57(2): 267--308. JSTOR: 413692. {]}
+\nopagebreak\hangindent=0.7cm {\small  Labov, William. 1981. \enquote{Resolving the Neogrammarian
+Controversy.} Language 57(2): 267--308. JSTOR: 413692. }
 
-{[} List, Johann-Mattis, Jananan Sylvestre Pathmanathan, Philippe Lopez,
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis, Jananan Sylvestre Pathmanathan, Philippe Lopez,
 and Eric Bapteste. 2016. \enquote{Unity and Disunity in Evolutionary
 Sciences: Process-Based Analogies Open Common Research Avenues for
-Biology and Linguistics.} \emph{Biology Direct} 11 (39): 1--17.{]}
+Biology and Linguistics.} \emph{Biology Direct} 11 (39): 1--17.}
 
-{[} Morrison, David A. 2014. \enquote{Are Phylogenetic Patterns the Same
+\nopagebreak\hangindent=0.7cm {\small  Morrison, David A. 2014. \enquote{Are Phylogenetic Patterns the Same
 in Anthropology and Biology?} \emph{bioRxiv} .
-\url{https://doi.org/10.1101/006486}. {]}
+\url{https://doi.org/10.1101/006486}. }
 
-{[} Nakhleh, Luay. 2013. \enquote{Computational Approaches to Species
+\nopagebreak\hangindent=0.7cm {\small  Nakhleh, Luay. 2013. \enquote{Computational Approaches to Species
 Phylogeny Inference and Gene Tree Reconciliation.} \emph{Trends in
-Ecology and Evolution} 28 (12): 719--28. {]}
+Ecology and Evolution} 28 (12): 719--28. }
 
-{[} Pagel, Mark. 2009. \enquote{Human Language as a Culturally
-Transmitted Replicator.} \emph{Nature Reviews. Genetics} 10: 405--15.{]}
+\nopagebreak\hangindent=0.7cm {\small  Pagel, Mark. 2009. \enquote{Human Language as a Culturally
+Transmitted Replicator.} \emph{Nature Reviews. Genetics} 10: 405--15.}
 
-{[} Stevick, Robert D. 1963. \enquote{The Biological Model and
+\nopagebreak\hangindent=0.7cm {\small  Stevick, Robert D. 1963. \enquote{The Biological Model and
 Historical Linguistics.} \emph{Language} 39 (2): 159--69.
-\url{https://www.jstor.org/stable/411199} . {]}
+\url{https://www.jstor.org/stable/411199}.}
 
-{[} Trask, Robert L. 2007. \emph{Language and Linguistics: The Key
-Concepts.} Abingdon: Routledge. {]}
+\nopagebreak\hangindent=0.7cm {\small  Trask, Robert L. 2007. \emph{Language and Linguistics: The Key
+Concepts.} Abingdon: Routledge.}
 
 
 \vskip 2em
@@ -4526,66 +4516,66 @@ better data, perhaps combining the different approaches to
 \enquote{semantic distance} mentioned above, and which likewise would
 not need to be restricted within the boundaries of a single publication.
 
-References
+\subsection*{References}
 
-{[} Blank, Andreas. 1999. \enquote{Why do new meanings occur? A
+\nopagebreak\hangindent=0.7cm {\small  Blank, Andreas. 1999. \enquote{Why do new meanings occur? A
 cognitive typology of the motivations for lexical semantic change} in
 Blank, Andreas; Koch, Peter (eds.), \emph{Historical Semantics and
-Cognition} . Berlin/New York: Mouton de Gruyter, pp.~61-90. {]}
+Cognition} . Berlin/New York: Mouton de Gruyter, pp.~61-90. }
 
-{[} Bloomfield, Leonard. 1933. \emph{Language} . New York: Allen \&
-Unwin.{]}
+\nopagebreak\hangindent=0.7cm {\small  Bloomfield, Leonard. 1933. \emph{Language} . New York: Allen \&
+Unwin.}
 
-{[} Dijkstra, Edsger W. 1959. \enquote{A note on two problems in
+\nopagebreak\hangindent=0.7cm {\small  Dijkstra, Edsger W. 1959. \enquote{A note on two problems in
 connexion with graphs.} \emph{Numerische mathematik} 1, no. 1:
-269-271.{]}
+269-271.}
 
-{[} Forkel, Robert; List, Johann-Mattis; Greenhill, Simon J.; Rzymski,
+\nopagebreak\hangindent=0.7cm {\small  Forkel, Robert; List, Johann-Mattis; Greenhill, Simon J.; Rzymski,
 Christoph; Bank, Sebastian; Cysouw, Michael; ammarström, Harald;
 Haspelmath, Martin; Kaiping, Gereon A.; and Gray, Russell D. 2018.
 \enquote{Cross-Linguistic Data Formats, advancing data sharing and
-re-use in comparative linguistics.} \emph{Scientific data} 5.{]}
+re-use in comparative linguistics.} \emph{Scientific data} 5.}
 
-{[} List, Johann Mattis; Greenhill, Simon J.; Rzymski, Christoph;
+\nopagebreak\hangindent=0.7cm {\small  List, Johann Mattis; Greenhill, Simon J.; Rzymski, Christoph;
 Schweikhard, Nathanael; Forkel, Robert (eds.). 2019. Concepticon 2.1.0.
 Jena: Max Planck Institute for the Science of Human History. (Available
-online at http://concepticon.clld.org, Accessed on 2019-10-28.){]}
+online at http://concepticon.clld.org, Accessed on 2019-10-28.)}
 
-{[} Nissim, Malvina; van Noord, Rik; van der Goot, Rob. 2019. \emph{Fair
+\nopagebreak\hangindent=0.7cm {\small  Nissim, Malvina; van Noord, Rik; van der Goot, Rob. 2019. \emph{Fair
 is Better than Sensational:Man is to Doctor as Woman is to Doctor} .
-arXiv:1905.09866 {]}
+arXiv:1905.09866 }
 
-{[} Princeton University \enquote{About WordNet.} \emph{WordNet} .
-Princeton University. 2010. {]}
+\nopagebreak\hangindent=0.7cm {\small  Princeton University \enquote{About WordNet.} \emph{WordNet} .
+Princeton University. 2010. }
 
-{[} Rosvall, Martin; Axelsson, Daniel; and Bergstrom, Carl T. 2009.
+\nopagebreak\hangindent=0.7cm {\small  Rosvall, Martin; Axelsson, Daniel; and Bergstrom, Carl T. 2009.
 \enquote{The map equation.} in \emph{The European Physical Journal
-Special Topics} 178, no. 1: 13-23. {]}
+Special Topics} 178, no. 1: 13-23. }
 
-{[} Rzymski, C., T. Tresoldi, S. Greenhill, M. Wu, N. Schweikhard, M.
+\nopagebreak\hangindent=0.7cm {\small  Rzymski, C., T. Tresoldi, S. Greenhill, M. Wu, N. Schweikhard, M.
 Koptjevskaja-Tamm, V. Gast, T. Bodt, A. Hantgan, G. Kaiping, S. Chang,
 Y. Lai, N. Morozova, H. Arjava, N. Hübler, E. Koile, S. Pepper, M.
 Proos, B. Epps, I. Blanco, C. Hundt, S. Monakhov, K. Pianykh, S. Ramesh,
 R. Gray, R. Forkel, and J. List. 2019. The Database of Cross-Linguistic
 Colexifications, reproducible analysis of cross-linguistic polysemies.
-Manuscript. 1-24. Preprint, currently under review.{]}
+Manuscript. 1-24. Preprint, currently under review.}
 
-{[} Traugott, Elizabeth C.; Dasher, Richard B. 2001. \emph{Regularity in
-Semantic Change} . Cambridge: Cambridge University Press.{]}
+\nopagebreak\hangindent=0.7cm {\small  Traugott, Elizabeth C.; Dasher, Richard B. 2001. \emph{Regularity in
+Semantic Change} . Cambridge: Cambridge University Press.}
 
-{[} Tresoldi, T. 2019. \enquote{A cross-linguistic computational
+\nopagebreak\hangindent=0.7cm {\small  Tresoldi, T. 2019. \enquote{A cross-linguistic computational
 approach on chance resemblances}. Presented at the workshop
 \emph{Computer-assisted approaches in historical and typological
 language comparison, organized as part of the Annual Meeting of the
-Societas Linguistica Europea} (2019/08/21-24, Leipzig). {]}
+Societas Linguistica Europea} (2019/08/21-24, Leipzig). }
 
-{[} Wilkinson, Mark D., Dumontier, Michel; Aalbersberg, IJsbrand J.;
+\nopagebreak\hangindent=0.7cm {\small  Wilkinson, Mark D., Dumontier, Michel; Aalbersberg, IJsbrand J.;
 Appleton, Gabrielle; Axton, Myles; Baak, Arie; Blomberg Niklas et al.
 2016. \enquote{The FAIR Guiding Principles for scientific data
-management and stewardship.} in \emph{Scientific data} , 3. {]}
+management and stewardship.} in \emph{Scientific data}, 3. }
 
-{[} Yen, Jin Y. 1971. \enquote{Finding the k shortest loopless paths in
-a network.} \emph{Management Science} 17, no. 11: 712-716.{]}
+\nopagebreak\hangindent=0.7cm {\small  Yen, Jin Y. 1971. \enquote{Finding the k shortest loopless paths in
+a network.} \emph{Management Science} 17, no. 11: 712-716.}
 
 
 \vskip 2em
@@ -4818,32 +4808,31 @@ entire society. We plan to publish an encyclopedia of local plants with
 names, descriptions and sound files in Rgyalrongic languages (Hopefully
 three languages, including Guillaume Jacques' Japhug).
 
-\hypertarget{references-8}{%
-\subsubsection*{References}\label{references-8}}
+\subsubsection*{References}
 
-{[} Lounsbury, Floyd G. 1956.~A Semantic Analysis of the Pawnee Kinship
-Usage. Language 32 (1): 158-194. {]}
+\nopagebreak\hangindent=0.7cm {\small  Lounsbury, Floyd G. 1956.~A Semantic Analysis of the Pawnee Kinship
+Usage. Language 32 (1): 158-194. }
 
-{[} Hoijer, Harry. 1956. \enquote{Athapaskan kinship systems}. American
-Anthropologist. 58 (2): 309--333. {]}
+\nopagebreak\hangindent=0.7cm {\small  Hoijer, Harry. 1956. \enquote{Athapaskan kinship systems}. American
+Anthropologist. 58 (2): 309--333. }
 
-{[} Jacques, Guillaume. 2012d. The Tangut kinship system in Qiangic
+\nopagebreak\hangindent=0.7cm {\small  Jacques, Guillaume. 2012d. The Tangut kinship system in Qiangic
 per-spective. In Nathan W. Hill (ed.),~Medieval Tibeto-Burman Languages
-IV, 211--258. Leiden: Brill. {]}
+IV, 211--258. Leiden: Brill. }
 
-{[} Hsieh, Feng-fan. 1999. Theoretical Aspects of Zhuokeji rGyalrong
-Phonology. National Tsing Hua University, Taiwan MA thesis.{]}
+\nopagebreak\hangindent=0.7cm {\small  Hsieh, Feng-fan. 1999. Theoretical Aspects of Zhuokeji rGyalrong
+Phonology. National Tsing Hua University, Taiwan MA thesis.}
 
-{[} Lai, Yunfan and Zhang Shuya. 2019. Plant terms as key to nominal
+\nopagebreak\hangindent=0.7cm {\small  Lai, Yunfan and Zhang Shuya. 2019. Plant terms as key to nominal
 morphology in Rgyalrongic languages. Paper presented at the he Fourth
-Workshop on Sino-Tibetan Languages of Southwest China. August 2019.{]}
+Workshop on Sino-Tibetan Languages of Southwest China. August 2019.}
 
-{[} Schweikhard, Nathanael and Johann-Mattis List. under review.
-Handling word formation in comparative linguistics. {]}
+\nopagebreak\hangindent=0.7cm {\small  Schweikhard, Nathanael and Johann-Mattis List. under review.
+Handling word formation in comparative linguistics. }
 
-{[} Zhang, Shuya. forthcoming. Brag-bar kinship system in synchronic and
+\nopagebreak\hangindent=0.7cm {\small  Zhang, Shuya. forthcoming. Brag-bar kinship system in synchronic and
 diachronic perspectives. Bulletin of the School of Oriental and African
-Studies. {]}
+Studies.}
 
 
 \vskip 2em

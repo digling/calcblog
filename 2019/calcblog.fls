@@ -293,6 +293,15 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 OUTPUT calcblog.toc
 INPUT images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2018_11_alorese-500x375.png
+INPUT /usr/share/texmf/fonts/tfm/public/lm/lmmi12.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/lm/lmmi8.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/lm/lmmi6.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2019_02_edictor1-500x206.png
 INPUT images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2019_02_edictor2-500x109.png
 INPUT images/__f-origin.hypotheses.org_wp-content_blogs.dir_4500_files_2019_02_edictor3-500x412.png
