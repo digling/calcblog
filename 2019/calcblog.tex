@@ -103,13 +103,16 @@
 
 \newcommand{\passthrough}[1]{#1}
 
-\usepackage{sourcecodepro}
-\makeatletter
-\defaultfontfeatures[\ttfamily]
-       {
-        Numbers   = \sourcecodepro@figurestyle ,
-        Scale     = \SourceCodePro@scale ,
-        Extension = .otf }
+\usepackage{fontspec}
+\setmonofont{DejaVu Sans Mono}
+
+%\usepackage{sourcecodepro}
+%\makeatletter
+%\defaultfontfeatures[\ttfamily]
+%       {
+%        Numbers   = \sourcecodepro@figurestyle ,
+ %       Scale     = \SourceCodePro@scale ,
+%        Extension = .otf }
 
     % Monospace font
 %        \setmonofont
@@ -118,7 +121,7 @@
 %              BoldFont       = *-\sourcecodepro@boldstyle ,
 %              BoldItalicFont = *-\sourcecodepro@boldstyle It ]
 %            {SourceCodePro}
-\makeatother
+%\makeatother
 
 \usepackage{upquote}
 \lstset{
@@ -254,8 +257,8 @@ Languages}
 % 'default' option sets the default
 % font family to Source Sans Pro, not \sfdefault.
 %
-\usepackage[default]{sourcesanspro}
-\usepackage{sourcecodepro}
+%\usepackage[default]{sourcesanspro}
+%\usepackage{sourcecodepro}
 
 % XeLaTeX specific adjustments for straight quotes: https://tex.stackexchange.com/a/354887
 % This issue is already fixed (see https://github.com/silkeh/latex-sourcecodepro/pull/5) but the
@@ -263,16 +266,17 @@ Languages}
 % TODO: Remove this workaround when the new version of sourcecodepro is released on CTAN.
 \ifxetex
 \makeatletter
-\defaultfontfeatures[\ttfamily]
-  { Numbers   = \sourcecodepro@figurestyle,
-    Scale     = \SourceCodePro@scale,
-    Extension = .otf }
-\setmonofont
-  [ UprightFont    = *-\sourcecodepro@regstyle,
-    ItalicFont     = *-\sourcecodepro@regstyle It,
-    BoldFont       = *-\sourcecodepro@boldstyle,
-    BoldItalicFont = *-\sourcecodepro@boldstyle It ]
-  {SourceCodePro}
+%\defaultfontfeatures[\ttfamily]
+%  { Numbers   = \sourcecodepro@figurestyle,
+%    Scale     = \SourceCodePro@scale,
+%    Extension = .otf }
+%\setmonofont
+%  [ UprightFont    = *-\sourcecodepro@regstyle,
+%    ItalicFont     = *-\sourcecodepro@regstyle It,
+%    BoldFont       = *-\sourcecodepro@boldstyle,
+%    BoldItalicFont = *-\sourcecodepro@boldstyle It ]
+%  {SourceCodePro}
+%\setmonofont{DejaVu Sans Mono}
 \makeatother
 \fi
 
@@ -623,10 +627,7 @@ alk
     h   2
     _   2
     g   2
-    ŋ   2
     l   1
-    lː  1
-    ã  1
     u   1
 dul
     a   16
@@ -637,75 +638,11 @@ dul
     t   5
     r   4
     f   3
-    ŋ   3
-    p   3
-    u   3
-    g   3
-    dʒ  3
-    ɔ   3
-    h   2
-    o   2
-    ɛ   2
-    m   2
-    k   1
-    l   1
-    h̃  1
-    eː  1
-alb
-    a   18
-    n   8
-    i   7
-    g   6
-    _   5
-    r   5
-    ə   5
-    m   5
-    f   4
-    e   4
-    ŋ   4
-    ɔ   4
-    k   3
-    p   3
-    o   3
-    h   2
-    u   2
-    l   2
-    t   2
-    dʒ  1
-    ɛ   1
-    ;   1
-    ã  1
-Summa
-    a   45
-    i   21
-    n   17
-    e   16
-    o   13
-    r   13
-    _   12
-    m   12
-    g   11
-    f   10
-    ŋ   9
-    p   9
-    k   8
-    ɔ   7
-    t   7
-    h   6
-    u   6
-    ə   5
-    dʒ  4
-    l   4
-    ɛ   3
-    ã  2
-    lː  1
-    ;   1
-    eː  1
-    h̃  1
+(...)
 \end{lstlisting}
 
-This again shows that the data is not entirely clean --
-\passthrough{\lstinline!;!} and \passthrough{\lstinline!h̃!} are both
+This again shows that the [full] data is not entirely clean --
+\texttt{;} and \texttt{h̃} are both
 unexpected as phonetic segments.
 
 Any other CLDF Wordlist tool you might come along should also work with
@@ -719,11 +656,11 @@ step.
 
 \subsection*{References}
 
-\nopagebreak\hangindent=0.7cm {\small Forkel, Robert. 2018. \emph{pylexibank} . Python. lexibank.
+\nopagebreak\hangindent=0.7cm {\small Forkel, Robert. 2018. \emph{pylexibank}. Python lexibank.
 \url{https://github.com/lexibank/pylexibank} (19 January, 2019). }
 
 \nopagebreak\hangindent=0.7cm {\small Forkel, Robert, Sebastian Bank, Gereon A. Kaiping, Christoph Rzymski \&
-Simon J. Greenhill. 2018. \emph{pycldf} . Python. Cross-Linguistic Data
+Simon J. Greenhill. 2018. \emph{pycldf}. Python. Cross-Linguistic Data
 Formats. \url{https://github.com/cldf/pycldf} (19 January, 2019). }
 
 \nopagebreak\hangindent=0.7cm {\small Forkel, Robert, Christoph Rzymski, Gereon A. Kaiping \& Mattis List.
@@ -731,13 +668,13 @@ Formats. \url{https://github.com/cldf/pycldf} (19 January, 2019). }
 Formats. \url{https://github.com/cldf/cookbook} (19 January, 2019). }
 
 \nopagebreak\hangindent=0.7cm {\small Kaiping, Gereon A., Owen Edwards \& Marian Klamer. 2019. \emph{LexiRumah
-2.0.0} . Zenodo. doi:
+2.0.0}. Zenodo. doi:
 \href{https://doi.org/10.5281/zenodo.2540954.}{10.5281/zenodo.2540954.}
 \url{https://zenodo.org/record/2540954\#.XENYWaHrC00} (19 January,
 2019). }
 
 \nopagebreak\hangindent=0.7cm {\small List, Johann-Mattis, Michael Cysouw \& Robert Forkel (eds.).
-2016. \emph{Concepticon} . Jena: Max Planck Institute for the Science of
+2016. \emph{Concepticon}. Jena: Max Planck Institute for the Science of
 Human History. doi:
 \href{https://doi.org/10.5281/zenodo.51259.}{10.5281/zenodo.51259.}
 \url{http://concepticon.clld.org/}. }
@@ -766,7 +703,7 @@ alignment, tutorial
 
 After about three years of work on the matter, I have managed (with help
 of many colleagues who helped in testing) to develop a first approach
-for the \emph{automatic inference of sound correspondence patterns} ,
+for the \emph{automatic inference of sound correspondence patterns},
 which will soon be published with Computational Linguistics
 \href{http://bibliography.lingpy.org?key=List2019a}{(List 2019)}. The
 key task which this algorithm solves is to take aligned data as input
@@ -776,7 +713,7 @@ alignments.
 Correspondence patterns are hereby understood as recurring alignment
 sites (i.e., columns per alignment) in a given dataset. In contrast to
 \emph{regular sound correspondences} (or \emph{systematic sound
-correspondences} , as
+correspondences}, as
 \href{http://bibliography.lingpy.org?key=Trask2000}{Trask (2000)} calls
 them), a correspondence pattern is a statement of sound correspondences
 across multiple languages, while regular sound correspondences are
@@ -804,15 +741,15 @@ Pattern & Frequency & Champéry & Lourtier & Plagne &
 Courtedoux\tabularnewline
 \midrule
 \endhead
-r    & 21 & r & r & r & r  \tabularnewline
--(1) & 8 & -- & -- & ə & --  \tabularnewline
-t    & 8 & t & t & t & t  \tabularnewline
-m    & 8 & m & m & m & m  \tabularnewline
-f    & 8 & f & f & f & f  \tabularnewline
-p    & 7 & p & p & p & p  \tabularnewline
--(2) & 4 & -- & -- & -- & ə  \tabularnewline
-s    & 4 & s & ʃ & s & s  \tabularnewline
-k    & 3 & k & k & k & tʲ  \tabularnewline
+\texttt{r}    & \texttt{21} & \texttt{r}  & \texttt{r}  & \texttt{r}  & \texttt{r}  \tabularnewline
+\texttt{-(1)} & \texttt{8}  & \texttt{--} & \texttt{--} & \texttt{ə}  & \texttt{--}  \tabularnewline
+\texttt{t}    & \texttt{8}  & \texttt{t}  & \texttt{t}  & \texttt{t}  & \texttt{t}  \tabularnewline
+\texttt{m}    & \texttt{8}  & \texttt{m}  & \texttt{m}  & \texttt{m}  & \texttt{m}  \tabularnewline
+\texttt{f}    & \texttt{8}  & \texttt{f}  & \texttt{f}  & \texttt{f}  & \texttt{f}  \tabularnewline
+\texttt{p}    & \texttt{7}  & \texttt{p}  & \texttt{p}  & \texttt{p}  & \texttt{p}  \tabularnewline
+\texttt{-(2)} & \texttt{4}  & \texttt{--} & \texttt{--} & \texttt{--} & \texttt{ə}  \tabularnewline
+\texttt{s}    & \texttt{4}  & \texttt{s}  & \texttt{ʃ}  & \texttt{s}  & \texttt{s}  \tabularnewline
+\texttt{k}    & \texttt{3}  & \texttt{k}  & \texttt{k}  & \texttt{k}  & \texttt{tʲ}  \tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -825,20 +762,20 @@ varieties.
 While most of the patterns look boring, showing the same reflex in all
 varieties (which should not be surprising, given that we're dealing with
 dialect data here), some show some degree of variation, such as the two
-patterns which I label as \passthrough{\lstinline!*!}-(1) and
-\passthrough{\lstinline!*!}-(2), respectively, or the pattern
-\passthrough{\lstinline!*!} s and \passthrough{\lstinline!*!} ku. The
+patterns which I label as \texttt{*-(1)} and
+\texttt{*-(2)}, respectively, or the pattern
+\texttt{*s} and \texttt{*ku}. The
 first two patterns illustrate different degrees of metathesis across the
 varieties, as they surface in words like \enquote{du poivre}, where
-prototypical reflexes would be Champéry \passthrough{\lstinline![!}
-paːvro \passthrough{\lstinline!]!} as opposed to Plagne
-\passthrough{\lstinline![!} paːvər \passthrough{\lstinline!]!} for the
-first, and Champéry \passthrough{\lstinline![!} pɛrdy
-\passthrough{\lstinline!]!} as opposed to Courtedoux
-\passthrough{\lstinline![!} prədʒy \passthrough{\lstinline!]!} . The
-\passthrough{\lstinline!*!} s pattern illustrates the pronunciation of
-original \passthrough{\lstinline![!} s \passthrough{\lstinline!]!} as
-\passthrough{\lstinline![!} ʃ \passthrough{\lstinline!]!} in initials in
+prototypical reflexes would be Champéry 
+\texttt{[paːvro]} as opposed to Plagne
+\texttt{[paːvər]} for the
+first, and Champéry \texttt{[pɛrdy]}
+as opposed to Courtedoux
+\texttt{[prədʒy]}. The
+\texttt{*s} pattern illustrates the pronunciation of
+original \texttt{[s]} as
+\texttt{[ʃ]} initials in
 Lourtrier, and the third pattern illustrates a specific palatalization
 process of velars in Courtedoux.
 
@@ -938,7 +875,7 @@ later published as part of the
 Alignments} \href{http://bibliography.lingpy.org?key=List2014e}{(List
 and Prokić 2014)}. In this post, I will introduce how we can harvest
 the alignments from this dataset with help of
-\href{http://lingpy.org}{LingPy} , and later analyze them with help of
+\href{http://lingpy.org}{LingPy}, and later analyze them with help of
 the sound correspondence pattern algorithms.
 
 The Tableaux Phonétiques des Patois Suisses Romands (Gauchat et al.
@@ -951,7 +888,7 @@ data for my dissertation (List 2014), where I aligned 76 of the charts
 for as many as 62 dialect points. While the data in its form used by
 then can still be interactively searched from the website offering all
 \href{https://sequencecomparison.github.io}{supplementary material
-accompanying my dissertation} , I figured later that it would be better
+accompanying my dissertation}, I figured later that it would be better
 to share it officially as part of a larger benchmark database of
 phonetic alignments, which I published together with Jelena Prokić, who
 contributed alignments for Bulgarian dialects to that sample (List and
@@ -961,7 +898,7 @@ convenient way of browsing and inspecting alignment data, although the
 data is not necessarily offered in a convenient form to reuse.
 
 As of now, the original alignment data underlying the BDPA has also been
-submitted to \href{https://zenodo.org/record/11880}{Zenodo} , from where
+submitted to \href{https://zenodo.org/record/11880}{Zenodo}, from where
 it can still be downloaded. The data on the Zenodo repository is of a
 very simple structure, containing a bunch of zip-folders for each of the
 different datasets from which we harvested the alignments, along with
@@ -985,13 +922,12 @@ website}, so I will spare the readers and myself a closer description
 here. What is important to know is that we want to convert those files
 corresponding to the TPPSR in the BDPA, asprovided in
 \passthrough{\lstinline!msa!}-format on Zenodo to the \enquote{normal}
-\emph{wordlist-format} , as it is used by the LingPy package (see
+\emph{wordlist-format}, as it is used by the LingPy package (see
 \href{http://bibliography.lingpy.org?key=List2018d}{List et al. 2018}
 for a closer description) and also required in order to compute
 correspondence patterns with help of
 \href{https://github.com/lingpy/lingrex}{LingRex} and the correspondence
-pattern recognition algorithm (
-\href{http://bibliography.lingpy.org?key=List2019a}{List 2019}).
+pattern recognition algorithm (\href{http://bibliography.lingpy.org?key=List2019a}{List 2019}).
 
 Assuming that you have downloaded the data from Zenodo and unpacked the
 \passthrough{\lstinline!multiple.zip!} folder, placing the
@@ -1023,7 +959,7 @@ selection of language varieties from a larger selection of aligned
 words.
 
 We can now retrieve all files with help of
-\passthrough{\lstinline!glob!} .
+\passthrough{\lstinline!glob!}.
 
 \begin{lstlisting}
 files = glob('msa/*.msa')
@@ -1092,7 +1028,7 @@ We can now start by looping over all files and extracting the relevant
 data. In this loop, we open each of the
 \passthrough{\lstinline!msa!}-files with help of LingPy, and assess it's
 \passthrough{\lstinline!dataset!} property. If the dataset is
-\passthrough{\lstinline!French!} , we keep the file and try to process
+\passthrough{\lstinline!French!}, we keep the file and try to process
 it further. We use a regular expression to parse the HTML-like coding of
 the so-called \passthrough{\lstinline!sequence identifier!} of the
 alignment, which is the counterpart of the aligned word forms in French
@@ -1102,22 +1038,22 @@ the sequence identifier should be structured, the formats are pretty
 free, and by then, I used HTML-like tags for convenience (1).
 
 Once we have extracted the dataset, made sure it is
-\passthrough{\lstinline!French!} , and also extracted the Latin and the
+\passthrough{\lstinline!French!}, and also extracted the Latin and the
 French word form, we can extract the aligned data from the
 \passthrough{\lstinline!MSA!}-object, stored in the variable
-\passthrough{\lstinline!msa!} . Here, we iterate over its properties
+\passthrough{\lstinline!msa!}. Here, we iterate over its properties
 \passthrough{\lstinline!msa.taxa!} and
 \passthrough{\lstinline!msa.alignment!} and check if the name of the
 variety also occurs in our dictionary of pre-selected varieties. If this
 is the case, we retrieve the unaligned but segmented form (called
-\passthrough{\lstinline!tokens!} ) by stripping off all dashes from the
+\passthrough{\lstinline!tokens!}) by stripping off all dashes from the
 alignment, and we also retrieve the raw, unsegmented \passthrough{\lstinline!form!} by even deleting the spaces that would
 otherwise indicate the boundaries between the sound segments.
 
 We can now add all data to our wordlist (or our dictionary, 3), but we
-should not forget to incremend the index for the word identifier (
-\passthrough{\lstinline!idx!} ) and the cognate set identifier (
-\passthrough{\lstinline!cogid!} ).
+should not forget to incremend the index for the word identifier
+(\passthrough{\lstinline!idx!}) and the cognate set identifier
+(\passthrough{\lstinline!cogid!}).
 
 \begin{lstlisting}
 for f in tqdm.tqdm(files):
@@ -1157,7 +1093,7 @@ for f in tqdm.tqdm(files):
 Now that we have assembled the data readily, we can load it with help of
 LingPy's \passthrough{\lstinline!Alignments!} class, which we call by
 passing the dictionary with \passthrough{\lstinline!cogid!} as the
-keyword for the \emph{reference} ( \passthrough{\lstinline!ref!} ),
+keyword for the \emph{reference} (\passthrough{\lstinline!ref!}),
 which we use to construct our alignments.
 
 \begin{lstlisting}
@@ -1187,7 +1123,7 @@ for cogid, msa in alms.msa['cogid'].items():
 
 We can now write the data to file. By passing the
 \passthrough{\lstinline!prettify!} keyword and setting it to
-\passthrough{\lstinline!False!} , we make sure that the data will be
+\passthrough{\lstinline!False!}, we make sure that the data will be
 written to plain TSV format.
 
 \begin{lstlisting}
@@ -1202,8 +1138,8 @@ How we can use this file to calculate correspondence patterns with help
 of the correspondence pattern recognition algorithm described in List
 (2019) is something I will describe in more detail in a follow-up post.
 But what we can do already with the data by now is loading it into
-\href{http://edictor.digling.org}{EDICTOR} (
-\href{http://bibliography.lingpy.org?key=List2017d}{List 2017} ), and
+\href{http://edictor.digling.org}{EDICTOR} 
+(\href{http://bibliography.lingpy.org?key=List2017d}{List 2017}), and
 use the built-in tool for correspondence pattern analyses. This tool is
 less accurate than the Python implementation in the LingRex package,
 since it is written in plain JavaScript. All it does is that it tries to
@@ -1257,7 +1193,7 @@ accompanying this tutorial, and see yourself what can be done. If you
 have ideas on how the tool could be enhanced, I would furthermore be
 happy about any kind of feedback or questions or suggestions, which you
 shoudl ideally share via our project page with
-\href{https://github.com/digling/edictor}{GitHub/digling/edictor} .
+\href{https://github.com/digling/edictor}{GitHub/digling/edictor}.
 
 \subsection*{References}
 
@@ -1324,9 +1260,9 @@ carry out a full-fledged correspondence pattern analysis. While EDICTOR
 uses a simple algorithm that is based on sorting the patterns, the
 Python algorithm for correspondence pattern detection, which is
 described in detail in
-\href{http://bibliography.lingpy.org?key=List2019a}{List (2019)} , uses
+\href{http://bibliography.lingpy.org?key=List2019a}{List (2019)}, uses
 a greedy approach inspired by the Welsh-Powell algorithm for graph
-coloring ( \href{http://bibliography.lingpy.org?key=Welsh1967}{Welsh and
+coloring (\href{http://bibliography.lingpy.org?key=Welsh1967}{Welsh and
 Powell 1967}), in order to cluster all alignment sites in the data into
 clusters which are compatible with each other.
 
@@ -1348,12 +1284,11 @@ $ python setup.py develop
 \end{lstlisting}
 
 As data for testing, we will use the same dataset of 70 alignments taken
-from the \emph{Tableaux Phonétiques des Patois Suisses Romands} (
-\href{http://bibliography.lingpy.org?key=Gauchat1925}{Gauchat et
-al.~1925} ), which were included as alignments in the \emph{Benchmark
+from the \emph{Tableaux Phonétiques des Patois Suisses Romands} (\href{http://bibliography.lingpy.org?key=Gauchat1925}{Gauchat et
+al.~1925}), which were included as alignments in the \emph{Benchmark
 Database for Phonetic Alignments} (http://alignments.lingpy.org,
 \href{http://bibliography.lingpy.org?key=List2014e}{List and Prokić
-2014} ). Now, that the data has already been prepared as a wordlist that
+2014}). Now, that the data has already been prepared as a wordlist that
 can be accessed by LingPy and EDICTOR, we can directly access it from
 Python. Since LingRex uses LingPy's datastructures, it expects the same
 data as input. In fact, the major class that we will use to carry out
@@ -1402,16 +1337,16 @@ first ten entries of our wordlist, as shown in the table below.
 ID & DOCULECT & TOKENS & STRUCTURE\tabularnewline
 \midrule
 \endhead
-1 & Ormont-Dessus & ʃ e & C V\tabularnewline
-2 & Champéry & ʃ i & C V\tabularnewline
-3 & Lourtier & ʃ e & C V\tabularnewline
-4 & Grimentz & ʃ aː & C V\tabularnewline
-5 & Hermance & s e & C V\tabularnewline
-6 & Courtepin & ʃ eː & C V\tabularnewline
-7 & Dompierre & s e & C V\tabularnewline
-8 & Boudry & s aː & C V\tabularnewline
-9 & Côte-aux-Fées & s a & C V\tabularnewline
-10 & Cerneux-Péquignot & s aː v u & C V C V\tabularnewline
+1 & Ormont-Dessus      & \texttt{ʃ e} & C V\tabularnewline
+2 & Champéry           & \texttt{ʃ i} & C V\tabularnewline
+3 & Lourtier           & \texttt{ʃ e} & C V\tabularnewline
+4 & Grimentz           & \texttt{ʃ aː} & C V\tabularnewline
+5 & Hermance           & \texttt{s e} & C V\tabularnewline
+6 & Courtepin          & \texttt{ʃ eː} & C V\tabularnewline
+7 & Dompierre          & \texttt{s e} & C V\tabularnewline
+8 & Boudry             & \texttt{s aː} & C V\tabularnewline
+9 & Côte-aux-Fées      & \texttt{s a} & C V\tabularnewline
+10 & Cerneux-Péquignot & \texttt{s aː v u} & C V C V\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -1427,54 +1362,32 @@ cop.get_sites(minrefs=2, structure='structure')
 
 This method will add a new attribute to our
 \passthrough{\lstinline!CoPaR!} object, called
-\passthrough{\lstinline!sites!} . These sites are organized as a
+\passthrough{\lstinline!sites!}. These sites are organized as a
 dictionary, with tuples of the cognate identifier and the position in
 the alignment as a key, and the structure (if it is consonant or vowel,
 in our case) along with the concrete alignment site as a value. If a
 site contains missing entries, this is by default represented with help
-of the symbol \passthrough{\lstinline!Ø!} , which we use to denote
+of the symbol \passthrough{\lstinline!Ø!}, which we use to denote
 missing data (in contrast to \passthrough{\lstinline!-!} denoting a gap
 in an alignment. The following table illustrates this for the cognate
 sets 31 and 63 in the data, which contain reflexes for the concepts
-\emph{le chasseur} and \emph{la hache} , with the latter being only
+\emph{le chasseur} and \emph{la hache}, with the latter being only
 reflected in 8 out of 12 varieties in our dataset. The alignment site
 column shows the reflex for each variety in alphabetical order by the
 variety name.
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-COGID & POSITION & STRUCTURE & ALIGNMENT SITE\tabularnewline
-\midrule
-\endhead
-31 & 0 & C & \enquote{ʦ}, \enquote{ʧ}, \enquote{ʦ}, \enquote{ʧ},
-\enquote{ʦ}, \enquote{ʦ}, \enquote{ʦ}, \enquote{ʦ}, \enquote{θ},
-\enquote{ʦ}, \enquote{ʦ}, \enquote{ʧ}\tabularnewline
-31 & 1 & V & \enquote{a}, \enquote{ɛ}, \enquote{a}, \enquote{-},
-\enquote{a}, \enquote{a}, \enquote{a}, \enquote{a}, \enquote{ɛ},
-\enquote{a}, \enquote{a}, \enquote{-}\tabularnewline
-31 & 2 & C & \enquote{s}, \enquote{s}, \enquote{ç}, \enquote{s},
-\enquote{ç}, \enquote{ʃ}, \enquote{ç}, \enquote{s}, \enquote{f},
-\enquote{ç}, \enquote{-}, \enquote{s}\tabularnewline
-31 & 3 & V & \enquote{œː}, \enquote{u}, \enquote{œː}, \enquote{u},
-\enquote{aː}, \enquote{œ}, \enquote{aː}, \enquote{ou}, \enquote{œ},
-\enquote{ɔː}, \enquote{au}, \enquote{u}\tabularnewline
-31 & 4 & C & \enquote{r}, \enquote{-}, \enquote{-}, \enquote{-},
-\enquote{-}, \enquote{-}, \enquote{-}, \enquote{-}, \enquote{-},
-\enquote{-}, \enquote{-}, \enquote{-}\tabularnewline
-63 & 0 & C & \enquote{ʦ}, \enquote{ʧ}, \enquote{Ø}, \enquote{ʧ},
-\enquote{ʦ}, \enquote{ʦ}, \enquote{ʦ}, \enquote{Ø}, \enquote{θ},
-\enquote{Ø}, \enquote{Ø}, \enquote{ʧ}\tabularnewline
-63 & 1 & V & \enquote{-}, \enquote{ɔ}, \enquote{Ø}, \enquote{ɑ},
-\enquote{ɛ}, \enquote{-}, \enquote{ɛ}, \enquote{Ø}, \enquote{õ},
-\enquote{Ø}, \enquote{Ø}, \enquote{a}\tabularnewline
-63 & 2 & C & \enquote{-}, \enquote{t}, \enquote{Ø}, \enquote{t},
-\enquote{t}, \enquote{-}, \enquote{t}, \enquote{Ø}, \enquote{-},
-\enquote{Ø}, \enquote{Ø}, \enquote{t}\tabularnewline
-63 & 3 & V & \enquote{-}, \enquote{ɛ}, \enquote{Ø}, \enquote{-},
-\enquote{a}, \enquote{-}, \enquote{a}, \enquote{Ø}, \enquote{-},
-\enquote{Ø}, \enquote{Ø}, \enquote{-}\tabularnewline
-\bottomrule
-\end{longtable}
+
+\begin{table}[]
+\begin{tabular}{llll}
+\textbf{COGID} & \textbf{POSITION} & \textbf{STRUCTURE} & \textbf{ALIGNMENT SITE} \\
+31    & 3        & V         & \texttt{œː} \texttt{u}  \texttt{œː}  \texttt{u}   \texttt{aː}  \texttt{œ}  \texttt{aː}  \texttt{ou}  \texttt{œ}  \texttt{ɔː}  \texttt{au}  \texttt{u}    \\
+31    & 4        & C         & \texttt{r}  \texttt{-}  \texttt{-}   \texttt{-}   \texttt{-}   \texttt{-}  \texttt{-}   \texttt{-}   \texttt{-}  \texttt{-}   \texttt{-}  \texttt{-}     \\
+63    & 0        & C         & \texttt{ʦ}  \texttt{ʧ}  \texttt{Ø}   \texttt{ʧ}  \texttt{ʦ}   \texttt{ʦ}  \texttt{ʦ}   \texttt{Ø}   \texttt{θ}  \texttt{Ø}   \texttt{Ø}  \texttt{ʧ}    \\
+63    & 1        & V         & \texttt{-}  \texttt{ɔ}  \texttt{Ø}   \texttt{ɑ}   \texttt{ɛ}   \texttt{-}  \texttt{ɛ}   \texttt{Ø}  \texttt{õ}  \texttt{Ø}   \texttt{Ø}  \texttt{a}     \\
+63    & 2        & C         & \texttt{-}  \texttt{t}  \texttt{Ø}   \texttt{t}   \texttt{t}   \texttt{-}  \texttt{t}   \texttt{Ø}   \texttt{-}  \texttt{Ø}   \texttt{Ø}  \texttt{t}     \\
+63    & 3        & V         & \texttt{-}  \texttt{ɛ}  \texttt{Ø}   \texttt{-}   \texttt{a}   \texttt{-}  \texttt{a}   \texttt{Ø}   \texttt{-}  \texttt{Ø}   \texttt{Ø}  \texttt{-}       
+\end{tabular}
+\end{table}
 
 Now that we have stored the alignment sites, we can start clustering
 them.
@@ -1485,7 +1398,7 @@ cop.cluster_sites()
 
 This analysis will add another property to our
 \passthrough{\lstinline!CoPaR!} object, called
-\passthrough{\lstinline!clusters!} . This is again a Python dictionary,
+\passthrough{\lstinline!clusters!}. This is again a Python dictionary,
 consisting of the structure segment and the pattern as a key, and the
 alignment sites, represented by cognate identifier and position as
 value. If we now check in the data for the alignment sites for cognate
@@ -1500,7 +1413,7 @@ limited number of cognate sets.
 In order to analyze the clusters further, we can now make a secondary
 analysis, during which we compare all patterns that were inferred in
 this run with each alignment site a second time, this time assigning
-alignment sites to all patterns with which they are \emph{compatible} .
+alignment sites to all patterns with which they are \emph{compatible}.
 This may result in a fuzzy clustering, as one alignment site could
 easily be compatible with two or more patterns, provided it contains
 enough missing data.
@@ -1524,16 +1437,14 @@ different patterns in the data, shown below in the table.
 
 \begin{longtable}[]{@{}llllllllllll@{}}
 \toprule
-Ø & Ø & Ø & Ø & Ø & Ø & Ø & r & r & Ø & r & Ø\tabularnewline
-r & r & r & r & r & r & r & r & r & r & r & r\tabularnewline
-\textbf{l} & r & r & r & r & r & r & r & r & r & r & r\tabularnewline
-r & r & r & \textbf{--} & r & r & r & r & r & r & r &
-\textbf{--}\tabularnewline
-r & r & \textbf{rː} & r & r & r & r & r & r & \textbf{ʁ} & r &
-r\tabularnewline
-\textbf{--} & r & r & Ø & r & r & r & r & r & r & r & Ø\tabularnewline
-r & r & \textbf{--} & r & r & r & r & Ø & r & Ø & Ø & r\tabularnewline
-Ø & Ø & r & Ø & Ø & Ø & r & r & Ø & \textbf{ʁ} & Ø & Ø\tabularnewline
+\texttt{Ø}           & \texttt{Ø} & \texttt{Ø}           & \texttt{Ø}           & \texttt{Ø} & \texttt{Ø} & \texttt{Ø} & \texttt{r} & \texttt{r} & \texttt{Ø}          & \texttt{r} & \texttt{Ø}\tabularnewline
+\texttt{r}           & \texttt{r} & \texttt{r}           & \texttt{r}           & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r}          & \texttt{r} & \texttt{r}\tabularnewline
+\texttt{\textbf{l}}  & \texttt{r} & \texttt{r}           & \texttt{r}           & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r}          & \texttt{r} & \texttt{r}\tabularnewline
+\texttt{r}           & \texttt{r} & \texttt{r}           & \texttt{\textbf{--}} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r}          & \texttt{r} & \texttt{\textbf{--}}\tabularnewline
+\texttt{r}           & \texttt{r} & \texttt{\textbf{rː}} & \texttt{r}           & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{\textbf{ʁ}} & \texttt{r} & \texttt{r}\tabularnewline
+\texttt{\textbf{--}} & \texttt{r} & \texttt{r}           & \texttt{Ø}           & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{r}          & \texttt{r} & \texttt{Ø}\tabularnewline
+\texttt{r}           & \texttt{r} & \texttt{\textbf{--}} & \texttt{r}           & \texttt{r} & \texttt{r} & \texttt{r} & \texttt{Ø} & \texttt{r} & \texttt{Ø}          & \texttt{Ø} & \texttt{r}\tabularnewline
+\texttt{Ø}           & \texttt{Ø} & \texttt{r}           & \texttt{Ø}           & \texttt{Ø} & \texttt{Ø} & \texttt{r} & \texttt{r} & \texttt{Ø} & \texttt{\textbf{ʁ}} & \texttt{Ø} & \texttt{Ø}\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -1567,7 +1478,7 @@ all patterns for each language variety along with the reflexes and the
 alignment sites. If you open the file
 \passthrough{\lstinline!tppsr-copped.tsv!} now with EDICTOR and inspect
 the correspondence patterns, as shown in the
-\href{https://calc.hypotheses.org/1807}{previous post} , you will find,
+\href{https://calc.hypotheses.org/1807}{previous post}, you will find,
 that EDICTOR displays the patterns inferred with the Python algorithm
 instead of using its own simple method. In this way, you can
 conveniently investigate the results with the interactive EDICTOR
@@ -1577,8 +1488,8 @@ pattern data.
 Instead of investigating the data further, I will end here, and leave it
 to interested readers to check the data and the results themselves. A
 script to run the analysis along with the data is available in form of a
-GitHub Gist, which you can find
-\href{https://gist.github.com/LinguList/6bd37f375c9715e3ecda395e23a17fcb}{here}.
+GitHub Gist, which you can find at
+\url{https://gist.github.com/LinguList/6bd37f375c9715e3ecda395e23a17fcb}.
 
 \subsubsection*{References}
 
@@ -1628,7 +1539,7 @@ computational workflows in mind, is linking datasets in terms of the
 meanings of the words (or, technically, \enquote{forms}) they carry.
 Just as linking languages across different datasets is not as
 straightforward as one might naively assume, demanding a complex
-reference catalog such as \href{https://glottolog.org/}{Glottolog} ,
+reference catalog such as \href{https://glottolog.org/}{Glottolog},
 linking the concepts used in a wordlist (a \enquote{concept list}) to
 our \href{https://concepticon.clld.org/}{Concepticon} project might well
 be the most intensive task in preparing a dataset for cross-linguistic
@@ -1639,62 +1550,77 @@ pragmatic lexicographic decisions to deep philosophical disputations on
 hermeneutics --- even though it is always worth remembering, Concepticon
 is \emph{not} an ontology, but a catalog for linking concept lists.
 However, for the time being, let's take a hard-headed view and look at
-the practical issues at play. Common issues are: - Plain errors in the
+the practical issues at play. Common issues are:
+
+\begin{itemize}
+\item Plain errors in the
 glosses, especially when OCR or typing from published sources is
 involved, such as in a recent concept list where I had a typo
 \passthrough{\lstinline!barl!} for \passthrough{\lstinline!bark!}
 (readers will note how \enquote{L} and \enquote{K} are next to each
-other in the most common keyboard layouts).- Problems with homonyms
+other in the most common keyboard layouts).
+\item Problems with homonyms
 where the meaning is not specified, such as in
 \passthrough{\lstinline!bark!} itself (which could be either a noun, the
 \enquote{skin} of a tree, or a verb, \enquote{to bark}) or in the
 recurring examples of \passthrough{\lstinline!fly!} (either the insect
 or the verb meaning \enquote{to move in the air}) and of
 \passthrough{\lstinline!dull!} (either as opposed to \enquote{sharp} or
-to \enquote{smart}).- Problems with synonyms, such as in the case of a
+to \enquote{smart}).
+\item Problems with synonyms, such as in the case of a
 word being annotated as \passthrough{\lstinline!eggplant!} in one
-concept list but as AUBERGINE in Concepticon.- Glosses given in a
+concept list but as AUBERGINE in Concepticon.
+\item Glosses given in a
 language other than English, and perhaps one you are not entirely
 familiar with, or sometimes in multiple languages (like Chinese
 \emph{and} English) where the difference in semantics might be more of a
 hindrance than a help.
+\end{itemize}
+
 
 These problems alone would be enough to make concept mapping tedious,
 but most people involved in Concepticon would be happy if they were the
-only ones. Other common issues can lead almost to frustration are: - The
+only ones. Other common issues can lead almost to frustration are:
+
+\begin{itemize}
+\item The
 same dataset using slightly similar (and sometimes visually alike)
 glosses for the same concept, such as \passthrough{\lstinline!dog!} and
 \passthrough{\lstinline!dog!} (note the trailing whitespace in the
-second one).- Just like when reporting forms, authors including all kind
-of notes\\
+second one).
+\item Just like when reporting forms, authors including all kind
+of notes
 in their glosses, some useful for the mapping (like
-\passthrough{\lstinline!fly (noun)!} ), some\\
-less so (such as \passthrough{\lstinline!poor (dubious)!} ) some which
+\passthrough{\lstinline!fly (noun)!}), some
+less so (such as \passthrough{\lstinline!poor (dubious)!}) some which
 would better be in a \enquote{Comments} column (like
-\passthrough{\lstinline!happy [given by only one speaker]!} ).- People
-never shy on coming up with different ways to annotate\\
+\passthrough{\lstinline!happy [given by only one speaker]!}).
+\item People
+never shy on coming up with different ways to annotate
 additional information, such as part-of-speech, hardly in a consistent
 way. Using the flying insect as a common denominator, our collection
 already includes specimens such as \passthrough{\lstinline!fly (noun)!}
-, \passthrough{\lstinline!fly (n.)!} , \passthrough{\lstinline!fly (n)!}
-, \passthrough{\lstinline!fly noun!} , \passthrough{\lstinline!fly:n!} ,
-\passthrough{\lstinline!fly [n.]!} , \passthrough{\lstinline!(N) fly!} ,
-\passthrough{\lstinline!fly (insect)!} ,
-\passthrough{\lstinline!the fly!} , \passthrough{\lstinline!a fly!} ,
-\passthrough{\lstinline!the/a fly!} , and
-\passthrough{\lstinline!fly (mouche)!} , besides mutations such as
+, \passthrough{\lstinline!fly (n.)!}, \passthrough{\lstinline!fly (n)!}
+, \passthrough{\lstinline!fly noun!}, \passthrough{\lstinline!fly:n!},
+\passthrough{\lstinline!fly [n.]!}, \passthrough{\lstinline!(N) fly!},
+\passthrough{\lstinline!fly (insect)!},
+\passthrough{\lstinline!the fly!}, \passthrough{\lstinline!a fly!},
+\passthrough{\lstinline!the/a fly!}, and
+\passthrough{\lstinline!fly (mouche)!}, besides mutations such as
 \passthrough{\lstinline!FLY (n)!} and
 \passthrough{\lstinline!fly (noun!} (note the missing
-close-parenthesis).- Notations for polysemies being just as innovative
-and free, with commas ( \passthrough{\lstinline!hand,arm!} ), semicolons
-( \passthrough{\lstinline!hand;arm!} ), slashes (
-\passthrough{\lstinline!hand/arm!} ), or even nothing (
-\passthrough{\lstinline!hand arm!} ), also allowing for inverted orders
-and spaces (e.g., \passthrough{\lstinline!arm / hand!} ).- The lists of
+close-parenthesis).
+\item Notations for polysemies being just as innovative
+and free, with commas (\passthrough{\lstinline!hand,arm!}), semicolons
+( \passthrough{\lstinline!hand;arm!}), slashes (\passthrough{\lstinline!hand/arm!}), or
+even nothing (\passthrough{\lstinline!hand arm!}), also allowing for inverted orders
+and spaces (e.g., \passthrough{\lstinline!arm / hand!}).
+\item The lists of
 basic vocabulary including, and for good reasons, terms which are very
 culture-specific or not colloquial in other languages, when it is not
 immediately obvious if the concept is already found in Concepticon (and,
 if not, whether it should be added) and under which gloss.
+\end{itemize}
 
 When facing repetitive tasks, programmers will immediately think of ways
 to facilitate and automate them. The Concepticon team did just that,
@@ -1725,7 +1651,7 @@ $ grep -i "coco" concepticondata/concepticon.tsv
 This strategy would work for straightforward cases, however missing most
 of the problems listed above, including homonyms, synonyms, and typos.
 Some could be circumvented by expanded strategies, such as by collecting
-synonyms (like the case of \passthrough{\lstinline!eggplant!} ) in the
+synonyms (like the case of \passthrough{\lstinline!eggplant!}) in the
 more of 200 concept lists already mapped, checking to which Concepticon
 gloss the entries are mapped to. Once more, something far from
 practical.
@@ -1830,7 +1756,7 @@ colexifications). It was not possible to decide if
 \passthrough{\lstinline!dull!} should be linked to STUPID or to BLUNT
 (equal similarity scores), but the items are grouped together and
 clearly marked, so that review should be easy. Finally, a case of a typo
-or different orthography, such as \passthrough{\lstinline!bambu!} , was
+or different orthography, such as \passthrough{\lstinline!bambu!}, was
 not mapped as the method does not try to be too clever, but the unmapped
 item is clearly identified as such with a triple question mark (a
 fall-back fuzzy string search for these cases might be implemented in
@@ -1901,7 +1827,7 @@ combination with mappings in already included concept lists, where each
 \enquote{raw} gloss is aligned to Concepticon as in the snippet below (a
 full list can be found
 \href{https://github.com/concepticon/pyconcepticon/blob/master/tests/fixtures/mappings/map-en.tsv}{in
-the repository tests} ):
+the repository tests}):
 
 \begin{lstlisting}
 1504    FLY (INSECT)///FLY  1
@@ -1968,9 +1894,9 @@ be lacking from your computer-assisted language comparison toolbox.
 \subsubsection*{References}
 
 \nopagebreak\hangindent=0.7cm {\small  List, Johann Mattis \& Cysouw, Michael \& Greenhill, Simon \&
-Forkel, Robert (eds.) 2018. \emph{Concepticon} . Jena: Max Planck
+Forkel, Robert (eds.) 2018. \emph{Concepticon}. Jena: Max Planck
 Institute for the Science of Human History. (Available online at
-\url{http://concepticon.clld.org} , Accessed on 2019-03-26.)}
+\url{http://concepticon.clld.org}, Accessed on 2019-03-26.)}
 
 
 \vskip 2em
@@ -2022,27 +1948,35 @@ library, wrapping them around our functions and workflows.
 
 Let's illustrate this with an actual example, presented step-by-step. We
 recently had to start mapping a dataset for Barasana, a Tukanoan
-language spoken in Colombia. We had the following issues: - Unlike most
+language spoken in Colombia. We had the following issues:
+
+\begin{itemize}
+\item Unlike most
 desirable cases for computer-assisted language comparison, at least in
 its more common current settings, the data does not come from lists of
 basic vocabulary (usually collected with the comparative method in
 mind), but from a bilingual Barasana-Spanish dictionary compiled by
-Jones and Jones (2009).- The \enquote{dictionary} feature leads to two
+Jones and Jones (2009).
+\item The \enquote{dictionary} feature leads to two
 issues: first, most of the entries are far from comparable in the sense
 that they are too culture-specific or are clearly the output of word
 formation processes; second, second, the definitions, while occasionally
 similar to glosses, are in most cases long and complex lexicographic
-definitions.- As the source is a bilingual \emph{dictionary} , and not a
-bilingual \emph{wordlist} or \emph{vocabulary} , in many cases different
+definitions.
+\item As the source is a bilingual \emph{dictionary}, and not a
+bilingual \emph{wordlist} or \emph{vocabulary}, in many cases different
 words in our source language (Barasana) are translated with the same
-Spanish \enquote{gloss}, especially in case of common vocabulary.- The
+Spanish \enquote{gloss}, especially in case of common vocabulary.
+\item The
 same definitions constitute our proxy to the forms glosses, but as
 mentioned they are given in Spanish, a language with less representation
 in Concepticon due to the majority of the concept lists already there
-using English or Mandarin for elicitation.- For the purpose of the
+using English or Mandarin for elicitation.
+\item For the purpose of the
 analysis, we did not want to map all possible concepts found in the data
 and already in Concepticon, but only the essential Swadesh-100 list,
 thus excluding entries with perfect matches like TELEPHONE.
+\end{itemize}
 
 Most of the issues above should be clear just from the first lines of
 our raw data:
@@ -2071,26 +2005,26 @@ post).
 
 While there are some differences in their inner workings, with
 \passthrough{\lstinline!concept\_map()!} more a \enquote{full search}
-than \passthrough{\lstinline!concept\_map2()!} , both mapping functions
+than \passthrough{\lstinline!concept\_map2()!}, both mapping functions
 work similarly, requiring two lists of strings: - The first one,
-\passthrough{\lstinline!glosses!} , is a list of glosses or definitions
+\passthrough{\lstinline!glosses!}, is a list of glosses or definitions
 we want to map, as found in the source data.- The second one,
-\passthrough{\lstinline!map\_reference!} , is a list of reference points
+\passthrough{\lstinline!map\_reference!}, is a list of reference points
 composed of Concepticon glosses and reference glosses, separated by
-triple slashes \passthrough{\lstinline!"///"!} . Examples, as those
+triple slashes \passthrough{\lstinline!"///"!}. Examples, as those
 provided in the previous post and available on-line in pre-compiled
 lists (such as
 \href{https://github.com/concepticon/pyconcepticon/blob/master/tests/fixtures/mappings/map-en.tsv}{this}
 for English), are
 \passthrough{\lstinline!"FLY (INSECT)///fly (insect)"!} and
-\passthrough{\lstinline!"FLY (MOVE THROUGH AIR)///fly (as a bird)"!} .
+\passthrough{\lstinline!"FLY (MOVE THROUGH AIR)///fly (as a bird)"!}.
 
 The items composing the \passthrough{\lstinline!glosses!} list can be
 pre-processed by the user in terms of textual manipulations, like
 removing leading and trailing spaces, or information extraction (such as
 obtaining the actual gloss from definitions with comments, like
 \passthrough{\lstinline!dog!} from
-\passthrough{\lstinline!the dog (noun)!} ), but both functions take care
+\passthrough{\lstinline!the dog (noun)!}), but both functions take care
 of that by default. The \passthrough{\lstinline!map\_reference!} list
 can also be compiled by the user as needed, but, in most cases, we will
 use \passthrough{\lstinline!pyconcepticon!} 's
@@ -2173,7 +2107,7 @@ for i in range(5):
 And, especially, with its results (also noting as some definitions, here
 \enquote{glosses}, are not mapped as the algorithm is unable to find an
 acceptable match with the similarity range we requested), below. The
-first entry, \passthrough{\lstinline!([1757], 4)!} , means that a single
+first entry, \passthrough{\lstinline!([1757], 4)!}, means that a single
 match, of index 1757 and similarity score of 4, was found for the gloss
 starting with \passthrough{\lstinline!cosa blanda...!} ; gloss of
 indexes 2 to 4, all interjections such as \passthrough{\lstinline"¡ay!"}
@@ -2195,12 +2129,12 @@ the \passthrough{\lstinline!reference!} string found before the
 \passthrough{\lstinline!"///"!} delimiter--- note that we do so by
 setting a default value \passthrough{\lstinline!([], None)!}, which
 indicates no matched concepts (its first element is an empty list) and,
-consequently, no similarity score (thus, \passthrough{\lstinline!None!}
-). As the list of matched elements will likely have repeated elements
+consequently, no similarity score (thus, \passthrough{\lstinline!None!}).
+As the list of matched elements will likely have repeated elements
 (because more than one reference gloss might be matched, and those will
 likely share their Concepticon ID), we also take a
 \passthrough{\lstinline!set!} of the elements before storing the results
-we care about in \passthrough{\lstinline!mapped\_glosses!} . This
+we care about in \passthrough{\lstinline!mapped\_glosses!}. This
 programming logic could be done in a single Python list comprehension,
 but it is better to proceed stepwise here and collect each gloss match
 within a \passthrough{\lstinline!for!} loop.
@@ -2310,7 +2244,7 @@ could be provided, making the reviewing task even easier--- for example,
 by sorting entries by similarity score, listing glosses alphabetically,
 or already including the Concepticon ID. However, this should be easy to
 any Python programmer and is beyond our scope of illustrating the inner
-working of \passthrough{\lstinline!pyconcepticon!} .
+working of \passthrough{\lstinline!pyconcepticon!}.
 
 \begin{lstlisting}
 # Write the output
@@ -2342,12 +2276,12 @@ with open('barasana-swadesh.tsv', 'w') as handler:
 \end{lstlisting}
 
 We can finally inspect the results and confirm that the code is working,
-such as in good potential matches as \passthrough{\lstinline!ãmo!} for
-HAND and \passthrough{\lstinline!baáre!} for EAT. We can already spot
-problems, as well: \passthrough{\lstinline!adocʉ̃!} was mapped to PERSON
+such as in good potential matches as \texttt{ãmo} for
+HAND and \texttt{baáre} for EAT. We can already spot
+problems, as well: \texttt{adocʉ̃} was mapped to PERSON
 due to the parsing of its definition, and
-\passthrough{\lstinline!baásãare!} , clearly a word formation including
-the \passthrough{\lstinline!baáre!} above, is also mapped to EAT (which
+\texttt{baásãare}, clearly a word formation including
+the \texttt{baáre} above, is also mapped to EAT (which
 was expected in our logic, as both have the same Spanish gloss
 \enquote{comer}). Nevertheless, we surely saved a lot of time for the
 linguists that would correct this first mapping, also gaining much in
@@ -2372,14 +2306,14 @@ $ head barasana-swadesh.tsv
  boagʉ, boago     ˈbóɑ́.gɨ    (ser/estar) podrido, podrida (animal, persona)  PERSON
 \end{lstlisting}
 
-The entire source code here developed is available at \href{URL}{this
-GitHub Gist} .
+The entire source code here developed is available as a 
+GitHub Gist.
 
 \subsubsection*{References}
 
 \nopagebreak\hangindent=0.7cm {\small  Barasana Literacy Committee, Paula S. Jones and Wendell H. Jones
 (compilers). 2009. \emph{Diccionario bilingüe: Eduria \&
-Barasana-Español, Español-Eduria \& Barasana} . Bogotá, D.C.: Editorial
+Barasana-Español, Español-Eduria \& Barasana}. Bogotá, D.C.: Editorial
 Fundación para el Desarrollo de los Pueblos Marginados. 613pp. }
 
 \nopagebreak\hangindent=0.7cm {\small  Swadesh, M. (1955): \emph{Towards greater accuracy in lexicostatistic
@@ -2412,8 +2346,7 @@ lexicostatistics
 
 One of the major efforts behind our recently published paper on the
 \href{https://www.pnas.org/content/early/2019/04/30/1817972116}{origin
-and spread of the Sino-Tibetan languages} (
-\href{http://bibliography.lingpy.org?key=Sagart2019}{Sagart et al.~2019}) was the creation of a database of lexical cognates which was used to
+and spread of the Sino-Tibetan languages} (\href{http://bibliography.lingpy.org?key=Sagart2019}{Sagart et al.~2019}) was the creation of a database of lexical cognates which was used to
 run the phylogenetic analyses. The creation of this database started
 about four years ago, when I joined the Centre des Recherches
 Linguistiques sur l'Asie Oriental in Paris as a research fellow in
@@ -2477,15 +2410,14 @@ Our experience with building the
 Lexical Cognates} underlying the study by
 \href{http://bibliography.lingpy.org?key=Sagart2019}{Sagart et
 al.~(2019)} does not solve these problems. We were making use of tools
-like \href{http://tsv.lingpy.org}{EDICTOR} (
-\href{http://bibliography.lingpy.org?key=List2017d}{List 2017}), which
+like \href{http://tsv.lingpy.org}{EDICTOR} (\href{http://bibliography.lingpy.org?key=List2017d}{List 2017}), which
 facilitate the process of cognate coding and making alignments of the
 data, but in order to get the data in a first instance, we mostly relied
 on the fact that we had people (mostly also myself) in our team who
 could quickly prepare custom scripts to parse available data and extract
 the data we needed. We also profited much from the fact that some
 projects, especially \href{http://stedt.berkeley.edu/}{STEDT} (\href{http://bibliography.lingpy.org?key=Matisoff2015}{Matisoff 2015}),
-but also \href{http://starling.rinet.ru/}{Tower of Babel} , had been
+but also \href{http://starling.rinet.ru/}{Tower of Babel}, had been
 digitizing large amounts of data in a rather regular form in the past.
 We were also lucky to have people in our team who have done original
 fieldwork (which enabled them to quickly fill in a list of certain
@@ -2508,7 +2440,7 @@ Sino-Tibetan, along with an interface to easily inspect the data which
 goes beyond many of the datasets that have been published in the past.
 
 Our data is open, scholars can easily inspect it in detail from its
-\href{https://dighl.github.org/sinotibetan}{URL} , and they can even
+\href{https://dighl.github.org/sinotibetan}{URL}, and they can even
 correct the cognate judgments, add alignments, and further expand or
 correct it. In order to do so, however, one needs to learn a bit about
 the way in which we (1) assembled the data, (2) coded the data, and (3)
@@ -2520,8 +2452,8 @@ assembled, curated, and analyzed.
 
 \subsection*{References}
 
-\nopagebreak\hangindent=0.7cm {\small  Dunn, Michael (2012): Indo-European lexical cognacy database
-(IELex). \href{//ielex.mpi.nl/”}{http://ielex.mpi.nl/} . }
+\nopagebreak\hangindent=0.7cm {\small  Dunn, Michael (2012): Indo--European Lexical Cognacy Database
+(IELex). Hosted at \href{//ielex.mpi.nl/”}{https://ielex.mpi.nl/}. }
 
 \nopagebreak\hangindent=0.7cm {\small  Greenhill, Simon J. and Blust, Robert and Gray, Russell D. (2008):
 The Austronesian Basic Vocabulary Database: From bioinformatics to
@@ -2546,7 +2478,7 @@ and Thesaurus project}. Berkeley: University of California.}
 Robin and Thouzeau, Valentin and Greenhill, Simon J. and List,
 Johann-Mattis (2019): Dated language phylogenies shed light on the
 ancestry of Sino-Tibetan. \emph{Proceedings of the National Academy of
-Science of the United States of America} . 1-6. DOI:
+Science of the United States of America}. 1-6. DOI:
 \href{https://doi.org/10.1073/pnas.1817972116}{10.1073/pnas.1817972116} }
 
 \nopagebreak\hangindent=0.7cm {\small  Starostin, George S. and Krylov, Phil (eds.) (2011): \emph{The Global
@@ -2654,7 +2586,7 @@ Historical Linguistics.} \emph{Systematic Biology} 54 (4): 513--26.
 \nopagebreak\hangindent=0.7cm {\small  Geisler, H., and J.-M. List. 2013. \enquote{Do Languages Grow on
 Trees? The Tree Metaphor in the History of Linguistics.} In
 \emph{Classification and Evolution in Biology, Linguistics and the
-History of Science. Concepts-- Methods -- Visualization} , edited by
+History of Science. Concepts-- Methods -- Visualization}, edited by
 Heiner Fangerau, Hans Geisler, Thorsten Halling, and William Martin,
 111--24. Stuttgart: Franz Steiner Verlag.}
 
@@ -2665,20 +2597,20 @@ Phylogenies).} \emph{Biological Theory} 2 (4): 360--75. }
 \nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis, Jananan Sylvestre Pathmanathan, Philippe Lopez,
 and Eric Bapteste. 2016. \enquote{Unity and Disunity in Evolutionary
 Sciences: Process-Based Analogies Open Common Research Avenues for
-Biology and Linguistics.} \emph{Biology Direct} , nos. 39, 11: 1--17.}
+Biology and Linguistics.} \emph{Biology Direct}, nos. 39, 11: 1--17.}
 
-\nopagebreak\hangindent=0.7cm {\small  Meyer-Lübke, Wilhelm. 1890. \emph{Italienische Grammatik} . Leipzig:
+\nopagebreak\hangindent=0.7cm {\small  Meyer-Lübke, Wilhelm. 1890. \emph{Italienische Grammatik}. Leipzig:
 Verlag von O. R. Reisland. }
 
 \nopagebreak\hangindent=0.7cm {\small  Pagel, Mark. 2016. \enquote{Darwinian Perspectives on the Evolution
-of Human Languages.} \emph{Psychonomic Bulletin \& Review} , 1--7.
-\url{https://doi.org/10.3758/s13423-016-1072-z} . }
+of Human Languages.} \emph{Psychonomic Bulletin \& Review}, 1--7.
+\url{https://doi.org/10.3758/s13423-016-1072-z}. }
 
 \nopagebreak\hangindent=0.7cm {\small  Schleicher, August. 1863. {]} {[} \emph{Die darwinsche Theorie und
-die Sprachwissenschaft} . Weimar: Hermann Böhlau.}
+die Sprachwissenschaft}. Weimar: Hermann Böhlau.}
 
 \nopagebreak\hangindent=0.7cm {\small  Stevick, Robert D. 1963. \enquote{The Biological Model and
-Historical Linguistics.} \emph{Language} , nos. 2, 39: 159--69.
+Historical Linguistics.} \emph{Language}, nos. 2, 39: 159--69.
 \url{https://www.jstor.org/stable/411199}.}
 
 \nopagebreak\hangindent=0.7cm {\small  Wells, Rulon S. 1987. \enquote{The Life and Growth of Language:
@@ -2686,7 +2618,7 @@ Metaphors in Biology and Linguistics.} In \emph{Biological Metaphor and
 Cladistic Classification: An Interdisciplinary Perspective; {[}Papers
 from Symposium on Biological Metaphor Outside Biology (1982.03.04-05,
 Philadelphia) Interdisciplinary Round-Table on Cladistics and Other
-Graph Theoretical Representations (1983.04.28-29, Philadelphia){]}} ,
+Graph Theoretical Representations (1983.04.28-29, Philadelphia){]}},
 edited by Henry Max Hoenigswald, 39--80. Philadelphia: Univ. of
 Pennsylvania Pr.}
 
@@ -2761,7 +2693,7 @@ derived from word lists. So I did a little experiment.}
 detection to the data from the \href{https://asjp.clld.org/}{ASJP
 project} (Wichmann et al.~2016), to extract character matrices and to
 apply Maximum Likelihood (ML) phylogenetic inference (Data and code are
-available at \url{https://osf.io/cufv7/} ). In the meantime I have
+available at \url{https://osf.io/cufv7/}). In the meantime I have
 updated my database to ASJP v. 18. I used those data to infer ML trees
 for all Glottolog families for which ASJP contains at least 10
 contemporaneous doculects, using the Glottolog classification as
@@ -2821,7 +2753,6 @@ Pompei et al.~2011).}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   {\textbf{MAD rooting.}}
 \item
@@ -2857,7 +2788,6 @@ consistent with the goldstandard. The GTDs are}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   {MAD: 0.61}
 \item
@@ -2876,7 +2806,7 @@ different picture though:}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
-& {mean GTD}\tabularnewline
+mean & GTD\tabularnewline
 \midrule
 \endhead
 {\emph{MAD}} & {0.0704}\tabularnewline
@@ -2910,7 +2840,7 @@ phylogenetic linguistics.}
 
 {Code and data, including all trees and the complete evaluation results,
 are available at
-\url{https://github.com/gerhardJaeger/competititiveRooting.git} .}
+\url{https://github.com/gerhardJaeger/competititiveRooting.git}.}
 
 \subsubsection*{References}
 
@@ -2923,11 +2853,11 @@ rooting using minimal ancestor deviation. \emph{Nature Ecology and Evolution}.
 URL: http://dx.doi.org/10.1038/s41559-017-0193}
 
 \nopagebreak\hangindent=0.7cm {\small  Pompei, S., Loreto, V., \& Kümmel Tria, F. D. (2011): On the
-accuracy of language trees. \emph{PloS one} , \emph{6} (6), e20109.}
+accuracy of language trees. \emph{PloS one}, \emph{6} (6), e20109.}
 
 \nopagebreak\hangindent=0.7cm {\small  Steel, M., \& McKenzie, A. (2001): Properties of phylogenetic trees
 generated by Yule-type speciation models. \emph{Mathematical
-biosciences} , \emph{170} (1), 91-112. }
+biosciences}, \emph{170} (1), 91-112. }
 
 \nopagebreak\hangindent=0.7cm {\small  Sand et al.~(2014): tqDist: a library for computing the quartet and
 triplet distances between binary or general trees, \emph{Bioinformatics},
@@ -3005,11 +2935,11 @@ for a discussion of this concept), we had to pay specific attention to
 the problem of data availability. For this reason, we started from an
 initial comparison of concepts available different sources (including
 those digitized by the STEDT project,
-\href{http://bibliography.lingpy.org?key=Matisoff2015}{Matisoff 2015} ).
+\href{http://bibliography.lingpy.org?key=Matisoff2015}{Matisoff 2015}).
 To compare the concepts available in the different sources, we made use
 of the Concepticon project (
-\href{https://concepticon.clld.org}{concepticon.clld.org} ,
-\href{http://bibliography.lingpy.org?key=List2016a}{List et al. 2016} ,
+\href{https://concepticon.clld.org}{concepticon.clld.org},
+\href{http://bibliography.lingpy.org?key=List2016a}{List et al. 2016},
 see \href{http://bibliography.lingpy.org?key=List2018h}{List 2018} for
 an introduction to the goals of the project) and the
 \passthrough{\lstinline!pyconcepticon!} library, which offers quick
@@ -3039,9 +2969,9 @@ $ concepticon --repos=PATH intersection Yakhontov-1991-35 Swadesh-1952-200 Swade
 This code example checks which of the concepts given in the concept
 lists by Swadesh (100 and 200) plus the lists by
 \href{https://concepticon.clld.org/contributions/Yakhontov-1991-35}{Yakhontov}
-(published in {[}Starostin 1991{]}) and
+(published in Starostin 1991) and
 \href{https://concepticon.clld.org/contributions/Dolgopolsky-1964-15}{Dolgopolsky}
-( \href{http://bibliography.lingpy.org?key=Dolgopolsky1964}{1964} )
+(\href{http://bibliography.lingpy.org?key=Dolgopolsky1964}{1964})
 recur in all lists, and outputs them both with their Concepticon Gloss,
 and their Concepticon IDs. Note that you do not need to use the lists
 that are provided by Concepticon alone, you can also compare with your
@@ -3056,7 +2986,7 @@ had to reduce it further, once we started to add more languages to our
 sample. Often, we ran into simple coverage problems, as some of the
 concepts we thought would be useful turned out to be missing from
 sources, and other concepts, like, e.g.,
-\href{https://concepticon.clld.org/parameters/1509}{MOSQUITO} , were not
+\href{https://concepticon.clld.org/parameters/1509}{MOSQUITO}, were not
 lexified in some regions of the Himalaya.
 
 As a result, our final \enquote{master list}, which we used for the
@@ -3080,7 +3010,7 @@ T. A. Bodt (available from
 ). As Bodt's data and our data are linked to Concepticon (following the
 recommendations of the \href{https://cldf.clld.org}{CLDF} initiative,
 \href{http://bibliography.lingpy.org?key=Forkel2018a}{Forkel et al.
-2018} ), we can compare their intersection with a simple command from
+2018}), we can compare their intersection with a simple command from
 the terminal, in which we combine the original
 \passthrough{\lstinline!intersection!} command of
 \passthrough{\lstinline!pyconcepticon!} with the
@@ -3095,7 +3025,7 @@ $ concepticon --repos=PATH intersection Sagart-2018-250.tsv Bodt-2019-664.tsv | 
 
 To run this code as illustrated here, the concept lists need to show a
 certain format. You can check this out yourself by installing
-\passthrough{\lstinline!pyconcepticon!} , downloading the Concepticon
+\passthrough{\lstinline!pyconcepticon!}, downloading the Concepticon
 data, and the two concept lists, which I have all uploaded to
 \href{https://gist.github.com/LinguList/fa93b0829fede0d6cbb01f4ca5f5b864}{this
 GitHub Gist}.
@@ -3196,9 +3126,9 @@ may contain the same or similar words, but differ with respect to word
 order. The first alignment algorithm that comes to mind when trying to
 deal with this question is the so-called
 \href{http://www.bioinformatics.nl/cgi-bin/emboss/help/matcher}{Waterman-Eggert
-algorithm} , first proposed and named after
+algorithm}, first proposed and named after
 \href{http://bibliography.lingpy.org?key=Waterman1987}{Waterman and
-Eggert (1987)} .
+Eggert (1987)}.
 
 Long time ago, I provided an implementation of this algorithm as part of
 the LingPy package. The basic idea compared to traditional alignment
@@ -3211,15 +3141,13 @@ them have been readily identified.
 
 This is not the place to get into the details of the algorithmics here.
 For those interested in the topic, I recommend to have a look at
-\href{http://bibliography.lingpy.org?key=List2014d}{List (2014)} , where
+\href{http://bibliography.lingpy.org?key=List2014d}{List (2014)}, where
 the major algorithms for alignment analyses have been rdescribed and
 discussed for usability in linguistic applications. To get a sbrief
 glimpse at the crucial difference between Waterman-Eggert and the famous
-local alignment algorithm by Smith-Waterman (
-\href{http://bibliography.lingpy.org?key=Smith1981}{Smith and Waterman
-1981} ), let us open a terminal and test the Waterman-Eggert algorithm
-in a short \href{http://lingpy.org}{LingPy} session (
-\href{http://bibliography.lingpy.org?key=List2018i}{List et al. 2018} ).
+local alignment algorithm by Smith-Waterman (\href{http://bibliography.lingpy.org?key=Smith1981}{Smith and Waterman
+1981}), let us open a terminal and test the Waterman-Eggert algorithm
+in a short \href{http://lingpy.org}{LingPy} session (\href{http://bibliography.lingpy.org?key=List2018i}{List et al. 2018}).
 
 \begin{lstlisting}
 >>> from lingpy import *
@@ -3434,7 +3362,7 @@ linguistics}. Düsseldorf:Düsseldorf University Press.}
 \nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis and Greenhill, Simon and Tresoldi, Tiago and
 Forkel, Robert (2018): \emph{LingPy. A Python library for quantitative tasks
 in historical linguistics}. Max Planck Institute for the Science of Human
-History. Jena: \href{//lingpy.org”}{http://lingpy.org} .}
+History. Jena: \href{//lingpy.org”}{http://lingpy.org}.}
 
 \nopagebreak\hangindent=0.7cm {\small  Smith, T. F. and Waterman, M. S. (1981): Identification of common
 molecular subsequences. \emph{Journal of Molecular Biology} 1.
@@ -3454,8 +3382,8 @@ Waterman-Eggert algorithm for sentence alignment}, in
 
 
 \newpage
-\section*{Feature-Based Alignment Analyses with LingPy and CLTS (1)}
-\phantomsection\addcontentsline{toc}{section}{Feature-Based Alignment Analyses with LingPy and CLTS (1) (Johann-Mattis List)}
+\section*{Feature-Based Alignment Analyses with LingPy and CLTS I}
+\phantomsection\addcontentsline{toc}{section}{Feature-Based Alignment Analyses with LingPy and CLTS I (Johann-Mattis List)}
 
 Johann-Mattis List (19/08/2019)
 
@@ -3472,7 +3400,7 @@ Their major concern was that the sound-class-based scoring systems we
 use in LingPy might fail to reflect true phonetic similarity of sounds,
 specifically also because they are not informed by classical ideas about
 distinctive features in phonology. As described in detail in
-\href{http://bibliography.lingpy.org?key=List2014d}{List (2014)} ,
+\href{http://bibliography.lingpy.org?key=List2014d}{List (2014)},
 LingPy converts sounds in phonetic transcription to an internal alphabet
 of less than 30 letters, to which the alignment algorithms are then
 applied in a second stage.
@@ -3480,12 +3408,12 @@ applied in a second stage.
 What my colleagues wanted to do instead was to test feature-based
 scoring systems
 (e.g.~\href{http://bibliography.lingpy.org?key=Chomsky1968}{Chomsky and
-Halle 1968} ) and then use these features to derive distance or
+Halle 1968}) and then use these features to derive distance or
 similarity scores between phonetic segments which would then be used to
 carry out the alignment analysis. In addition, some colleagues had
 created their own similarity matrix, and wanted to apply it more
 flexibly to other datasets (see, for example,
-\href{http://bibliography.lingpy.org?key=Jaeger2015}{Jäger 2015} ). My
+\href{http://bibliography.lingpy.org?key=Jaeger2015}{Jäger 2015}). My
 answer was usually, that this could be done in principle, but that it
 would require some amount of data preprocessing, depending on what data
 one wants to align. Not many colleagues asked me a second time, maybe
@@ -3506,9 +3434,7 @@ for which we have distinctive feature sets. The major reason why I never
 tested feature-based alignment methods so far, was that I could not find
 a feature-system that would offer feature for all the sounds I usually
 find in linguistic datasets. Even datasets like
-\href{https://phoible.org}{Phoible} (
-\href{http://bibliography.lingpy.org?key=Moran2014}{Moran et al. 2014}
-), which offers huge amounts of transcriptions barely touch the surface
+\href{https://phoible.org}{Phoible} (\href{http://bibliography.lingpy.org?key=Moran2014}{Moran et al. 2014}), which offers huge amounts of transcriptions barely touch the surface
 of the variation one encounters when working with real transcriptions.
 
 Luckily, our CLTS system has shown to be very robust so far. It
@@ -3516,11 +3442,10 @@ understands some 8000 different phonetic segments, including clicks,
 tones, dipththongs, and certain consonant clusters, and we have
 developed first approaches to convert a given dataset into a form of IPA
 that CLTS accepts. For the conversion, we now use \emph{orthography
-profiles} ( \href{http://bibliography.lingpy.org?key=Moran2018}{Moran
-and Cysouw 2018} ), which I have presented in past tutorials (
-\href{http://bibliography.lingpy.org?key=List2017LECTUREd}{List 2017} ),
+profiles} (\href{http://bibliography.lingpy.org?key=Moran2018}{Moran
+and Cysouw 2018}), which I have presented in past tutorials (\href{http://bibliography.lingpy.org?key=List2017LECTUREd}{List 2017}),
 and for which I recently also wrote an implementation in JavaScript,
-called \href{http://calc.digling.org/}{SegmentsJS} .
+called \href{http://calc.digling.org/}{SegmentsJS}.
 
 I therefore think that it is time to get back to my colleagues' request
 and illustrate how one can first create a custom, feature-based scoring
@@ -3542,7 +3467,7 @@ underlying the sequence alignment problem, however, this assumption is
 not correct, since only similarity-based scoring functions allow for
 both semi-global and local alignment analyses (for details on these
 problems, compare
-\href{http://bibliography.lingpy.org?key=List2014d}{List 2014} , where
+\href{http://bibliography.lingpy.org?key=List2014d}{List 2014}, where
 all algorithms are described in detail).
 
 For this reason, it is not useful to start from the computation distance
@@ -3563,16 +3488,15 @@ In order to derive a \emph{distance score} between two sound segments
 which are defined by a given feature system, the easiest and seemingly
 most straightforward way (recommended and defended by some colleagues in
 personal communication) is to compute the so-called \emph{Hamming
-distance} (
-\href{http://bibliography.lingpy.org?key=Hamming1950}{Hamming 1950} .
+distance} (\href{http://bibliography.lingpy.org?key=Hamming1950}{Hamming 1950}).
 This distance reflects the proportion of features where two segments
 differ. Turning the Hamming distance into a similarity score is
 straightforward, since we only need to calculate the proportion of
 features where two segments are identical.
 
 If we look at the CLTS feature system, we find 37 features in total,
-which cover three major classes of sounds, \emph{consonants} ,
-\emph{vowels} , and \emph{tones} , which themselves may vary with
+which cover three major classes of sounds, \emph{consonants},
+\emph{vowels}, and \emph{tones}, which themselves may vary with
 respect to the features that define them. The features themselves can be
 binary or have multiple values. Retrieving the features of a given sound
 linked to the CLTS system is straightforward. The features can be found
@@ -3589,8 +3513,8 @@ for i, (k, v) in enumerate(sorted(sound.featuredict.items())):
 
 When you type in this code in your commandline (provided you have
 installed the \href{https://pypi.org/project/pyclts/}{pyclts} package,
-e.g., with help of \passthrough{\lstinline!pip!} , by typing
-\passthrough{\lstinline!pip install pyclts!} ), you will receive the
+e.g., with help of \passthrough{\lstinline!pip!}, by typing
+\passthrough{\lstinline!pip install pyclts!}), you will receive the
 output shown in the following table in text form.
 
 \begin{longtable}[]{@{}lll@{}}
@@ -3629,18 +3553,17 @@ No. & Feature & Value\tabularnewline
 We can see from the output that CLTS currently uses as many as 24
 different features to define consonants, which mostly reflect the
 traditional way in which sounds are defined by the International
-Phonetic Alphabet (
-\href{http://bibliography.lingpy.org?key=IPA1999}{IPA 1999} ). You can
+Phonetic Alphabet (\href{http://bibliography.lingpy.org?key=IPA1999}{IPA 1999}). You can
 apply the same procedure to check for the vowel and the tone features
 applied by CLTS, by replacing the line
 \passthrough{\lstinline!sound = bipa['ts']!} by the line
 \passthrough{\lstinline!sound = bipa['a']!} or
-\passthrough{\lstinline!sound = bipa['55']!} , respectively.
+\passthrough{\lstinline!sound = bipa['55']!}, respectively.
 
 With our feature vector and a system like CLTS which offers feature
 values, it is straightforward to write a short function that allows us
 to compare the hamming distance between different sounds transcribed in
-\emph{Broad IPA} ( \passthrough{\lstinline!bipa!} ) system offered by
+\emph{Broad IPA} (\passthrough{\lstinline!bipa!}) system offered by
 the CLTS database.
 
 We start by defining our function for scoring two sound segments. This
@@ -3650,7 +3573,7 @@ and three keywords, \passthrough{\lstinline!bipa!} (referring to the
 \passthrough{\lstinline!pyclts!} package),
 \passthrough{\lstinline!classes!} (a function that defines to which
 score we want to normalize our Hamming similarities), and
-\passthrough{\lstinline!features!} , the list of feature vectors, as
+\passthrough{\lstinline!features!}, the list of feature vectors, as
 offered per class in our transcription system.
 
 \begin{lstlisting}
@@ -3700,7 +3623,7 @@ dipthongs or clusters. Dipthongs and clusters are not defined by their
 own features in CLTS, but rather have separate features for the first
 and the second sound, which can be accessed through their attributes
 \passthrough{\lstinline!from\_sound!} and
-\passthrough{\lstinline!to\_sound!} . To keep the demonstration simple
+\passthrough{\lstinline!to\_sound!}. To keep the demonstration simple
 for the time being, we will for now simply represent the complex sounds
 by their first sound.
 
@@ -3856,7 +3779,7 @@ table.
 \end{longtable}
 
 By replacing the \passthrough{\lstinline!cons!} variable by
-\passthrough{\lstinline!vows!} , we can produce the same matrix for our
+\passthrough{\lstinline!vows!}, we can produce the same matrix for our
 vowels.
 
 \begin{longtable}[]{@{}lrrrrr@{}}
@@ -3872,27 +3795,23 @@ vowels.
 \bottomrule
 \end{longtable}
 
-Those experience in phonetics and distinctive features and historical
+Those experienced in phonetics and distinctive features and historical
 sound change may find the results strange, especially those for the
-consonants. We see that \passthrough{\lstinline![!} p
-\passthrough{\lstinline!]!} is as similar to a
-\passthrough{\lstinline![!} t \passthrough{\lstinline!]!} as to a
-\passthrough{\lstinline![!} b \passthrough{\lstinline!]!} , although
-most scholars would usually say that \passthrough{\lstinline![!} p
-\passthrough{\lstinline!]!} and \passthrough{\lstinline![!} b
-\passthrough{\lstinline!]!} are much closer to each other. The problem,
+consonants. We see that \texttt{[p]} is as similar to a
+\texttt{[t]} as to a
+\texttt{[b]}, although
+most scholars would usually say that \texttt{[p]} and \texttt{[b]}
+are much closer to each other. The problem,
 and this is also one of the challenges when using feature systems for
 alignment analyses, is that all features are given the same weight by
 our Hamming similarity approach. When comparing the features by which
-\passthrough{\lstinline![!} p \passthrough{\lstinline!]!} ,
-\passthrough{\lstinline![!} t \passthrough{\lstinline!]!} , and
-\passthrough{\lstinline![!} d \passthrough{\lstinline!]!} differ,
+\texttt{[p]},
+\texttt{[t]}, and
+\texttt{[d]} differ,
 according to the CLTS feature system, we can see that
-\passthrough{\lstinline![!} p \passthrough{\lstinline!]!} and
-\passthrough{\lstinline![!} t \passthrough{\lstinline!]!} differ by one
-feature (\enquote{place}), and \passthrough{\lstinline![!} p
-\passthrough{\lstinline!]!} and \passthrough{\lstinline![!} b
-\passthrough{\lstinline!]!} differ by another feature
+\texttt{[p]} and
+\texttt{[t]} differ by one
+feature (\enquote{place}), and \texttt{[p]} and \texttt{[b]} differ by another feature
 (\enquote{voicing}). Since the similarity measure presented here does
 not allow for a differential weighting of features and feature values,
 it yields the same similarity of 0.96, since both sounds differ in one
@@ -3926,7 +3845,7 @@ Institute for the Science of Human History. }
 
 \nopagebreak\hangindent=0.7cm {\small  Steven Moran and Daniel McCloy and Richard Wright (eds.) (2014):
 \emph{PHOIBLE Online}. Max Planck Institute for Evolutionary Anthropology.
-Leipzig: \href{//phoible.org/”}{http://phoible.org/} .}
+Leipzig: \href{//phoible.org/”}{http://phoible.org/}.}
 
 \nopagebreak\hangindent=0.7cm {\small  Moran, Steven and Cysouw, Michael (2018): \emph{The Unicode Cookbook for
 Linguists: Managing writing systems using orthography profiles}.
@@ -3946,8 +3865,8 @@ Alignment Analyses with LingPy and CLTS (1)}, in
 
 
 \newpage
-\section*{Feature-Based Alignment Analyses with LingPy and CLTS (2)}
-\phantomsection\addcontentsline{toc}{section}{Feature-Based Alignment Analyses with LingPy and CLTS (2) (Johann-Mattis List)}
+\section*{Feature-Based Alignment Analyses with LingPy and CLTS II}
+\phantomsection\addcontentsline{toc}{section}{Feature-Based Alignment Analyses with LingPy and CLTS II (Johann-Mattis List)}
 
 Johann-Mattis List (16/09/2019)
 
@@ -3958,15 +3877,13 @@ Johann-Mattis List (16/09/2019)
 \begin{center}\rule{0.5\linewidth}{1pt}\end{center}
 
 Having seen how we can obtain a simple scorer derived from the feature
-system in \href{https://clts.clld.org}{CLTS} (
-\href{http://bibliography.lingpy.org?key=CLTS}{List et al. 2019} ) in
-\href{https://calc.hypotheses.org/1962}{last month's post} , what is
+system in \href{https://clts.clld.org}{CLTS} (\href{http://bibliography.lingpy.org?key=CLTS}{List et al. 2019}) in
+\href{https://calc.hypotheses.org/1962}{last month's post}, what is
 missing now, in order to use the scorer for alignment analyses, is an
 alignment function which can take the scorer as an argument. If one does
 not have higher ambitions with respect to the alignment function itself,
 this step can be achieved in a very straightforward way with help of
-\href{http://lingpy.org}{LingPy's} (
-\href{http://bibliography.lingpy.org?key=LingPy}{List et al. 2018} )
+\href{http://lingpy.org}{LingPy's} (\href{http://bibliography.lingpy.org?key=LingPy}{List et al. 2018})
 \href{http://lingpy.org/reference/lingpy.algorithm.cython.html\#lingpy.algorithm.cython.malign.nw_align}{\passthrough{\lstinline!nw\_align()!}}
 or
 \href{http://lingpy.org/reference/lingpy.algorithm.cython.html\#lingpy.algorithm.cython.malign.sw_align}{\passthrough{\lstinline!sw\_align()!}}
@@ -3979,11 +3896,9 @@ along with our sequences to the function.
 Let's test this by writing a small function that takes two sequences as
 input and then (a) creates the scorer using the procedure we illustrated
 in the preceding post, and (b) aligns the sequences, using either the
-Needleman-Wunsch algorithm (
-\href{http://bibliography.lingpy.org?key=Needleman1970}{Needleman and
-Wunsch 1970} ) for global alignment, or the Smith-Waterman algorithm (
-\href{http://bibliography.lingpy.org?key=Smith1981}{Smith and Waterman
-1981} ) for local alignment. We start by importing the
+Needleman-Wunsch algorithm (\href{http://bibliography.lingpy.org?key=Needleman1970}{Needleman and
+Wunsch 1970}) for global alignment, or the Smith-Waterman algorithm (\href{http://bibliography.lingpy.org?key=Smith1981}{Smith and Waterman
+1981}) for local alignment. We start by importing the
 \passthrough{\lstinline!malign!} package of LingPy which offers simple
 alignment methods, as well as LingPy proper, and adding this to the
 start of our file \passthrough{\lstinline!features.py!} which we used
@@ -4016,11 +3931,10 @@ can be done by splitting IPA sequences with help of LingPy's
 \href{http://lingpy.org/reference/lingpy.sequence.html\#lingpy.sequence.sound_classes.ipa2tokens}{\passthrough{\lstinline!ipa2tokens!}}
 function, or by using software specifically devoted to segmentation,
 such as the \href{https://github.com/cldf/segments}{segments} package,
-that uses \emph{orthography profiles} to split data into segments (
-\href{http://bibliography.lingpy.org?key=Moran2018}{Mora and Cysouw
-2018} ), of which I recently produced a JavaScript version for
+that uses \emph{orthography profiles} to split data into segments (\href{http://bibliography.lingpy.org?key=Moran2018}{Moran and Cysouw
+2018}), of which I recently produced a JavaScript version for
 demonstration purposes, called
-\href{http://calc.digling.org/profile/}{SegmentsJS} .
+\href{http://calc.digling.org/profile/}{SegmentsJS}.
 
 For a first test, we simply segment the data directly.
 
@@ -4036,16 +3950,19 @@ print('{0:.2f}'.format(score))
 From the output, we can see, that the method correctly aligns the two
 sequences.
 
-\begin{lstlisting}
-tʰ  ɔ   x   t   ɐ   -
-d   ɔː  -   t   ə   r
--1.00
-\end{lstlisting}
+\begin{table}[]
+\centering
+\begin{tabular}{llllll}
+\texttt{tʰ}    & \texttt{ɔ}  & \texttt{x} & \texttt{t} & \texttt{ɐ} & \texttt{-} \\
+\texttt{d}     & \texttt{ɔː} & \texttt{-} & \texttt{t} & \texttt{ə} & \texttt{r} \\
+-1.00 &    &   &   &   &  
+\end{tabular}
+\end{table}
 
 What you may find to be strange is the negative score for this
 alignment. But as the alignment itself is correct, we do not need to
 worry about this too much. The alignment has two gaps, and our gap
-penalty is \passthrough{\lstinline!-1!} . This will result in a score of
+penalty is \passthrough{\lstinline!-1!}. This will result in a score of
 \passthrough{\lstinline!-2!} for the gaps alone. Since each perfect
 match scores with \passthrough{\lstinline!1!} as well, and we have only
 one perfect match, the rest of the scores cannot outweigh the penalties
@@ -4057,34 +3974,32 @@ But let us now make a general test of the feature-based alignment method
 by using it to align all the sequences in a benchmark. Here, we use the
 benchmark proposed by
 \href{http://bibliography.lingpy.org?key=Covington1996}{Covington
-(1996)} , which is available from the
+(1996)}, which is available from the
 \href{http://alignments.lingpy.org}{Benchmark Database of Phonetic
 Alignments} (BDPA,
 \href{http://bibliography.lingpy.org?key=List2014e}{List and Prokić
-2014} ). We use this dataset for convenience, because it is small, and
+2014}). We use this dataset for convenience, because it is small, and
 can therefore easily be added to a GitHub Gist repository. Interested
 users can easily obtain the more elaborated and larger benchmark data
 from the BDPA and test the algorithm on more and more challenging
 datasets.
 
 To load the data from the benchmark, we first download the data and
-extract the file \passthrough{\lstinline!covington.psa!} , which
+extract the file \passthrough{\lstinline!covington.psa!}, which
 contains the alignments in the \enquote{PSA} format that LingPy uses for
 partial alignments. This format is outdated for different reasons.
 First, because the main interest of LingPy's algorithms has now shifted
 to cognate detection and multiple alignments, and pairwise alignments
 are no more considered the key task of the library. Second, with new
-standards such as \href{https://cldf.clld.org}{CLDF} (
-\href{http://bibliography.lingpy.org?key=Forkel2018a}{Forkel et al.
-2018} ), we are generally re-evaluating the usefulness of formats that
+standards such as \href{https://cldf.clld.org}{CLDF} (\href{http://bibliography.lingpy.org?key=Forkel2018a}{Forkel et al.
+2018}), we are generally re-evaluating the usefulness of formats that
 are too idiosyncratic. Third, with LingPy's wordlist format, that has
 been offering for a long time now the possibility to store multiple
 alignments, and to also edit them with the
-\href{http://edictor.digling.org}{EDICTOR} tool (
-\href{http://bibliography.lingpy.org?key=List2017d}{List 2017} ), we do
+\href{http://edictor.digling.org}{EDICTOR} tool (\href{http://bibliography.lingpy.org?key=List2017d}{List 2017}), we do
 no longer need specific formats, but could render the same data without
 problem in a multi-lingual wordlist, even if it only consists of aligned
-pairs.\\
+pairs.
 But since LingPy has not yet abandoned the PSA format and can readily
 read it, we can use it now to read in the file, align the data, and
 check if the alignment matches the gold standard. To evaluate the
@@ -4108,10 +4023,8 @@ that is, 82\% of the alignments are identical with the gold standard. In
 total, these are 67 out of 82 alignments in the benchmark. With this
 score, the feature-based alignment in this form shows a very mediocre
 performance, as we can see when comparing with scores reported for other
-alignment algorithms, specifically SCA (
-\href{http://bibliography.lingpy.org?key=List2014d}{List 2014} ) with 80
-perfect alignments (98\%), Kondrak's ALINE (
-\href{http://bibliography.lingpy.org?key=Kondrak2000}{Kondrak 2000} with
+alignment algorithms, specifically SCA (\href{http://bibliography.lingpy.org?key=List2014d}{List 2014}) with 80
+perfect alignments (98\%), Kondrak's ALINE (\href{http://bibliography.lingpy.org?key=Kondrak2000}{Kondrak 2000} with
 78 perfect alignments (95\%), or Covington's algorithm (1996) with 68.8
 perfect alignments (84\%).
 
@@ -4189,9 +4102,9 @@ Alignment Analyses with LingPy and CLTS (2)}, in
 
 
 \newpage
-\section*{Biological metaphors and methods in historical linguistics (2):
+\section*{Biological metaphors and methods in historical linguistics II:
 Words and genes}
-\phantomsection\addcontentsline{toc}{section}{Biological metaphors and methods in historical linguistics (2):
+\phantomsection\addcontentsline{toc}{section}{Biological metaphors and methods in historical linguistics II:
 Words and genes (Nathanael E. Schweikhard)}
 
 Nathanael E. Schweikhard  (18/09/2019)
@@ -4244,7 +4157,7 @@ the lexicon can easily reflect a wide-reaching change to many parts of
 the lexicon as in regular sound change.
 
 Besides these systemic changes, words in the lexicon can also influence
-each other and cause sporadic changes called \emph{analogy} , which is
+each other and cause sporadic changes called \emph{analogy}, which is
 typically based on the meanings of the words. This is comparable to
 linked loci in the genome, even if the underlying mechanisms are ­­---
 of course --- entirely different (Nakhleh 2013, 720, 726). From this,
@@ -4309,7 +4222,7 @@ Changes in Linguistics as Events of Concerted Evolution.} \emph{Current
 Biology} 25 (1): 1--9.}
 
 \nopagebreak\hangindent=0.7cm {\small  Keller, Daniela Barbara, and Jörg Schultz. 2014. \enquote{Word
-Formation Is Aware of Morpheme Family Size.} \emph{PLoS ONE} . }
+Formation Is Aware of Morpheme Family Size.} \emph{PLoS ONE}. }
 
 \nopagebreak\hangindent=0.7cm {\small  Koonin, Eugene V. 2005. \enquote{Orthologs, Paralogs, and
 Evolutionary Genomics.} \emph{Annual Review of Genetics} 39: 309--38.
@@ -4325,7 +4238,7 @@ Sciences: Process-Based Analogies Open Common Research Avenues for
 Biology and Linguistics.} \emph{Biology Direct} 11 (39): 1--17.}
 
 \nopagebreak\hangindent=0.7cm {\small  Morrison, David A. 2014. \enquote{Are Phylogenetic Patterns the Same
-in Anthropology and Biology?} \emph{bioRxiv} .
+in Anthropology and Biology?} \emph{bioRxiv}.
 \url{https://doi.org/10.1101/006486}. }
 
 \nopagebreak\hangindent=0.7cm {\small  Nakhleh, Luay. 2013. \enquote{Computational Approaches to Species
@@ -4343,10 +4256,10 @@ Historical Linguistics.} \emph{Language} 39 (2): 159--69.
 Concepts.} Abingdon: Routledge.}
 
 
-\vskip 2em
-\framebox{\tabular{p{0.95\textwidth}}\textbf{Cite this article as}: XXX, \enquote{XXX}, in
-\emph{Computer-Assisted Language Comparison in Practice},  XX/XX/2019,
-\url{https://calc.hypotheses.org/XX}.\endtabular}
+\framebox{\tabular{p{0.95\textwidth}}\textbf{Cite this article as}: Schweikhard, Nathanael E. \enquote{Biological metaphors and methods in historical
+linguistics (2): Words and genes}, in
+\emph{Computer-Assisted Language Comparison in Practice},  18/09/2019,
+\url{https://calc.hypotheses.org/1951}.\endtabular}
 
 
 
@@ -4375,10 +4288,10 @@ considered during collection, with the output of one project becoming
 the input of another.
 
 An ongoing project at our department, the Cross-Linguistic Data Formats
-( \href{https://cldf.clld.org}{CLDF} ) initiative (Forkel et al.~2018),
+(\href{https://cldf.clld.org}{CLDF}) initiative (Forkel et al.~2018),
 embodies this life cycle of data in line with the FAIR principles of
 data management (Wilkinson et al., 2016). Part of the ambitious umbrella
-project \href{https://glottobank.org/}{Glottobank} , a global research
+project \href{https://glottobank.org/}{Glottobank}, a global research
 consortium to document and understand linguistic diversity and
 evolution,~ datasets collected in CLDF formats can be quickly aggregated
 from different sources to form new datasets. An example of how CLDF
@@ -4406,10 +4319,10 @@ linguistic change to test novel phylogenetic techniques. There are
 several interpretations of \enquote{semantic distance,} as in hierarchic
 or otherwise structural ontologies (for example, the amount of nodes
 that needs to be traversed in
-\href{https://wordnet.princeton.edu/}{WordNet} , cf.~Princeton
+\href{https://wordnet.princeton.edu/}{WordNet}, cf.~Princeton
 University, 2010) or in complementary occurrences in corpora (as in
 vogue with \href{https://en.wikipedia.org/wiki/Word_embedding}{word
-vectors} , in the often repeated \enquote{king -- man + woman = queen}
+vectors}, in the often repeated \enquote{king -- man + woman = queen}
 equation, but see Nissim 2019). Neither method was adequate because,
 more as with typologies presented in semantics and semiology
 (cf.~Traugott \& Dasher 2001, Bloomfield 1933, Blank 1999), I needed an
@@ -4440,25 +4353,24 @@ ranging from the most common, MOON/MONTH, to spurious associations (like
 LOOK/BURNING, but notice how, among the minimum counts, we find
 semantically similar concepts, such as FLOWER/SPROUT (VERB)):
 
-\begin{longtable}[]{@{}lllll@{}}
-\toprule
-\endhead
-Concept A & Concept B & Family count & Language count & Word
-count\tabularnewline
-MOON & MONTH & 57 & 320 & 328\tabularnewline
-WOOD & TREE & 57 & 298 & 405\tabularnewline
-CLAW & FINGERNAIL & 55 & 217 & 225\tabularnewline
-\ldots{} & \ldots{} & \ldots{} & \ldots{} & \ldots{}\tabularnewline
-LOOK & BURNING & 1 & 1 & 1\tabularnewline
-STEPDAUGHTER & CHILD-IN-LAW & 1 & 1 & 1\tabularnewline
-FLOWER & SPROUT (VERB) & 1 & 1 & 1\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{table}[h]
+\centering
+\begin{tabular}{llrrr}
+Concept A    & Concept B     & Families & Languages & Words \\
+MOON         & MONTH         & 57       & 320       & 328   \\
+WOOD         & TREE          & 57       & 298       & 405   \\
+CLAW         & FINGERNAIL    & 55       & 217       & 225   \\
+...          & ...           & ...      & ...       & ...   \\
+LOOK         & BURNING       & 1        & 1         & 1     \\
+STEPDAUGHTER & CHILD-IN-LAW  & 1        & 1         & 1     \\
+FLOWER       & SPROUT (VERB) & 1        & 1         & 1    
+\end{tabular}
+\end{table}
 
 This new output, in a textual tabular format, can be combined with the
 communities published with CLICS to get the desired distance matrix.
 With the \href{https://github.com/tresoldi/semantic_distance}{script
-available on GitHub} , we can define different correction parameters for
+available on GitHub}, we can define different correction parameters for
 the counts of each pair (favoring families over languages, and languages
 ​​over words), as well as reducing the distance between concepts of the
 same cluster. The result is what we call for: a graph of which all
@@ -4485,23 +4397,17 @@ handful of random pairs (here the defined as the mean distance of the
 three shortest paths), along with the best overall solution for each
 pair:
 
-\begin{longtable}[]{@{}lllll@{}}
-\toprule
-\endhead
-Concept A & Concept B & Distance & Shortest Path & Steps in shortest
-path\tabularnewline
-BALL & HALF & 36.70 & BALL/INSIDE/CENTER OR MIDDLE/HALF &
-2\tabularnewline
-FODDER & MAPLE TREE & 188.73 & FODDER/HIDE/FEAR (TO BE AFRAID)/MAPLE
-TREE & 2\tabularnewline
-COCONUT & FINE (PENALTY) & 154.25 & COCONUT/WET/ANSWER/FINE (PENALTY) &
-2\tabularnewline
-BOLT (MOVE IN HASTE) & CABBAGE & 326.74 & BOLD (MOVE IN
-HASTE)/FALL/FRUIT/VEGETABLE/CABBAGE & 3\tabularnewline
-BRAID (VERB) & SLEEP & 155.17 & BRAID (VERB)/SWALLOW/SLEEP &
-1\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{table}[h]
+\centering
+\begin{tabular}{llrr}
+Concept A            & Concept B      & Distance & Steps \\
+BALL                 & HALF           & 36.70    & 2     \\
+FODDER               & MAPLE TREE     & 188.73   & 2     \\
+COCONUT              & FINE (PENALTY) & 154.25   & 2     \\
+BOLT (MOVE IN HASTE) & CABBAGE        & 326.74   & 3     \\
+BRAID (VERB)         & SLEEP          & 155.17   & 1    
+\end{tabular}
+\end{table}
 
 While these semantic distances are tentative and far from ideal, as a
 quick exploration can confirm, it is worth looking at how FAIR data made
@@ -4521,9 +4427,9 @@ not need to be restricted within the boundaries of a single publication.
 \nopagebreak\hangindent=0.7cm {\small  Blank, Andreas. 1999. \enquote{Why do new meanings occur? A
 cognitive typology of the motivations for lexical semantic change} in
 Blank, Andreas; Koch, Peter (eds.), \emph{Historical Semantics and
-Cognition} . Berlin/New York: Mouton de Gruyter, pp.~61-90. }
+Cognition}. Berlin/New York: Mouton de Gruyter, pp.~61-90. }
 
-\nopagebreak\hangindent=0.7cm {\small  Bloomfield, Leonard. 1933. \emph{Language} . New York: Allen \&
+\nopagebreak\hangindent=0.7cm {\small  Bloomfield, Leonard. 1933. \emph{Language}. New York: Allen \&
 Unwin.}
 
 \nopagebreak\hangindent=0.7cm {\small  Dijkstra, Edsger W. 1959. \enquote{A note on two problems in
@@ -4542,10 +4448,10 @@ Jena: Max Planck Institute for the Science of Human History. (Available
 online at http://concepticon.clld.org, Accessed on 2019-10-28.)}
 
 \nopagebreak\hangindent=0.7cm {\small  Nissim, Malvina; van Noord, Rik; van der Goot, Rob. 2019. \emph{Fair
-is Better than Sensational:Man is to Doctor as Woman is to Doctor} .
+is Better than Sensational:Man is to Doctor as Woman is to Doctor}.
 arXiv:1905.09866 }
 
-\nopagebreak\hangindent=0.7cm {\small  Princeton University \enquote{About WordNet.} \emph{WordNet} .
+\nopagebreak\hangindent=0.7cm {\small  Princeton University \enquote{About WordNet.} \emph{WordNet}.
 Princeton University. 2010. }
 
 \nopagebreak\hangindent=0.7cm {\small  Rosvall, Martin; Axelsson, Daniel; and Bergstrom, Carl T. 2009.
@@ -4561,7 +4467,7 @@ Colexifications, reproducible analysis of cross-linguistic polysemies.
 Manuscript. 1-24. Preprint, currently under review.}
 
 \nopagebreak\hangindent=0.7cm {\small  Traugott, Elizabeth C.; Dasher, Richard B. 2001. \emph{Regularity in
-Semantic Change} . Cambridge: Cambridge University Press.}
+Semantic Change}. Cambridge: Cambridge University Press.}
 
 \nopagebreak\hangindent=0.7cm {\small  Tresoldi, T. 2019. \enquote{A cross-linguistic computational
 approach on chance resemblances}. Presented at the workshop
@@ -4585,9 +4491,9 @@ a network.} \emph{Management Science} 17, no. 11: 712-716.}
 
 
 \newpage
-\section*{Biological metaphors and methods in historical linguistics (3):
+\section*{Biological metaphors and methods in historical linguistics III:
 Homology and homoplasy}
-\phantomsection\addcontentsline{toc}{section}{Biological metaphors and methods in historical linguistics (3):
+\phantomsection\addcontentsline{toc}{section}{Biological metaphors and methods in historical linguistics III:
 Homology and homoplasy (Nathanael E. Schweikhard)}
 
 Nathanael E. Schweikhard (20/11/2019)
@@ -4608,14 +4514,207 @@ differ from each other, or two unrelated ones resemble each other. The
 linguistic categories presented here can also be found in List (2016)
 whereas the biological categories are largely based on Koonin (2005).
 
-{\textbf{Common ancestry}}
+\subsection*{Common ancestry}
 
-XXX
+Genes that are related to each other are called homologues. There is no
+well-established linguistic catch-all term for words that are related to each
+other, but they could be said to have an \emph{etymological relation}. The most
+common causes due to which such related entities differ from each other in
+related languages or species are the processes of regular sound change and
+random gene mutation, respectively. Both of these happen all the time, and
+affect all words or genes in the same way (with certain exceptions), and can
+therefore be considered the default baseline process that does not demand a
+different name for the type of homology (Gévaudan 2007, 14). Only their
+absence (as in for example certain iconic words that did not take part in
+regular sound change, like English \emph{peep} \texttt{/piːp/} having retained its Middle
+English form instead of turning into \texttt{/paɪp/} (Flaksman 2017, 17)) or irregular
+cases of sound change caused by frequency effects (Bybee 2017) or analogy,
+or areas of the genome especially prone to mutation may warrant new terms.
+
+
+There are also other processes that can be involved in the relation between
+individual genes or words but they are quite different from each other in
+the different fields and cannot as easily be equated with each other. For
+language, there are the various kinds of \emph{word formation} processes in which
+a new word is derived based on existing words. The closest counterpart in
+genetics is \emph{gene duplication} (List 2014, 40), in which the same gene is
+included twice, thereby increasing the amount of genes in the genome. As with 
+word formation products, duplicate genes then continue evolving more or less
+independently from each other but still may have an influence on each other’s 
+future evolution. This is related to their functional similarity in the genome
+(Koonin 2005, 318, 323), and to processes of analogy in the lexicon.
+
+
+However, a product of word formation rarely has the same shape as the word it
+is derived from (the only exception being the process of conversion), 
+whereas duplicated genes initially are the same, only later they may diverge 
+by mutation. Additionally, word formation processes normally involve either 
+more than one word or morpheme as the input (e.g. in compounding or
+affixation) or at least combine a word with a pattern to derive the new word. 
+The processes in biology most similar to that are \emph{fusion} and \emph{fission}, i.e. 
+the merger of two genes and the split of a gene into two, but here the original 
+genes cease to exist, whereas for example compounding does not cause the 
+simplexes to stop being part of the lexicon. These different processes 
+nevertheless share the fact that they challenge the established types of 
+homology (Koonin 2005, 327) and cognacy, respectively.
+
+
+
+\emph{Xenology} is a special type of homology in which a horizontal transmission was 
+involved (Koonin 2005, 315). This happens either in the context of 
+hybridization, when genomes of different species are combined by interspecies 
+reproduction, or, in microbes, by a variety of mechanisms. In the tree model 
+it leads to reticulation. Its obvious linguistic equivalent are \emph{borrowings} 
+from one language to another (Atkinson and Gray 2005, 513). Hybrids could 
+be likened to creole languages (Gray et al. 2007, 10).
+
+
+
+In natural species there are normally only four letters of the genetic alphabet,
+the four chemicals guanine, cytosine, adenine and thymine. Yet also artificial 
+new letters have been created (Hoshika et al. 2019). Once these molecules 
+undergo reproduction, the replication mechanism might encounter problems 
+interpreting them and treat them like errors (Ledbetter et al. 2018). Similar 
+things happen in language: Since different languages normally have different 
+phoneme systems, the shape of a borrowed word is typically adapted to the 
+phoneme system of the borrowing language (see for example Lin (2008) on the 
+adaptation of English words borrowed into Mandarin). Yet overall linguistic 
+change is much less restricted.
+
+To summarize, in regards to homology, only a few corresponding processes can 
+be found when comparing evolutionary genetics and linguistics, even though the 
+basic ideas are the same.
+
+\subsection*{Other factors of similarity}
+
+Common ancestry is not the only possible cause of similarities. Two of the 
+causes most frequently considered are \emph{chance resemblances} 
+and universal tendencies. Both of these are called \emph{homoplasy},
+making this the complement term to homology as it describes similarity 
+independent of common ancestry.
+
+If languages or species are only very distantly related, similarities between 
+them are usually considered \emph{chance resemblances}. In languages, words can with 
+reasonable certainty be proven to go back to a common ancestor by searching 
+for patterns of regular sound correspondences between the languages 
+(Lass 1997, 129). Failing to find any regular sound correspondences that 
+would explain the similarity between two words does however not necessarily 
+disprove their relatedness as it can be confounded by processes of analogy 
+and word formation. On the other hand, in some cases actual homoplasies are 
+not purely due to chance, but may result from \emph{universal tendencies} 
+(List 2016, 120), e.g. high vowels being associated with smallness (Sidhu 
+and Pexman 2018) or words derived from baby-talk having simple syllable 
+structures. As a third possibility, a borrowing can be postulated as 
+the cause.
+
+
+
+In a comparable way to linguists putting their trust in regular sound correspondences over surface similarity, biologists tend to trust comparisons on the genetic more than comparisons on the phenetic (morphological) level, the latter of which tend to suffer from increased degrees of homoplasy, as in the very basic example of both birds and bats developing wings. Also in the evolution of species, universal tendencies are at play, meaning the same evolutionary development might occur independently in different species based on universal or environment-specific demands on natural life. Therefore, phenetic similarity is mainly considered in those cases where genetic data is not available (e.g. in fossiles).
+
+But also closely related languages or species may share characteristics 
+independent of any of the causes mentioned thus far even though it is known 
+that their common ancestor did not have them. This is called \emph{parallel 
+evolution}, or, in linguistics, \emph{drift}. It means that both descendants changed 
+an ancestral characteristic in a \emph{parallel} fashion. This is believed to be 
+caused by interdependencies within the \emph{system} of a given language or genome 
+that cause them to evolve in similar directions independent from each other, 
+combined with universal tendencies (List et al. 2016, 9f). One basic 
+linguistic example for this are processes of word formation. The same 
+derivation, especially in the case of the ubiquitous process of compounding, 
+can easily be formed independently in the same manner in two related languages 
+and it is often difficult to determine whether the word formation in 
+question was already created in the ancestor or only in the daughter 
+languages (or both).
+
+
+
+What may result in a pattern in the data similar to homoplasy is the 
+phenomenon of \emph{incomplete lineage sorting}. Here, a \emph{polymorphism} (i.e. 
+different members of a population having partially different genes) in the 
+ancestor species is resolved in different directions in daughter species 
+(Nakhleh 2013, 721; List et al. 2016, 6f; Jacques and List 2019, see also 
+the recent post by Jacques) which can mean that more distantly related 
+branches share homologous characteristics that their respective closer 
+relatives are missing.
+
+
+
+This has been thus far mostly ignored in computational linguistics even though examples for polymorphisms can also be found in language evolution. A language may have two synonymous words, while each of its two daughter languages loses a different synonym. Or it may have suppletive forms in a paradigm that either end up spreading out onto the whole paradigm and removing the regular word forms, or getting replaced by regular word forms. Unlike in species, the polymorphism occurs not in different organisms but within the same lexicon, potentially within the same utterance. A polymorphism between different mental lexicons of the same population on the other hand is exhibited by sociolects, in which speakers utilize slightly different languages depending on the social context.
+
+If these reasons for similarities can be excluded, the shared innovations may be interpreted to point towards a closer relationship between the descendants sharing them.
+
+\subsection*{Conclusion}
+
+Linguistics tends to work with much less data than genetics, so shortcomings of the model that genetics can simply skip over due to the large amount of data they have will come much more to the forefront in linguistics, forcing us to be very clear in what we are actually trying to model. Whether we adopt biological methods in linguistics or develop linguistic models for computational approaches independently, describing the differences and similarities in the way I tried to do in this blogpost can serve as a new perspective to see which aspects may have been neglected.
+
+\subsection*{References}
+
+
+\nopagebreak\hangindent=0.7cm {\small Atkinson, Quentin D., and Russell D. Gray. 2005.
+\enquote{Curious Parallels and Curious Connections: Phylogenetic Thinking in Biology and Historical Linguistics.}
+\emph{Systematic Biology} 54 (4): 513–26. http://www.jstor.org/stable/20061257.}
+
+\nopagebreak\hangindent=0.7cm {\small  Bybee, Joan L. 2017.
+\enquote{Grammatical and Lexical Factors in Sound Change: A Usage-Based Approach.}
+\emph{Language Variation and Change} 29: 273–300.}
+
+\nopagebreak\hangindent=0.7cm {\small  Flaksman, Maria. 2017.
+\enquote{Iconic Treadmill Hypothesis: The Reasons Behind Continuous Onomatopoeic Coinage.} In
+\emph{Dimensions of Iconicity}, edited by Angelika Zirker, Matthias Bauer, Olga Fischer, and Christina Ljungberg, 15–38. John Benjamins Publishing Company. https://doi.org/10.1075/ill.15.02fla.}
+
+\nopagebreak\hangindent=0.7cm {\small  Gévaudan, Paul. 2007.
+\emph{Typologie des lexikalischen Wandels: Bedeutungswandel, Wortbildung und Entlehnung am Beispiel der romanischen Sprachen}. Stauffenburg-Linguistik ; 45. Tübingen: Stauffenburg.}
+
+\nopagebreak\hangindent=0.7cm {\small  Gray, Russell D., Simon J. Greenhill, and Malcolm D. Ross. 2007.
+\enquote{The Pleasures and Perils of Darwinzing Culture (with Phylogenies).}
+\emph{Biological Theory} 2 (4): 360–75.}
+
+\nopagebreak\hangindent=0.7cm {\small  Hoshika, Shuichi, Nicole A. Leal, Myong-Jung Kim, Myong-Sang Kim, Nilesh B. Karalkar, Hyo-Joong Kim, Alison M. Bates, et al. 2019.
+\enquote{Hachimoji DNA and RNA: A Genetic System with Eight Building Blocks.}
+\emph{Synthetic Biology} 363: 884–87.}
+
+\nopagebreak\hangindent=0.7cm {\small  Jacques, Guillaume, and Johann-Mattis List. 2019.
+\enquote{Save the Trees: Why We Need Tree Models in Linguistic Reconstruction (and When We Should Apply Them).}
+\emph{Journal of Historical Linguistics} 9 (1): 128–67. https://doi.org/10.1075/jhl.17008.mat.}
+
+\nopagebreak\hangindent=0.7cm {\small  Koonin, Eugene V. 2005.
+\enquote{Orthologs, Paralogs, and Evolutionary Genomics.}
+\emph{Annual Review of Genetics} 39: 309–38. https://doi.org/10.1146/annurev.genet.39.073003.114725.}
+
+\nopagebreak\hangindent=0.7cm {\small  Lass, Roger. 1997.
+\emph{Historical Linguistics and Language Change}. Cambridge: Cambridge University Press.}
+
+\nopagebreak\hangindent=0.7cm {\small  Ledbetter, Michael P., Rebekah J. Karadeema, and Floyd E. Romesberg. 2018.
+\enquote{Reprograming the Replisome of a Semisynthetic Organism for the Expansion of the Genetic Alphabet.}
+\emph{Journal of the American Chemical Society} 140: 758–65.}
+
+\nopagebreak\hangindent=0.7cm {\small  Lin, Yen-Hwei. 2008.
+\enquote{Patterned Vowel Variation in Mandarin Loanword Adaptation: Evidence from a Dictionary Corpus.} In
+\emph{Proceedings of the 20th North American Conference on Chinese Linguistics} (Naccl-20), edited by Marjorie K. M. Chan and Hana Kang, 1:175–87. Columbus, Ohio.}
+
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis. 2014.
+\enquote{Sequence Comparison in Historical Linguistics.} PhD thesis, Heinrich-Heine Universität Düsseldorf.}
+
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis. 2016.
+\enquote{Beyond Cognacy: Historical Relations Between Words and Their Implication for Phylogenetic Reconstruction.}
+\emph{Journal of Language Evolution} 1 (2): 119–36. https://doi.org/10.1093/jole/lzw006.}
+
+\nopagebreak\hangindent=0.7cm {\small  List, Johann-Mattis, Jananan Sylvestre Pathmanathan, Philippe Lopez, and Eric Bapteste. 2016.
+\enquote{Unity and Disunity in Evolutionary Sciences: Process-Based Analogies Open Common Research Avenues for Biology and Linguistics.}
+\emph{Biology Direct} 11 (39): 1–17.}
+
+\nopagebreak\hangindent=0.7cm {\small  Nakhleh, Luay. 2013.
+\enquote{Computational Approaches to Species Phylogeny Inference and Gene Tree Reconciliation.}
+\emph{Trends in Ecology and Evolution} 28 (12): 719–28.}
+
+\nopagebreak\hangindent=0.7cm {\small  Sidhu, David M., and Penny M. Pexman. 2018.
+\enquote{Five Mechanisms of Sound Symbolic Association.}
+\emph{Psychon Bull Rev} 25: 1619–43.}
 
 \vskip 2em
-\framebox{\tabular{p{0.95\textwidth}}\textbf{Cite this article as}: XXX, \enquote{XXX}, in
-\emph{Computer-Assisted Language Comparison in Practice},  XX/XX/2019,
-\url{https://calc.hypotheses.org/XX}.\endtabular}
+\framebox{\tabular{p{0.95\textwidth}}\textbf{Cite this article as}: Nathanael E. Schweikhard, \enquote{Biological metaphors and methods in historical linguistics (3): Homology and homoplasy}, in
+\emph{Computer-Assisted Language Comparison in Practice},  20/11/2019,
+\url{https://calc.hypotheses.org/2000}.\endtabular}
 
 
 \newpage
@@ -4642,7 +4741,7 @@ anthropologists when it comes to the interaction between linguistics and
 anthropology (change my mind!). Studies on kinship systems are a good
 example. A lot of linguists have done researches in this domain, like
 Loungsbury (1956), who did a thorough study on Pawnee (
-\href{https://glottolog.org/resource/languoid/id/pawn1254}{Caddoan} )
+\href{https://glottolog.org/resource/languoid/id/pawn1254}{Caddoan})
 kinship terms, published in Language; Harry Hoijer, a student of Edward
 Sapir, published in the same year a paper on
 \href{https://glottolog.org/resource/languoid/id/atha1247}{Athapaskan}
@@ -4651,10 +4750,10 @@ years see the emergence of interest in anthropological issues among
 linguists who study Sino-Tibetan languages.
 \href{https://panchr.hypotheses.org}{Guillaume Jacques} published a
 paper in 2012, on the kinship system in
-\href{https://glottolog.org/resource/languoid/id/tang1334}{Tangut} , an
+\href{https://glottolog.org/resource/languoid/id/tang1334}{Tangut}, an
 extinct language once spoken in Today's Ningxia, China (Jacques 2012).
 Another exciting work comes from my colleague,
-\href{https://inalco.academia.edu/zhangshuya}{Zhang Shuya} , has been
+\href{https://inalco.academia.edu/zhangshuya}{Zhang Shuya}, has been
 interested in Kinship systems of Rgyalrong languages (Sino-Tibetan,
 spoken in Sichuan, China). Rgyalrong languages in general exhibit
 complex phonology (see the descriptions in Hsie 1999, Jacques 2004 and
@@ -4683,7 +4782,7 @@ which is arguably a greater challenge than kinship terms. This summer
 (June -- August 2019), I went on a field trip with Shuya to document
 plant terms in two of the Rgyalrongic languages, Brag-bar Situ and
 Siyuewu Khroskyabs
-\href{https://glottolog.org/resource/languoid/id/siya1242}{Khroskyabs} .
+\href{https://glottolog.org/resource/languoid/id/siya1242}{Khroskyabs}.
 
 The languages in question are spoken in the mountainous regions in the
 highlands of Western Sichuan. The area is covered by two vegetation
@@ -4698,11 +4797,10 @@ well be an encyclopedia of local plants.
 \leavevmode\hypertarget{attachment_2143}{}%
 \begin{figure}
 \centering
-\includegraphics[width=5.20833in,height=3.90625in]{images/IMG_7199-500x375.jpg}
-\caption{The Siyuewu village}
+\includegraphics[width=\textwidth]{images/IMG_7199-500x375.jpg}
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 1}: The Siyuewu village}
 \end{figure}
-
-The Siyuewu village
 
 We are both botany laymen, so we collaborated with botanists from Yunnan
 University of Traditional Chinese Medicine, in order to accomplish our
@@ -4713,15 +4811,20 @@ field work is generally accompanied by one or several native speaker(s),
 who identify plants and tell us about them: the name in the local
 language, the morphology, and the uses.
 
-\leavevmode\hypertarget{attachment_2139}{}%
-\includegraphics[width=3.90625in,height=5.20833in]{images/IMG_2558-375x500.jpg}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{images/IMG_2558-375x500.jpg}
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 1}: Shuya taking notes from native speakers}
+\end{figure}
 
-Shuya taking notes from native speakers
 
-\leavevmode\hypertarget{attachment_2131}{}%
-\includegraphics[width=5.20833in,height=3.90625in]{images/IMG_7418-500x375.jpg}
-
-bsang gsol (bsang offering)
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{images/IMG_7418-500x375.jpg}
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 2}: A bsang gsol (bsang offering)}
+\end{figure}
 
 The botanists help us collect specimens, and teach us how to conserve
 them. Normally, it is best to have flowers or fruits on the specimens,
@@ -4731,15 +4834,20 @@ that means we need field trips in different seasons. Summer is good
 enough, anyway, as you can see most of the flowers and the weather is
 pleasant.
 
-\leavevmode\hypertarget{attachment_2135}{}%
-\includegraphics[width=3.90625in,height=5.20833in]{images/IMG_7423-e1575732106557-375x500.jpg}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{images/IMG_7423-e1575732106557-375x500.jpg}
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 3}: Me making specimens}
+\end{figure}
 
-Me making specimens
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{images/IMG_9705-375x500.jpg}
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 4}: Shuya learning from the botanists}
+\end{figure}
 
-\leavevmode\hypertarget{attachment_2147}{}%
-\includegraphics[width=3.90625in,height=5.20833in]{images/IMG_9705-375x500.jpg}
-
-Shuya learning from the botanists
 
 The specimens were then brought back to Yunnan, where the botanists are
 based. They may have some secret weapon to help identify the species and
@@ -4748,25 +4856,33 @@ in the Rgyalrongic speaking regions to do our job: recording and
 transcribing. Several native consultants are needed, as they might make
 mistakes with the plant terms.
 
-Some terms are quite funny. The burdock ( \emph{Arctium lappa L.} ), is
+Some terms are quite funny. The burdock (\emph{Arctium lappa L.}), is
 called \emph{pəɟə-rtsôs} in Brag-bar Situ. Literally, \emph{pəɟə̄} means
 \enquote{mouse} and \emph{rtsôs} means \enquote{to touch}, so the term
 globally means \enquote{touch by the mouse}.
 
-\leavevmode\hypertarget{attachment_2159}{}%
-\includegraphics[width=3.90625in,height=5.20833in]{images/IMG_7164-e1575732684598-375x500.jpg}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{images/IMG_7164-e1575732684598-375x500.jpg}
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 5}: Burdock}
+\end{figure}
 
-Burdock
 
-The Khroskyabs term \emph{mɑ̂venono} , literally meaning
+The Khroskyabs term \emph{mɑ̂venono}, literally meaning
 \enquote{grandmother's breasts}, designates the flower of Salvia
 przewalskii Maxim, as the purple flowers, accordingly, look like female
 breasts with ptosis as they age.
 
-\leavevmode\hypertarget{attachment_2167}{}%
-\includegraphics[width=4.15625in,height=5.20833in]{images/2711575733084_.pic_hd-399x500.jpg}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{images/2711575733084_.pic_hd-399x500.jpg}
+\captionsetup{labelformat=empty}
+\caption{\textbf{Figure 6}: Salvia przewalskii Maxim}
+\end{figure}
 
-Salvia przewalskii Maxim
+
+
 
 So, what could we do with linguistic ethnobotany? There could be many
 benefits, both synchronically and diachronically, linguistically and
@@ -4788,7 +4904,12 @@ made based on historical linguistic analyses (of course, we need more
 cognates!). The table below shows the cognates found in the field work
 this year.
 
-\includegraphics[width=5.29167in,height=3.625in]{images/2691575731829_.pic_hd.jpg}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{images/2691575731829_.pic_hd.jpg}
+\captionsetup{labelformat=empty}
+\end{figure}
+
 
 Plant terms are a key to synchronic analyses of nominal constructions in
 the modern languages. They cover nearly all kinds of nominal morphology,
@@ -4800,7 +4921,12 @@ developed by Nathanael, with his excellent paper accepted, Schweikhard
 and List (forthcoming). The table below shows the cases of Tatpuruṣa in
 Siyuewu Khroskyabs.
 
-\includegraphics[width=6.11458in,height=2.75in]{images/2701575731864_.pic_hd.jpg}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{images/2701575731864_.pic_hd.jpg}
+\captionsetup{labelformat=empty}
+\end{figure}
+
 
 The fruits produced from this project are not only to feed us, the
 researchers, but also to be given back to the native speakers and the
